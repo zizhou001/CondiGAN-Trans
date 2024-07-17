@@ -1,3 +1,6 @@
+import torch
+
+
 def validate(generator, discriminator, val_data_loader, criterion, args):
     generator.eval()
     discriminator.eval()

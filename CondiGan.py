@@ -88,7 +88,7 @@ class Generator(nn.Module):
 
         # 转换为 Transformer 输入格式
         x_with_condition_z = x_with_condition_z.permute(1, 0, 2)  # 转换为 (seq_length, batch_size, features)
-        print(x_with_condition_z.shape)
+        # print(x_with_condition_z.shape)
 
         # 通过 Transformer 编码器
         x_transformed = self.transformer(x_with_condition_z)

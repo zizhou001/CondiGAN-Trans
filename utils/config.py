@@ -1,21 +1,29 @@
 import argparse
+import torch
 
 
 def get_configuration():
     parser = argparse.ArgumentParser(description='CondiGan for interpolation of time series data')
 
+    # 训练参数
     parser.add_argument('-t', '--train', dest='train', type=bool, default=False, help='Whether to train a new model.')
     parser.add_argument('-s', '--seed', dest='seed', type=int, default=1826,
                         help='Specifies a random number seed. The default is 1826')
+    parser.add_argument('-p', '--patience', dest='patience', type=int, default=5,
+                        help='Set the patience parameter for early stop.')
+    parser.add_argument('-e', '--epochs', dest='epochs', type=int, default=100,
+                        help='Specify the number of training rounds.')
+    parser.add_argument('-r', '--lr', dest='lr', type=float, default=0.0002, help='Assigned learning rate.')
 
     # 配置数据集
-    parser.add_argument('-tf', '--t-file', dest='t_file', type=str, default='./dataset/wind_0001_1h.csv',
+    parser.add_argument('-tf', '--t-file', dest='t_file', type=str, default='./dataset/wind_0001_1h_train_4800.csv',
                         help='Specify the training data set')
-    parser.add_argument('-vf', '--t-file', dest='v_file', type=str, default='./dataset/wind_0001_1h.csv',
+    parser.add_argument('-vf', '--v-file', dest='v_file', type=str, default='./dataset/wind_0001_1h_validate_600.csv',
                         help='Specify the validation data set')
-    parser.add_argument('-if', '--t-file', dest='i_file', type=str, default='./dataset/wind_0001_1h.csv',
+    parser.add_argument('-if', '--i-file', dest='i_file', type=str, default='./dataset/wind_0001_1h_test_600.csv',
                         help='Specify the test data set')
 
+    # 模型相关参数
     parser.add_argument('--input-dim', dest='input_dim', type=int, default=34,
                         help='Specifies the total input dimension. Manual setting is not recommended.')
     parser.add_argument('--features-dim', dest='features_dim', type=int, default=2,
@@ -37,12 +45,8 @@ def get_configuration():
                         help='Specifies the number of Transfomer heads.')
     parser.add_argument('--latent-dim', dest='latent_dim', type=int, default=32,
                         help='Specifies the Transfomer latent spatial dimension.')
-    parser.add_argument('--num-heads', dest='num_heads', type=int, default=4,
-                        help='Specifies the number of Transfomer heads.')
-
-    parser.add_argument('-e', '--epochs', dest='epochs', type=int, default=100,
-                        help='Specify the number of training rounds.')
-    parser.add_argument('-r', '--lr', dest='lr', type=float, default=0.0002, help='Assigned learning rate.')
+    parser.add_argument('--d-model', dest='d_models', type=int, default=132,
+                        help='Specify the feature dimension for each input and output sequence element.')
 
     args = parser.parse_args()
 
@@ -50,23 +54,23 @@ def get_configuration():
 
 
 def configuration_override(args):
-
     # 与模型名称相关的参数
     args.seed = 1826
     args.batch_size = 32
     args.lr = 0.0002
     args.epochs = 100
 
-    args.t_file = './dataset/wind_0001_1h.csv'
-    args.v_file = ''
-    args.i_file = ''
+    args.patience = 5
+    args.t_file = './dataset/wind_0001_1h_train_4800.csv'
+    args.v_file = './dataset/wind_0001_1h_validate_600.csv'
+    args.i_file = './dataset/wind_0001_1h_test_600.csv'
 
+    # 轻易不建议修改，如修改需要充分考虑模型的变化
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     args.hidden_size = 64  # 隐藏层大小
     args.num_layers = 2  # Transformer层数
     args.num_heads = 4  # Transformer头数
     args.latent_dim = 32  # 潜在空间维度
-
     args.input_dim = 34  # 总输入维度
     args.features_dim = 2  # 特征维度
     args.cond_dim = 32  # 条件向量维度
@@ -78,8 +82,6 @@ def configuration_override(args):
     # 每个输入和输出序列元素的特征维度，确保被num_heads整除,
     # 确保 condition_emb_dim + feature + z_emb_dim = d_model
     args.d_model = 132
-
-
 
 
 if __name__ == '__main__':

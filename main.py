@@ -11,15 +11,16 @@ def main():
     configuration_override(args)
 
     # 设置模型文件的文件名
-    tmp_str = 's{}_b{}_l{}_e{}'.format(args.seed, args.batch_size, args.lr, args.epochs)
+    tmp_str = 's{}_b{}_l{}_e{}_p{}'.format(args.seed, args.batch_size, args.lr, args.epochs, args.patience)
     generator_saved_name = "G_" + tmp_str
     discriminator_saved_name = "D_" + tmp_str
 
     # 训练模型
     generator, discriminator = train(args, generator_saved_name, discriminator_saved_name)
 
+    assert 1 == -1
     # 测试或验证
-    missing_data_file = ""
+    missing_data_file = args.i_file
     interpolate(generator, missing_data_file, args)
 
 

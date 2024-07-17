@@ -6,6 +6,7 @@ import numpy as np
 from torch.utils.data import DataLoader
 from WindSpeedDataset import WindSpeedDataset
 from CondiGan import Generator, Discriminator
+from experiment.validate import validate
 
 
 def train(args, generator_saved_name, discriminator_saved_name):
@@ -24,7 +25,6 @@ def train(args, generator_saved_name, discriminator_saved_name):
                                   cond_dim=args.cond_dim,
                                   hidden_size=args.hidden_size, ).to(args.device)
 
-
     # 定义损失函数和优化器
     criterion = nn.BCELoss()
     optimizer_G = optim.Adam(generator.parameters(), lr=args.lr)
@@ -39,13 +39,18 @@ def train(args, generator_saved_name, discriminator_saved_name):
     test_data_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=True)
 
     # 检查是否存在已有模型
-    generator_path = './models/' + generator_saved_name
-    discriminator_path = './models/' + discriminator_saved_name
+    generator_path = './checkpoints/' + generator_saved_name + '.checkpoint.pth'
+    discriminator_path = './checkpoints/' + discriminator_saved_name + '.checkpoint.pth'
 
     if os.path.exists(generator_path) and os.path.exists(discriminator_path):
         generator.load_state_dict(torch.load(generator_path))
         discriminator.load_state_dict(torch.load(discriminator_path))
         return generator, discriminator
+
+    # Early stopping参数
+    best_val_loss = float('inf')  # 初始化为无穷大
+    patience_counter = 0
+    patience = args.patience  # 设置提前停止的耐心参数
 
     # 训练过程
     for epoch in range(args.epochs):
@@ -80,9 +85,22 @@ def train(args, generator_saved_name, discriminator_saved_name):
                       f" d_loss: {d_loss.item()},"
                       f" g_loss: {g_loss.item()}")
 
-    # 保存模型
-    torch.save(generator.state_dict(), generator_path)
-    torch.save(discriminator.state_dict(), discriminator_path)
-    print("Models saved.")
+            # 验证阶段
+            val_loss = validate(generator, discriminator, validate_data_loader, criterion, args)
+            print(f"Validation Loss after epoch {epoch}: {val_loss}")
 
-    return generator, discriminator
+            # Early stopping逻辑
+            if val_loss < best_val_loss:
+                best_val_loss = val_loss
+                patience_counter = 0
+                # 保存最佳模型
+                torch.save(generator.state_dict(), generator_path)
+                torch.save(discriminator.state_dict(), discriminator_path)
+                print("Models saved.")
+            else:
+                patience_counter += 1
+                if patience_counter >= patience:
+                    print("Early stopping triggered.")
+                    break
+
+        return generator, discriminator
