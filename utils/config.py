@@ -14,12 +14,11 @@ def get_configuration():
     parser.add_argument('-e', '--epochs', dest='epochs', type=int, default=100,
                         help='Specify the number of training rounds.')
     parser.add_argument('-r', '--lr', dest='lr', type=float, default=0.0002, help='Assigned learning rate.')
+    parser.add_argument('--train_size', dest='train_size', type=float, default=0.8, help='train_size.')
 
     # 配置数据集
     parser.add_argument('-tf', '--t-file', dest='t_file', type=str, default='./dataset/wind_0001_1h_train_4800.csv',
                         help='Specify the training data set')
-    parser.add_argument('-vf', '--v-file', dest='v_file', type=str, default='./dataset/wind_0001_1h_validate_600.csv',
-                        help='Specify the validation data set')
     parser.add_argument('-if', '--i-file', dest='i_file', type=str, default='./dataset/wind_0001_1h_test_600.csv',
                         help='Specify the test data set')
 
@@ -56,21 +55,20 @@ def get_configuration():
 def configuration_override(args):
     # 与模型名称相关的参数
     args.seed = 1826
-    args.batch_size = 32
-    args.lr = 0.0002
+    args.batch_size = 64
+    args.lr = 0.00005
     args.epochs = 100
 
     # 训练相关参数
-    args.patience = 20
-    args.t_file = './dataset/wind_0001_1h_train_4800.csv'
-    args.v_file = './dataset/wind_0001_1h_validate_600.csv'
-    args.i_file = './dataset/wind_0001_1h_test_600.csv'
-
+    args.patience = 40
+    args.t_file = './dataset/1h/wind_0001_1h_10k.csv'
+    args.i_file = './dataset/1h/wind_0001_1h_test_600.csv'
+    args.train_size = 0.8
 
     # !!! 不建议修改，如修改需要充分考虑模型的变化
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     args.hidden_size = 64  # 隐藏层大小
-    args.num_layers = 2  # Transformer层数
+    args.num_layers = 4  # Transformer层数
     args.num_heads = 4  # Transformer头数
     args.latent_dim = 32  # 潜在空间维度
     args.input_dim = 34  # 总输入维度

@@ -1,12 +1,16 @@
+import os
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import os
-import numpy as np
 from torch.utils.data import DataLoader
-from WindSpeedDataset import WindSpeedDataset
+
 from CondiGan import Generator, Discriminator
+from WindSpeedDataset import WindSpeedDataset
 from experiment.validate import validate
+from utils.dataset import partition
+from utils.draw import plot_losses
 
 
 def train(args, generator_saved_name, discriminator_saved_name):
@@ -27,16 +31,15 @@ def train(args, generator_saved_name, discriminator_saved_name):
 
     # 定义损失函数和优化器
     criterion = nn.BCELoss()
-    optimizer_G = optim.Adam(generator.parameters(), lr=args.lr)
-    optimizer_D = optim.Adam(discriminator.parameters(), lr=args.lr)
+    optimizer_G = optim.Adam(generator.parameters(), lr=args.lr, betas=(0.9, 0.999))
+    optimizer_D = optim.Adam(discriminator.parameters(), lr=args.lr, betas=(0.9, 0.999))
 
     # 加载数据集
-    train_dataset = WindSpeedDataset(csv_file=args.t_file)
-    validate_dataset = WindSpeedDataset(csv_file=args.v_file)
-    test_dataset = WindSpeedDataset(csv_file=args.i_file)
+    train_data, val_data = partition(file_path=args.t_file, train_size=args.train_size)
+    train_dataset = WindSpeedDataset(data=train_data)
+    validate_dataset = WindSpeedDataset(data=val_data)
     train_data_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     validate_data_loader = DataLoader(validate_dataset, batch_size=args.batch_size, shuffle=True)
-    test_data_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=True)
 
     # 检查是否存在已有模型
     generator_path = './checkpoints/' + generator_saved_name + '.checkpoint.pth'
@@ -54,7 +57,14 @@ def train(args, generator_saved_name, discriminator_saved_name):
 
     # 训练过程
     for epoch in range(args.epochs):
+        # 用于存储损失值
+        real_losses = []
+        fake_losses = []
+        total_losses = []
+        batch_index = []
+
         for batch_idx, (real_data, condition) in enumerate(train_data_loader):
+
             real_data = real_data.to(args.device)  # 将数据移到设备
             condition = condition.to(args.device)  # 将条件信息移到设备
 
@@ -86,12 +96,22 @@ def train(args, generator_saved_name, discriminator_saved_name):
                       f" g_loss: {g_loss.item()}")
 
             # 验证阶段
-            val_loss = validate(generator, discriminator, validate_data_loader, criterion, args)
-            print(f"Validation Loss after epoch {epoch}: {val_loss}")
+            avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
+                                                                    criterion, args)
+
+            real_losses.append(avg_real_loss)
+            fake_losses.append(avg_fake_loss)
+            total_losses.append(avg_total_loss)
+            batch_index.append(batch_idx)
+
+            print(f"Validation Loss after epoch {epoch} | "
+                  f"avg_total_loss:{avg_total_loss}, "
+                  f"avg_real_loss:{avg_real_loss}, "
+                  f"avg_fake_loss:{avg_fake_loss}")
 
             # Early stopping逻辑
-            if val_loss < best_val_loss:
-                best_val_loss = val_loss
+            if avg_total_loss < best_val_loss:
+                best_val_loss = avg_total_loss
                 patience_counter = 0
                 # 保存最佳模型
                 torch.save(generator.state_dict(), generator_path)
@@ -101,6 +121,10 @@ def train(args, generator_saved_name, discriminator_saved_name):
                 patience_counter += 1
                 if patience_counter >= patience:
                     print("Early stopping triggered.")
+                    # 训练结束后绘制损失曲线
+                    plot_losses(batch_index, {'Average Real Loss': real_losses,
+                                              'Average Fake Loss': fake_losses,
+                                              'Average Total Loss': total_losses}, 'batch_idx', 'avg_loss')
                     break
 
         return generator, discriminator

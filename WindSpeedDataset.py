@@ -2,14 +2,29 @@ import torch
 from torch.utils.data import Dataset
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler
 
 
 class WindSpeedDataset(Dataset):
-    def __init__(self, csv_file, transform=None, seq_length=64, batch_size=32):
-        self.data = pd.read_csv(csv_file, parse_dates=['date'])  # 解析日期列
+    def __init__(self, data, transform=None, seq_length=64, batch_size=32):
+        # self.data = pd.read_csv(data, parse_dates=['date'])  # 解析日期列
+        if 'date' in data.columns:
+            data['date'] = pd.to_datetime(data['date'])
+        self.data = data.copy()  # 使用传入的数据
         self.transform = transform
         self.seq_length = seq_length
         self.batch_size = batch_size
+
+        # 创建归一化器
+        self.scaler = MinMaxScaler()
+
+        # 对需要归一化的列进行归一化处理
+        self.data[['windSpeed3s', 'windSpeed2m', 'windDir3s', 'windDir2m',
+                   'windSpeed10m', 'windDir10m', 'temperature']] = \
+            self.scaler.fit_transform(self.data[['windSpeed3s', 'windSpeed2m',
+                                                 'windDir3s', 'windDir2m',
+                                                 'windSpeed10m', 'windDir10m',
+                                                 'temperature']])
 
     def __len__(self):
         return len(self.data) - self.seq_length  # 确保可以提取完整序列

@@ -73,20 +73,20 @@ class Generator(nn.Module):
 
         # 扩展嵌入
         condition_emb = condition_emb.unsqueeze(1).repeat(1, self.seq_length, 1)  # (batch_size, seq_length, d_model)
-        z_emb = z_emb.unsqueeze(1).repeat(1, self.seq_length, 1)  # (batch_size, seq_length, 64)
+        z_emb = z_emb.unsqueeze(1).repeat(1, self.seq_length, 1)  # (batch_size, seq_length, z_emb_dim)
 
         # 检查条件嵌入的形状
         """
-        print(f"[condition_emb] G > forward > unsqueeze: {condition_emb.shape}")  # 应该是 (batch_size, 64)
-        print(f"[z_emb] G > forward > unsqueeze: {z_emb.shape}")  # 应该是 (batch_size, 64)
-        print(f"[x] G > forward > unsqueeze: {x.shape}")  # 应该是 (batch_size, 64)
+        print(f"[condition_emb] G > forward > unsqueeze: {condition_emb.shape}") 
+        print(f"[z_emb] G > forward > unsqueeze: {z_emb.shape}")  
+        print(f"[x] G > forward > unsqueeze: {x.shape}")  
         """
 
-        # 合并
-        x_with_condition_z = torch.cat((x, condition_emb, z_emb),
-                                       dim=-1)  # (batch_size, seq_length, feature + cond_emb_dim + cond_emb_dim)
+        # 合并 (batch_size, seq_length, feature + cond_emb_dim + cond_emb_dim)
+        x_with_condition_z = torch.cat((x, condition_emb, z_emb), dim=-1)
 
-        # 转换为 Transformer 输入格式
+
+        # 转换为 Transformer 输入格式，调整张量的维度顺序
         x_with_condition_z = x_with_condition_z.permute(1, 0, 2)  # 转换为 (seq_length, batch_size, features)
         # print(x_with_condition_z.shape)
 
@@ -116,6 +116,7 @@ class Discriminator(nn.Module):
         self.model = nn.Sequential(
             nn.Linear(self.features_dim + self.cond_dim, self.hidden_size),
             nn.LeakyReLU(0.2, inplace=True),
+            nn.Dropout(0.3),  # 添加Dropout以防止过拟合
             nn.Linear(self.hidden_size, self.hidden_size),
             nn.LeakyReLU(0.2, inplace=True),
             nn.Linear(self.hidden_size, 1),
