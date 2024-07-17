@@ -55,7 +55,6 @@ def train(args, generator_saved_name, discriminator_saved_name):
     patience_counter = 0
     patience = args.patience  # 设置提前停止的耐心参数
 
-    # 训练过程
     for epoch in range(args.epochs):
         # 用于存储损失值
         real_losses = []
@@ -64,18 +63,15 @@ def train(args, generator_saved_name, discriminator_saved_name):
         batch_index = []
 
         for batch_idx, (real_data, condition) in enumerate(train_data_loader):
-
-            real_data = real_data.to(args.device)  # 将数据移到设备
-            condition = condition.to(args.device)  # 将条件信息移到设备
-
-            # 生成随机噪声
-            z = torch.randn(real_data.size(0), args.noise_dim).to(args.device)  # 随机噪声，形状为 (batch_size, noise_dim)
+            real_data = real_data.to(args.device)
+            condition = condition.to(args.device)
+            z = torch.randn(real_data.size(0), args.noise_dim).to(args.device)
 
             # 训练判别器
             optimizer_D.zero_grad()
-            fake_data = generator(real_data, z, condition)  # 输入 real_data, z 和 condition
-            real_output = discriminator(real_data, condition)  # 使用 real_data 和 condition
-            fake_output = discriminator(fake_data.detach(), condition)  # 使用 fake_data 和 condition，detach 避免计算梯度
+            fake_data = generator(real_data, z, condition)
+            real_output = discriminator(real_data, condition)
+            fake_output = discriminator(fake_data.detach(), condition)
             d_loss = criterion(real_output, torch.ones_like(real_output)) + criterion(fake_output,
                                                                                       torch.zeros_like(fake_output))
             d_loss.backward()
@@ -83,7 +79,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
 
             # 训练生成器
             optimizer_G.zero_grad()
-            fake_output = discriminator(fake_data, condition)  # 使用 fake_data 和 condition
+            fake_output = discriminator(fake_data, condition)
             g_loss = criterion(fake_output, torch.ones_like(fake_output))
             g_loss.backward()
             optimizer_G.step()
@@ -91,40 +87,40 @@ def train(args, generator_saved_name, discriminator_saved_name):
             # 打印损失信息
             if batch_idx % 10 == 0:
                 print(f"Epoch [{epoch}/{args.epochs}], "
-                      f"Batch [{batch_idx}/{len(train_data_loader) // args.batch_size}],"
-                      f" d_loss: {d_loss.item()},"
-                      f" g_loss: {g_loss.item()}")
+                      f"Batch [{batch_idx}/{len(train_data_loader)}], "
+                      f"d_loss: {d_loss.item()}, "
+                      f"g_loss: {g_loss.item()}")
 
-            # 验证阶段
-            avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
-                                                                    criterion, args)
+        # 验证阶段
+        avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
+                                                                criterion, args)
 
-            real_losses.append(avg_real_loss)
-            fake_losses.append(avg_fake_loss)
-            total_losses.append(avg_total_loss)
-            batch_index.append(batch_idx)
+        real_losses.append(avg_real_loss)
+        fake_losses.append(avg_fake_loss)
+        total_losses.append(avg_total_loss)
+        batch_index.append(epoch)  # 这里可以记录 epoch 作为索引
 
-            print(f"Validation Loss after epoch {epoch} | "
-                  f"avg_total_loss:{avg_total_loss}, "
-                  f"avg_real_loss:{avg_real_loss}, "
-                  f"avg_fake_loss:{avg_fake_loss}")
+        print(f"Validation Loss after epoch {epoch} | "
+              f"avg_total_loss: {avg_total_loss}, "
+              f"avg_real_loss: {avg_real_loss}, "
+              f"avg_fake_loss: {avg_fake_loss}")
 
-            # Early stopping逻辑
-            if avg_total_loss < best_val_loss:
-                best_val_loss = avg_total_loss
-                patience_counter = 0
-                # 保存最佳模型
-                torch.save(generator.state_dict(), generator_path)
-                torch.save(discriminator.state_dict(), discriminator_path)
-                print("Models saved.")
-            else:
-                patience_counter += 1
-                if patience_counter >= patience:
-                    print("Early stopping triggered.")
-                    # 训练结束后绘制损失曲线
-                    plot_losses(batch_index, {'Average Real Loss': real_losses,
-                                              'Average Fake Loss': fake_losses,
-                                              'Average Total Loss': total_losses}, 'batch_idx', 'avg_loss')
-                    break
+        # Early stopping逻辑
+        if avg_total_loss < best_val_loss:
+            best_val_loss = avg_total_loss
+            patience_counter = 0
+            # 保存最佳模型
+            torch.save(generator.state_dict(), generator_path)
+            torch.save(discriminator.state_dict(), discriminator_path)
+            print("Models saved.")
+        else:
+            patience_counter += 1
+            if patience_counter >= patience:
+                print("Early stopping triggered.")
+                # 训练结束后绘制损失曲线
+                plot_losses(batch_index, {'Average Real Loss': real_losses,
+                                          'Average Fake Loss': fake_losses,
+                                          'Average Total Loss': total_losses}, 'epoch', 'avg_loss')
+                break
 
-        return generator, discriminator
+    return generator, discriminator
