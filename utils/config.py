@@ -60,12 +60,14 @@ def configuration_override(args):
     args.lr = 0.0002
     args.epochs = 100
 
-    args.patience = 5
+    # 训练相关参数
+    args.patience = 20
     args.t_file = './dataset/wind_0001_1h_train_4800.csv'
     args.v_file = './dataset/wind_0001_1h_validate_600.csv'
     args.i_file = './dataset/wind_0001_1h_test_600.csv'
 
-    # 轻易不建议修改，如修改需要充分考虑模型的变化
+
+    # !!! 不建议修改，如修改需要充分考虑模型的变化
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     args.hidden_size = 64  # 隐藏层大小
     args.num_layers = 2  # Transformer层数
