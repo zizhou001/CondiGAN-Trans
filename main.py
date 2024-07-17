@@ -1,5 +1,5 @@
 from experiment.training import train
-from experiment.validate import interpolate
+from experiment.test import interpolate
 from utils.config import get_configuration, configuration_override
 
 

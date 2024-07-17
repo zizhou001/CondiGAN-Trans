@@ -30,9 +30,13 @@ def train(args, generator_saved_name, discriminator_saved_name):
     optimizer_G = optim.Adam(generator.parameters(), lr=args.lr)
     optimizer_D = optim.Adam(discriminator.parameters(), lr=args.lr)
 
-    # 引入文件
-    dataset = WindSpeedDataset(csv_file=args.file_path)
-    data_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True)
+    # 加载数据集
+    train_dataset = WindSpeedDataset(csv_file=args.t_file)
+    validate_dataset = WindSpeedDataset(csv_file=args.v_file)
+    test_dataset = WindSpeedDataset(csv_file=args.i_file)
+    train_data_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
+    validate_data_loader = DataLoader(validate_dataset, batch_size=args.batch_size, shuffle=True)
+    test_data_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=True)
 
     # 检查是否存在已有模型
     generator_path = './models/' + generator_saved_name
@@ -45,7 +49,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
 
     # 训练过程
     for epoch in range(args.epochs):
-        for batch_idx, (real_data, condition) in enumerate(data_loader):
+        for batch_idx, (real_data, condition) in enumerate(train_data_loader):
             real_data = real_data.to(args.device)  # 将数据移到设备
             condition = condition.to(args.device)  # 将条件信息移到设备
 
@@ -72,7 +76,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
             # 打印损失信息
             if batch_idx % 10 == 0:
                 print(f"Epoch [{epoch}/{args.epochs}], "
-                      f"Batch [{batch_idx}/{len(data_loader) // args.batch_size}],"
+                      f"Batch [{batch_idx}/{len(train_data_loader) // args.batch_size}],"
                       f" d_loss: {d_loss.item()},"
                       f" g_loss: {g_loss.item()}")
 

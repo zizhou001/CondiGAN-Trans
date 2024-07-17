@@ -7,8 +7,15 @@ def get_configuration():
     parser.add_argument('-t', '--train', dest='train', type=bool, default=False, help='Whether to train a new model.')
     parser.add_argument('-s', '--seed', dest='seed', type=int, default=1826,
                         help='Specifies a random number seed. The default is 1826')
-    parser.add_argument('-f', '--file-path', dest='file_path', type=str, default='./dataset/wind_0001_1h.csv',
-                        help='Specifies a random number seed. The default is 1826')
+
+    # 配置数据集
+    parser.add_argument('-tf', '--t-file', dest='t_file', type=str, default='./dataset/wind_0001_1h.csv',
+                        help='Specify the training data set')
+    parser.add_argument('-vf', '--t-file', dest='v_file', type=str, default='./dataset/wind_0001_1h.csv',
+                        help='Specify the validation data set')
+    parser.add_argument('-if', '--t-file', dest='i_file', type=str, default='./dataset/wind_0001_1h.csv',
+                        help='Specify the test data set')
+
     parser.add_argument('--input-dim', dest='input_dim', type=int, default=34,
                         help='Specifies the total input dimension. Manual setting is not recommended.')
     parser.add_argument('--features-dim', dest='features_dim', type=int, default=2,
@@ -50,7 +57,10 @@ def configuration_override(args):
     args.lr = 0.0002
     args.epochs = 100
 
-    args.file_path = './dataset/wind_0001_1h.csv'
+    args.t_file = './dataset/wind_0001_1h.csv'
+    args.v_file = ''
+    args.i_file = ''
+
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     args.hidden_size = 64  # 隐藏层大小
     args.num_layers = 2  # Transformer层数
