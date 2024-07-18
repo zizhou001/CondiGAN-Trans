@@ -40,61 +40,45 @@ class Generator(nn.Module):
         # 输出层
         self.linear = nn.Linear(self.d_model, self.features_dim)  # 根据输入维度调整线性层
 
-    def forward(self, x, z, condition):
+    def forward(self, z, condition):
         """
-        :param x: 从数据集中提取的风速数据，形状应为 (batch_size, seq_length, 2)
-        :param z: 随机噪声
+        :param z: 随机噪声，形状应为 (batch_size, noise_dim)
         :param condition: 条件向量，形状应为 (batch_size, cond_dim)
         :return: 生成的风速数据，形状为 (batch_size, seq_length, input_dim)
         """
 
-        # 打印 x 和 condition 的形状以进行调试
+        # 打印 condition 的形状以进行调试
         """
-        print(f"[x] G > forward : {x.shape}")  # 应该是 (batch_size, seq_length, 2)
         print(f"[condition] G > forward : {condition.shape}")  # 应该是 (batch_size, cond_dim)
         """
 
-        # 确保 x 的维度为 (batch_size, seq_length, 2)
-        if x.dim() != 3 or x.size(1) != self.seq_length or x.size(2) != 2:
-            raise ValueError(f"Unexpected x shape: {x.shape}")
-
         # 生成条件嵌入
-        condition_emb = self.condition_embedding(condition)  # (batch_size, d_model - input_dim - z_dim)
+        condition_emb = self.condition_embedding(condition)  # (batch_size, cond_emb_dim)
 
         # 噪声嵌入
-        z_emb = self.z_dim(z)  # (batch_size, d_model - input_dim)
-
-        # 检查条件嵌入之前的形状
-        """
-        print(f"[x] G > forward > emb: {x.shape}")  # 应该是 (batch_size, seq_length, features)
-        print(f"[condition_emb] G > forward > emb: {condition_emb.shape}")  # (batch_size, d_model - input_dim - z_dim)
-        print(f"[z_emb] G > forward > BEFORE > emb: {z_emb.shape}")  # (batch_size, d_model - input_dim)
-        """
+        z_emb = self.z_dim(z)  # (batch_size, z_emb_dim)
 
         # 扩展嵌入
-        condition_emb = condition_emb.unsqueeze(1).repeat(1, self.seq_length, 1)  # (batch_size, seq_length, d_model)
+        condition_emb = condition_emb.unsqueeze(1).repeat(1, self.seq_length,
+                                                          1)  # (batch_size, seq_length, cond_emb_dim)
         z_emb = z_emb.unsqueeze(1).repeat(1, self.seq_length, 1)  # (batch_size, seq_length, z_emb_dim)
 
-        # 检查条件嵌入的形状
-        """
-        print(f"[condition_emb] G > forward > unsqueeze: {condition_emb.shape}") 
-        print(f"[z_emb] G > forward > unsqueeze: {z_emb.shape}")  
-        print(f"[x] G > forward > unsqueeze: {x.shape}")  
-        """
+        # 创建初始输入：可以使用零初始化或其他方法
+        initial_input = torch.zeros(z_emb.size(0), self.seq_length, self.input_dim).to(
+            z_emb.device)  # (batch_size, seq_length, input_dim)
 
-        # 合并 (batch_size, seq_length, feature + cond_emb_dim + cond_emb_dim)
-        x_with_condition_z = torch.cat((x, condition_emb, z_emb), dim=-1)
-
+        # 合并 (batch_size, seq_length, input_dim + cond_emb_dim + z_emb_dim)
+        x_with_condition_z = torch.cat((initial_input, condition_emb, z_emb),
+                                       dim=-1)  # (batch_size, seq_length, input_dim + cond_emb_dim + z_emb_dim)
 
         # 转换为 Transformer 输入格式，调整张量的维度顺序
-        x_with_condition_z = x_with_condition_z.permute(1, 0, 2)  # 转换为 (seq_length, batch_size, features)
-        # print(x_with_condition_z.shape)
+        x_with_condition_z = x_with_condition_z.permute(1, 0, 2)  # (seq_length, batch_size, features)
 
         # 通过 Transformer 编码器
         x_transformed = self.transformer(x_with_condition_z)
 
         # 转换回原始形状
-        x_transformed = x_transformed.permute(1, 0, 2)  # 转换回 (batch_size, seq_length, d_model)
+        x_transformed = x_transformed.permute(1, 0, 2)  # (batch_size, seq_length, d_model)
 
         # 输出处理
         x_output = self.linear(x_transformed)  # (batch_size, seq_length, input_dim)

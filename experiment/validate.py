@@ -20,7 +20,7 @@ def validate(generator, discriminator, val_data_loader, criterion, args):
             z = torch.randn(val_real_data.size(0), args.noise_dim).to(args.device)
 
             # 调用生成器，输入真实数据、随机噪声和条件数据，生成伪造数据
-            val_fake_data = generator(val_real_data, z, val_condition)
+            val_fake_data = generator(z, val_condition)
 
             # 将真实数据和生成的数据传入判别器，得到判别器对真实数据和伪造数据的输出
             val_real_output = discriminator(val_real_data, val_condition)

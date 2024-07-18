@@ -56,7 +56,7 @@ def configuration_override(args):
     # 与模型名称相关的参数
     args.seed = 1826
     args.batch_size = 64
-    args.lr = 0.00005
+    args.lr = 0.00002
     args.epochs = 100
 
     # 训练相关参数
@@ -81,7 +81,7 @@ def configuration_override(args):
     args.seq_length = 64  # 序列长度
     # 每个输入和输出序列元素的特征维度，确保被num_heads整除,
     # 确保 condition_emb_dim + feature + z_emb_dim = d_model
-    args.d_model = 132
+    args.d_model = args.input_dim + args.cond_emb_dim + args.noise_emb_dim
 
 
 if __name__ == '__main__':

@@ -55,12 +55,13 @@ def train(args, generator_saved_name, discriminator_saved_name):
     patience_counter = 0
     patience = args.patience  # 设置提前停止的耐心参数
 
+    # 用于存储损失值
+    real_losses = []
+    fake_losses = []
+    total_losses = []
+    epochs = []
+
     for epoch in range(args.epochs):
-        # 用于存储损失值
-        real_losses = []
-        fake_losses = []
-        total_losses = []
-        batch_index = []
 
         for batch_idx, (real_data, condition) in enumerate(train_data_loader):
             real_data = real_data.to(args.device)
@@ -69,7 +70,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
 
             # 训练判别器
             optimizer_D.zero_grad()
-            fake_data = generator(real_data, z, condition)
+            fake_data = generator(z, condition)
             real_output = discriminator(real_data, condition)
             fake_output = discriminator(fake_data.detach(), condition)
             d_loss = criterion(real_output, torch.ones_like(real_output)) + criterion(fake_output,
@@ -98,7 +99,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
         real_losses.append(avg_real_loss)
         fake_losses.append(avg_fake_loss)
         total_losses.append(avg_total_loss)
-        batch_index.append(epoch)  # 这里可以记录 epoch 作为索引
+        epochs.append(epoch)
 
         print(f"Validation Loss after epoch {epoch} | "
               f"avg_total_loss: {avg_total_loss}, "
@@ -117,10 +118,11 @@ def train(args, generator_saved_name, discriminator_saved_name):
             patience_counter += 1
             if patience_counter >= patience:
                 print("Early stopping triggered.")
-                # 训练结束后绘制损失曲线
-                plot_losses(batch_index, {'Average Real Loss': real_losses,
-                                          'Average Fake Loss': fake_losses,
-                                          'Average Total Loss': total_losses}, 'epoch', 'avg_loss')
                 break
+
+    # 训练结束后绘制损失曲线
+    plot_losses(epochs, {'Average Real Loss': real_losses,
+                         'Average Fake Loss': fake_losses,
+                         'Average Total Loss': total_losses}, 'epoch', 'avg_loss')
 
     return generator, discriminator
