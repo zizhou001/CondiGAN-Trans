@@ -18,13 +18,10 @@ def train(args, generator_saved_name, discriminator_saved_name):
     np.random.seed(args.seed)
 
     # 实例化生成器和判别器
-    generator = Generator(d_model=args.d_model,
-                          num_heads=args.num_heads,
-                          num_layers=args.num_layers,
-                          input_dim=args.input_dim,
-                          noise_dim=args.noise_dim,
-                          cond_emb_dim=args.cond_emb_dim,
-                          noise_emb_dim=args.noise_emb_dim).to(args.device)
+    generator = Generator(args.d_model, args.num_heads, args.num_layers, args.input_dim, args.seq_length,
+                          args.cond_dim, args.noise_dim, args.noise_emb_dim, args.cond_emb_wind_dim,
+                          args.features_dim, args.cond_emb_hourly_dim, args.cond_emb_daily_dim,
+                          args.cond_emb_weekly_dim).to(args.device)
     discriminator = Discriminator(features_dim=args.features_dim,
                                   cond_dim=args.cond_dim,
                                   hidden_size=args.hidden_size, ).to(args.device)

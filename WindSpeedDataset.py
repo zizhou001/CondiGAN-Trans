@@ -79,6 +79,7 @@ class WindSpeedDataset(Dataset):
         # condition_tensor 确保是 (cond_dim,)  24+7+52+8=91
         condition_tensor = torch.from_numpy(condition_vector).float()
 
+
         return sample_tensor, condition_tensor  #
 
 

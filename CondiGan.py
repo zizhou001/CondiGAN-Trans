@@ -4,16 +4,10 @@ from utils.dataset import multiscale_divider
 
 
 class Generator(nn.Module):
-    def __init__(self, d_model=132,
-                 num_heads=4,
-                 num_layers=2,
-                 input_dim=34,
-                 seq_length=64,
-                 cond_dim=32,
-                 noise_dim=2,
-                 cond_emb_dim=64,
-                 noise_emb_dim=64,
-                 features_dim=2):
+    def __init__(self, d_model, num_heads, num_layers, input_dim, seq_length,
+                 cond_dim, noise_dim, noise_emb_dim, cond_emb_wind_dim,
+                 features_dim, cond_emb_hourly_dim, cond_emb_daily_dim,
+                 cond_emb_weekly_dim):
         super(Generator, self).__init__()
         self.d_model = d_model
         self.num_heads = num_heads
@@ -23,11 +17,18 @@ class Generator(nn.Module):
         self.cond_dim = cond_dim
         self.z_dim = noise_dim
         self.z_emb_dim = noise_emb_dim
-        self.cond_emb_dim = cond_emb_dim
+        self.cond_emb_wind_dim = cond_emb_wind_dim
         self.features_dim = features_dim
+        self.cond_emb_wind_dim = cond_emb_wind_dim
+        self.cond_emb_hourly_dim = cond_emb_hourly_dim
+        self.cond_emb_daily_dim = cond_emb_daily_dim
+        self.cond_emb_weekly_dim = cond_emb_weekly_dim
 
-        # 条件向量嵌入
-        self.condition_embedding = nn.Linear(self.cond_dim, self.cond_emb_dim)
+        # 条件向量嵌入层
+        self.condition_embedding_wind = nn.Linear(8, self.cond_emb_wind_dim)
+        self.condition_embedding_hourly = nn.Linear(24, self.cond_emb_wind_dim)
+        self.condition_embedding_daily = nn.Linear(7, self.cond_emb_hourly_dim)
+        self.condition_embedding_weekly = nn.Linear(52, self.cond_emb_weekly_dim)
 
         # 随机噪声嵌入
         self.z_dim = nn.Linear(self.z_dim, self.z_emb_dim)  # 随机噪声嵌入
@@ -56,10 +57,10 @@ class Generator(nn.Module):
         hourly_condition, daily_condition, weekly_condition, wind_condition = multiscale_divider(condition)
 
         # 生成条件嵌入
-        condition_emb_hourly = self.condition_embedding(hourly_condition.float())  # 形状为 (batch_size, cond_emb_dim)
-        condition_emb_daily = self.condition_embedding(daily_condition.float())  # 形状为 (batch_size, cond_emb_dim)
-        condition_emb_weekly = self.condition_embedding(weekly_condition.float())  # 形状为 (batch_size, cond_emb_dim)
-        condition_emb_wind = self.condition_embedding(wind_condition.float())  # 形状为 (batch_size, cond_emb_dim)
+        condition_emb_hourly = self.condition_embedding_hourly(hourly_condition.float())
+        condition_emb_daily = self.condition_embedding_daily(daily_condition.float())
+        condition_emb_weekly = self.condition_embedding_weekly(weekly_condition.float())
+        condition_emb_wind = self.condition_embedding_wind(wind_condition.float())
 
         # 噪声嵌入
         z_emb = self.z_dim(z)  # (batch_size, z_emb_dim)
@@ -79,23 +80,23 @@ class Generator(nn.Module):
         initial_input = torch.zeros(z_emb.size(0), self.seq_length, self.input_dim).to(
             z_emb.device)  # (batch_size, seq_length, input_dim)
 
-        # 合并条件向量和噪声嵌入
-        x_with_conditions_z = torch.cat(
+        # 合并 (batch_size, seq_length, input_dim + 4 * 条件向量嵌入 + noise_emb_dim)
+        x_with_condition_z = torch.cat(
             (initial_input, condition_emb_hourly, condition_emb_daily, condition_emb_weekly, condition_emb_wind, z_emb),
-            dim=-1)  # (batch_size, seq_length, input_dim + 4 * cond_emb_dim + z_emb_dim)
+            dim=-1)
 
-        # 转换为 Transformer 输入格式
-        x_with_conditions_z = x_with_conditions_z.permute(1, 0,
-                                                          2)  # (seq_length, batch_size, input_dim + 4 * cond_emb_dim + z_emb_dim)
+        # 转换为 Transformer 输入格式，调整张量的维度顺序
+        x_with_condition_z = x_with_condition_z.permute(1, 0,
+                                                        2)  # (seq_length, batch_size, input_dim + 4 * cond_emb_dim + noise_emb_dim)
 
         # 通过 Transformer 编码器
-        x_transformed = self.transformer(x_with_conditions_z)
+        x_transformed = self.transformer(x_with_condition_z)
 
         # 转换回原始形状
         x_transformed = x_transformed.permute(1, 0, 2)  # (batch_size, seq_length, d_model)
 
         # 输出处理
-        x_output = self.linear(x_transformed)  # (batch_size, seq_length, input_dim)
+        x_output = self.linear(x_transformed)  # (batch_size, seq_length, features_dim)
 
         return x_output
 
