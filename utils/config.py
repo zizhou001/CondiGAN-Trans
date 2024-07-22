@@ -65,23 +65,30 @@ def configuration_override(args):
     args.i_file = './dataset/1h/wind_0001_1h_test_600.csv'
     args.train_size = 0.8
 
-    # !!! 不建议修改，如修改需要充分考虑模型的变化
+    # 其他参数，训练时可以适当修改，与模型无关
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     args.hidden_size = 64  # 隐藏层大小
     args.num_layers = 4  # Transformer层数
     args.num_heads = 4  # Transformer头数
     args.latent_dim = 32  # 潜在空间维度
-    args.input_dim = 34  # 总输入维度
-    args.features_dim = 2  # 特征维度
-    args.cond_dim = 32  # 条件向量维度
-    args.cond_emb_dim = 65  # 条件向量嵌入维度
     args.output_dim = 1  # 输出维度
-    args.noise_dim = 4  # 随机噪声的维度
-    args.noise_emb_dim = 65  # 随机噪声嵌入维度
     args.seq_length = 64  # 序列长度
+
+
+    # !!! 不建议修改，如修改需要充分考虑模型的变化
+    args.cond_dim = 91  # 条件向量维度
+    args.features_dim = 2  # 特征维度
+    args.input_dim = args.cond_dim + args.features_dim  # 总输入维度 = cond_dim + features_dim
+    args.noise_dim = 4  # 随机噪声的维度
+    args.cond_emb_dim = 128  # 条件向量嵌入维度
+    args.noise_emb_dim = 14  # 随机噪声嵌入维度
     # 每个输入和输出序列元素的特征维度，确保被num_heads整除,
-    # 确保 condition_emb_dim + feature + z_emb_dim = d_model
-    args.d_model = args.input_dim + args.cond_emb_dim + args.noise_emb_dim
+    # 确保 condition_emb_dim + feature_dim + z_emb_dim = d_model
+    args.d_model = args.features_dim + args.cond_emb_dim + args.noise_emb_dim
+
+
+
+
 
 
 if __name__ == '__main__':
