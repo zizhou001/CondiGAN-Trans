@@ -101,7 +101,7 @@ class Generator(nn.Module):
         return x_output
 
 
-# 判别器模型
+# 多尺度判别器
 class Discriminator(nn.Module):
     def __init__(self, features_dim=2, cond_dim=32, hidden_size=64):
         super(Discriminator, self).__init__()
@@ -110,42 +110,50 @@ class Discriminator(nn.Module):
         self.cond_dim = cond_dim
         self.hidden_size = hidden_size
 
-        # 输入维度 = 风速特征维度 + 条件嵌入维度
-        self.model = nn.Sequential(
-            nn.Linear(self.features_dim + self.cond_dim, self.hidden_size),
+        # 定义多尺度分支
+        self.hourly_branch = self.build_branch(24)
+        self.daily_branch = self.build_branch(7)
+        self.weekly_branch = self.build_branch(52)
+        self.wind_branch = self.build_branch(8)
+
+        # 最终合并层
+        self.combine_layer = nn.Sequential(
+            nn.Linear(self.hidden_size * 4, self.hidden_size),  # 4个分支的合并
             nn.LeakyReLU(0.2, inplace=True),
-            nn.Dropout(0.3),  # 添加Dropout以防止过拟合
-            nn.Linear(self.hidden_size, self.hidden_size),
-            nn.LeakyReLU(0.2, inplace=True),
+            nn.Dropout(0.3),
             nn.Linear(self.hidden_size, 1),
-            nn.Sigmoid()  # 输出概率
+            nn.Sigmoid()
+        )
+
+    def build_branch(self, dim):
+        return nn.Sequential(
+            nn.Linear(self.features_dim + dim, self.hidden_size),
+            nn.LeakyReLU(0.2, inplace=True),
+            nn.Dropout(0.3),
+            nn.Linear(self.hidden_size, self.hidden_size),
+            nn.LeakyReLU(0.2, inplace=True)
         )
 
     def forward(self, x, condition):
-        """
-        :param x: 输入的数据，形状为 (batch_size, seq_length, input_dim)
-        :param condition: 条件向量 (batch_size, cond_dim)
-            hourly_condition: 小时尺度条件向量，形状为 (batch_size, 24)
-            daily_condition: 日尺度条件向量，形状为 (batch_size, 7)
-            weekly_condition: 周尺度条件向量，形状为 (batch_size, 52)
-            wind_condition: 风向条件向量，形状为 (batch_size, 8)
-        :return: 经过判别器处理后的输出，形状为 (batch_size, seq_length, 1)
-        """
-
         hourly_condition, daily_condition, weekly_condition, wind_condition = multiscale_divider(condition)
 
-        # 重复条件信息以匹配序列长度
-        condition_hourly = hourly_condition.unsqueeze(1).expand(-1, x.size(1), -1)  # (batch_size, seq_length, 24)
-        condition_daily = daily_condition.unsqueeze(1).expand(-1, x.size(1), -1)  # (batch_size, seq_length, 7)
-        condition_weekly = weekly_condition.unsqueeze(1).expand(-1, x.size(1), -1)  # (batch_size, seq_length, 52)
-        wind_condition = wind_condition.unsqueeze(1).expand(-1, x.size(1), -1)  # (batch_size, seq_length, 8)
+        # 准备每个分支的输入
+        inputs_hourly = torch.cat([x, hourly_condition.unsqueeze(1).expand(-1, x.size(1), -1)], dim=-1)
+        inputs_daily = torch.cat([x, daily_condition.unsqueeze(1).expand(-1, x.size(1), -1)], dim=-1)
+        inputs_weekly = torch.cat([x, weekly_condition.unsqueeze(1).expand(-1, x.size(1), -1)], dim=-1)
+        inputs_wind = torch.cat([x, wind_condition.unsqueeze(1).expand(-1, x.size(1), -1)], dim=-1)
 
-        # 合并数据和条件信息
-        x_with_condition = torch.cat([x, condition_hourly, condition_daily, condition_weekly, wind_condition], dim=-1)
-        # 形状为 (batch_size, seq_length, input_dim + cond_dim)
+        # 分别通过每个分支
+        output_hourly = self.hourly_branch(inputs_hourly.view(-1, inputs_hourly.size(-1)))
+        output_daily = self.daily_branch(inputs_daily.view(-1, inputs_daily.size(-1)))
+        output_weekly = self.weekly_branch(inputs_weekly.view(-1, inputs_weekly.size(-1)))
+        output_wind = self.wind_branch(inputs_wind.view(-1, inputs_wind.size(-1)))
 
-        # 通过判别器模型
-        x_out = self.model(x_with_condition.view(-1, x_with_condition.size(-1)))  # 展平输入
-        x_out = x_out.view(x.size(0), x.size(1), -1)  # 恢复形状为 (batch_size, seq_length, 1)
+        # 合并所有分支的输出
+        combined_output = torch.cat([output_hourly, output_daily, output_weekly, output_wind], dim=-1)
+        final_output = self.combine_layer(combined_output)
 
-        return x_out
+        # 重塑以匹配输入 x 的尺寸
+        final_output = final_output.view(x.size(0), x.size(1), -1)
+
+        return final_output
