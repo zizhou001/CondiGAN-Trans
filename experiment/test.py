@@ -4,6 +4,7 @@ from WindSpeedDataset import WindSpeedDataset
 import torch
 import numpy as np
 from utils.draw import plot_losses
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 
 def interpolate(generator, args):
@@ -20,12 +21,10 @@ def interpolate(generator, args):
     windSpeed3s_idx = 0
     windSpeed2m_idx = 1
 
-
     all_real_windSpeed3s = []
     all_imputed_windSpeed3s = []
     all_real_windSpeed2m = []
     all_imputed_windSpeed2m = []
-
 
     with torch.no_grad():
         for val_batch_idx, (real_data, condition) in enumerate(data_loader):
@@ -73,8 +72,27 @@ def interpolate(generator, args):
     all_real_windSpeed2m = np.concatenate(all_real_windSpeed2m, axis=0)
     all_imputed_windSpeed2m = np.concatenate(all_imputed_windSpeed2m, axis=0)
 
+    mse_windSpeed3s = mean_squared_error(all_real_windSpeed3s, all_imputed_windSpeed3s)
+    rmse_windSpeed3s = np.sqrt(mse_windSpeed3s)
+    mae_windSpeed3s = mean_absolute_error(all_real_windSpeed3s, all_imputed_windSpeed3s)
+
+    mse_windSpeed2m = mean_squared_error(all_real_windSpeed2m, all_imputed_windSpeed2m)
+    rmse_windSpeed2m = np.sqrt(mse_windSpeed2m)
+    mae_windSpeed2m = mean_absolute_error(all_real_windSpeed2m, all_imputed_windSpeed2m)
+
+    print('--------------test set error statistics------------------------')
+    print(f'[windSpeed3s]mse:{mse_windSpeed3s} | '
+          f'rmse: {rmse_windSpeed3s} | '
+          f'mae: {mae_windSpeed3s}')
+    print(f'[windSpeed2m]mse:{mse_windSpeed2m} | '
+          f'rmse: {rmse_windSpeed2m} | '
+          f'mae: {mae_windSpeed2m}')
+
     plot_losses(x_data=[], y_data_dict={'imputed-windSpeed3s': all_imputed_windSpeed3s,
-                             'real-windSpeed3s': all_real_windSpeed3s}, title='windSpeed3s')
+                                        'real-windSpeed3s': all_real_windSpeed3s}, title='windSpeed3s')
+
+    plot_losses(x_data=[], y_data_dict={'imputed-windSpeed2m': all_imputed_windSpeed2m,
+                                        'real-windSpeed2m': all_real_windSpeed2m}, title='windSpeed2m')
 
 
 if __name__ == '__main__':
