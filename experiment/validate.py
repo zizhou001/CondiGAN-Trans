@@ -19,7 +19,7 @@ def validate(generator, discriminator, val_data_loader, criterion, args):
             # 为每个批次生成随机噪声 z，这用于生成器生成伪造数据。
             z = torch.randn(val_real_data.size(0), args.noise_dim).to(args.device)
 
-            # 调用生成器，输入真实数据、随机噪声和条件数据，生成伪造数据
+            # 调用生成器，输入随机噪声和条件数据，生成伪造数据
             val_fake_data = generator(z, val_condition)
 
             # 将真实数据和生成的数据传入判别器，得到判别器对真实数据和伪造数据的输出
@@ -36,6 +36,7 @@ def validate(generator, discriminator, val_data_loader, criterion, args):
 
             # 累加总损失
             total_loss += (real_loss + fake_loss).item()
+
 
     # 计算验证损失的平均值
     avg_real_loss = total_real_loss / total_batches

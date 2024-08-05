@@ -56,11 +56,11 @@ def configuration_override(args):
     # 与模型名称相关的参数
     args.seed = 1826
     args.batch_size = 64
-    args.lr = 0.00002
+    args.lr = 0.0001
     args.epochs = 100
 
     # 训练相关参数
-    args.patience = 40
+    args.patience = 5
     args.t_file = './dataset/1h/wind_0001_1h_10k.csv'
     args.i_file = './dataset/1h/wind_0001_1h_test_600.csv'
     args.train_size = 0.8

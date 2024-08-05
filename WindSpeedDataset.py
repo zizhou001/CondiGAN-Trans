@@ -19,12 +19,13 @@ class WindSpeedDataset(Dataset):
         self.scaler = MinMaxScaler()
 
         # 对需要归一化的列进行归一化处理
-        self.data[['windSpeed3s', 'windSpeed2m', 'windDir3s', 'windDir2m',
-                   'windSpeed10m', 'windDir10m', 'temperature']] = \
-            self.scaler.fit_transform(self.data[['windSpeed3s', 'windSpeed2m',
-                                                 'windDir3s', 'windDir2m',
-                                                 'windSpeed10m', 'windDir10m',
-                                                 'temperature']])
+        self.data[['windSpeed3s', 'windSpeed2m']] = \
+            self.scaler.fit_transform(self.data[['windSpeed3s', 'windSpeed2m']])
+        # 列的索引
+        self.windSpeed3s_column_index = self.data.columns.get_loc('windSpeed3s')
+        self.windSpeed2m_column_index = self.data.columns.get_loc('windSpeed2m')
+
+
 
     def __len__(self):
         return len(self.data) - self.seq_length  # 确保可以提取完整序列

@@ -18,10 +18,8 @@ def main():
     # 训练模型
     generator, discriminator = train(args, generator_saved_name, discriminator_saved_name)
 
-    assert 1 == -1
     # 测试或验证
-    missing_data_file = args.i_file
-    interpolate(generator, missing_data_file, args)
+    interpolate(generator, args)
 
 
 

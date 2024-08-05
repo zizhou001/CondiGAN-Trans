@@ -24,7 +24,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
                           args.cond_emb_weekly_dim).to(args.device)
     discriminator = Discriminator(features_dim=args.features_dim,
                                   cond_dim=args.cond_dim,
-                                  hidden_size=args.hidden_size, ).to(args.device)
+                                  hidden_size=args.hidden_size).to(args.device)
 
     # 定义损失函数和优化器
     criterion = nn.BCELoss()

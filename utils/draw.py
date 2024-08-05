@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def plot_losses(x_data, y_data_dict, xlabel='X-axis', ylabel='Loss', title='Training Losses'):
+
+def plot_losses(x_data, y_data_dict, xlabel='Date', ylabel='Loss', title='Training Losses'):
     """
     绘制损失曲线
 
@@ -14,7 +15,19 @@ def plot_losses(x_data, y_data_dict, xlabel='X-axis', ylabel='Loss', title='Trai
     """
     plt.figure(figsize=(10, 6))
 
+    # 如果 x_data 为空或 None，生成默认的 x_data
+    if x_data is None or len(x_data) == 0:
+        # 使用 y_data_dict 中任意一组数据的长度生成默认的 x_data
+        # 这里假设所有 y_data 的长度相同
+        example_length = len(next(iter(y_data_dict.values())))
+        x_data = np.arange(example_length)
+
+    # 绘制每一组纵轴数据
     for label, y_data in y_data_dict.items():
+        # 确保 y_data 长度与 x_data 长度一致
+        if len(x_data) != len(y_data):
+            raise ValueError(
+                f"Length of x_data ({len(x_data)}) does not match length of y_data for label '{label}' ({len(y_data)})")
         plt.plot(x_data, y_data, label=label)
 
     plt.xlabel(xlabel)
