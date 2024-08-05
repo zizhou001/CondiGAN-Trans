@@ -56,7 +56,8 @@ def configuration_override(args):
     # 与模型名称相关的参数
     args.seed = 1826
     args.batch_size = 64
-    args.lr = 0.0001
+    args.g_lr = 0.0002
+    args.d_lr = 0.00002
     args.epochs = 100
 
     # 训练相关参数

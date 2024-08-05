@@ -13,6 +13,17 @@ from utils.dataset import partition
 from utils.draw import plot_losses
 
 
+# 定义 Wasserstein 损失
+def wasserstein_loss(y_true, y_pred):
+    return torch.mean(y_true * y_pred)
+
+
+# 定义权重剪切
+def weight_clip(model, clip_value):
+    for param in model.parameters():
+        param.data.clamp_(-clip_value, clip_value)
+
+
 def train(args, generator_saved_name, discriminator_saved_name):
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
@@ -26,10 +37,9 @@ def train(args, generator_saved_name, discriminator_saved_name):
                                   cond_dim=args.cond_dim,
                                   hidden_size=args.hidden_size).to(args.device)
 
-    # 定义损失函数和优化器
-    criterion = nn.BCELoss()
-    optimizer_G = optim.Adam(generator.parameters(), lr=args.lr, betas=(0.9, 0.999))
-    optimizer_D = optim.Adam(discriminator.parameters(), lr=args.lr, betas=(0.9, 0.999))
+    # 定义优化器
+    optimizer_G = optim.RMSprop(generator.parameters(), lr=args.g_lr)
+    optimizer_D = optim.RMSprop(discriminator.parameters(), lr=args.d_lr)
 
     # 加载数据集
     train_data, val_data = partition(file_path=args.t_file, train_size=args.train_size)
@@ -58,6 +68,9 @@ def train(args, generator_saved_name, discriminator_saved_name):
     total_losses = []
     epochs = []
 
+    # 权重剪切值
+    clip_value = 0.01
+
     for epoch in range(args.epochs):
 
         for batch_idx, (real_data, condition) in enumerate(train_data_loader):
@@ -70,15 +83,18 @@ def train(args, generator_saved_name, discriminator_saved_name):
             fake_data = generator(z, condition)
             real_output = discriminator(real_data, condition)
             fake_output = discriminator(fake_data.detach(), condition)
-            d_loss = criterion(real_output, torch.ones_like(real_output)) + criterion(fake_output,
-                                                                                      torch.zeros_like(fake_output))
+            d_loss = wasserstein_loss(torch.ones_like(real_output), real_output) + \
+                     wasserstein_loss(-torch.ones_like(fake_output), fake_output)
             d_loss.backward()
             optimizer_D.step()
+
+            # 权重剪切
+            weight_clip(discriminator, clip_value)
 
             # 训练生成器
             optimizer_G.zero_grad()
             fake_output = discriminator(fake_data, condition)
-            g_loss = criterion(fake_output, torch.ones_like(fake_output))
+            g_loss = wasserstein_loss(torch.ones_like(fake_output), fake_output)
             g_loss.backward()
             optimizer_G.step()
 
@@ -91,7 +107,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
 
         # 验证阶段
         avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
-                                                                criterion, args)
+                                                                wasserstein_loss, args)
 
         real_losses.append(avg_real_loss)
         fake_losses.append(avg_fake_loss)
@@ -118,8 +134,8 @@ def train(args, generator_saved_name, discriminator_saved_name):
                 break
 
     # 训练结束后绘制损失曲线
-    plot_losses(epochs, {'Average Real Loss': real_losses,
-                         'Average Fake Loss': fake_losses,
-                         'Average Total Loss': total_losses}, 'epoch', 'avg_loss')
+    plot_losses(epochs, {
+        'Average Fake Loss': fake_losses,
+        'Average Total Loss': total_losses}, 'epoch', 'avg_loss')
 
     return generator, discriminator
