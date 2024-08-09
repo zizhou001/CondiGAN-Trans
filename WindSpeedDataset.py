@@ -89,12 +89,13 @@ class WindSpeedDataset(Dataset):
             (time_condition_hourly, time_condition_daily, time_condition_weekly, wind_dir_conditions))
 
         # 确保样本形状为 (seq_length, features_dim)
-        sample_tensor = masked_time_series_tensor
+        sample_tensor = time_series_tensor  # 未被掩码的原始数据
+        masked_sample_tensor = masked_time_series_tensor  # 掩码后的数据
 
         # condition_tensor 确保是 (cond_dim,)  24+7+52+8=91
         condition_tensor = torch.from_numpy(condition_vector).float()
 
-        return sample_tensor, condition_tensor, mask_item
+        return sample_tensor, masked_sample_tensor, condition_tensor, mask_item
 
 
 # 风向转换函数

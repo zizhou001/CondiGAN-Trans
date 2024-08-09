@@ -9,7 +9,7 @@ from CondiGan import Generator, Discriminator
 from WindSpeedDataset import WindSpeedDataset
 from experiment.validate import validate
 from utils.dataset import partition, simulate_missing_data
-from utils.draw import plot_losses
+from utils.draw import plot_show
 
 
 # 定义 Wasserstein 损失
@@ -119,7 +119,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
 
         # 验证阶段
         avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
-                                                                wasserstein_loss, args, val_mask=val_mask)
+                                                                wasserstein_loss, args)
 
         real_losses.append(avg_real_loss)
         fake_losses.append(avg_fake_loss)
@@ -146,7 +146,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
                 break
 
     # 训练结束后绘制损失曲线
-    plot_losses(epochs, {
+    plot_show(epochs, {
         'Average Fake Loss': fake_losses,
         'Average Total Loss': total_losses}, 'epoch', 'avg_loss')
 

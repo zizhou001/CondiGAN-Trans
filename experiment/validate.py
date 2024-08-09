@@ -1,21 +1,21 @@
 import torch
 
 
-def validate(generator, discriminator, val_data_loader, criterion, args, val_mask=None):
+def validate(generator, discriminator, val_data_loader, criterion, args):
     generator.eval()
     discriminator.eval()
     total_real_loss = 0.0
     total_fake_loss = 0.0
     total_loss = 0.0
     total_batches = len(val_data_loader)
-    mask = torch.tensor(val_mask).to(args.device)
 
     # 遍历所有的验证数据批次，每批次获取真实数据和条件数据。
     with torch.no_grad():
-        for val_batch_idx, (val_real_data, val_condition) in enumerate(val_data_loader):
+        for val_batch_idx, (val_real_data, val_condition, mask) in enumerate(val_data_loader):
 
             val_real_data = val_real_data.to(args.device)
             val_condition = val_condition.to(args.device)
+            mask = mask.to(args.device)
 
             # 为每个批次生成随机噪声 z，这用于生成器生成伪造数据。
             z = torch.randn(val_real_data.size(0), args.noise_dim).to(args.device)

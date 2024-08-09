@@ -1,11 +1,12 @@
-import pandas as pd
-from torch.utils.data import DataLoader
-from WindSpeedDataset import WindSpeedDataset
-import torch
 import numpy as np
-from utils.draw import plot_losses
+import pandas as pd
+import torch
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from torch.utils.data import DataLoader
+
+from WindSpeedDataset import WindSpeedDataset
 from utils.dataset import simulate_missing_data
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from utils.draw import plot_imputation_results_single_feature
 
 
 def interpolate(generator, args):
@@ -13,12 +14,12 @@ def interpolate(generator, args):
     data = pd.read_csv(args.i_file)
 
     # 模拟缺失
-    data_missing, mask = simulate_missing_data(data, column_names=args.column_names,
-                                               max_missing_length=args.max_missing_length,
-                                               missing_rate=args.missing_rate, missing_mode=args.missing_mode)
+    mask = simulate_missing_data(data, column_names=args.column_names,
+                                 max_missing_length=args.max_missing_length,
+                                 missing_rate=args.missing_rate, missing_mode=args.missing_mode)
 
     # 加载数据
-    dataset = WindSpeedDataset(data_missing)
+    dataset = WindSpeedDataset(data=data, mask=mask, columns=args.column_names)
     data_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
 
     generator.eval()  # 切换到评估模式
@@ -27,17 +28,15 @@ def interpolate(generator, args):
     # 使用与训练时相同的归一化器
     scaler = dataset.scaler  # 获取归一化器
 
-    # bug
-    windSpeed3s_idx = 0
-    windSpeed2m_idx = 1
+    # 准备绘图数据
+    plot_data = {}
 
-    all_real_windSpeed3s = []
-    all_imputed_windSpeed3s = []
-    all_real_windSpeed2m = []
-    all_imputed_windSpeed2m = []
+    true_values = []
+    imputed_values = []
+    mask_values = []
 
     with torch.no_grad():
-        for val_batch_idx, (real_data, condition) in enumerate(data_loader):
+        for val_batch_idx, (real_data, condition, mask) in enumerate(data_loader):
             real_data = real_data.to(args.device)
             condition = condition.to(args.device)
             mask = mask.to(args.device)
@@ -67,43 +66,71 @@ def interpolate(generator, args):
                 imputed_data_original = imputed_data_original.reshape(num_samples, seq_length, num_features)
                 real_data_original = real_data_original.reshape(num_samples, seq_length, num_features)
 
-            original_windSpeed3s = real_data_original[:, :, windSpeed3s_idx]
-            imputed_windSpeed3s = imputed_data_original[:, :, windSpeed3s_idx]
-            original_windSpeed2m = real_data_original[:, :, windSpeed2m_idx]
-            imputed_windSpeed2m = imputed_data_original[:, :, windSpeed2m_idx]
+            # 记录数据用于绘图
+            for feature_idx in range(num_features):
+                feature_name = f'Feature_{feature_idx}'
 
-            # 累积数据
-            all_real_windSpeed3s.append(original_windSpeed3s[:, 0])
-            all_imputed_windSpeed3s.append(imputed_windSpeed3s[:, 0])
-            all_real_windSpeed2m.append(original_windSpeed2m[:, 0])
-            all_imputed_windSpeed2m.append(imputed_windSpeed2m[:, 0])
+                if feature_name not in plot_data:
+                    plot_data[feature_name] = {
+                        'original': [],
+                        'imputed': [],
+                        'mask': []
+                    }
 
-    all_real_windSpeed3s = np.concatenate(all_real_windSpeed3s, axis=0)
-    all_imputed_windSpeed3s = np.concatenate(all_imputed_windSpeed3s, axis=0)
-    all_real_windSpeed2m = np.concatenate(all_real_windSpeed2m, axis=0)
-    all_imputed_windSpeed2m = np.concatenate(all_imputed_windSpeed2m, axis=0)
+                for batch_idx in range(num_samples):
+                    # 从真实数据中提取当前特征数据
+                    original_data = real_data_original[batch_idx, :, feature_idx]
+                    # 从掩码中提取当前特征数据的掩码
+                    mask_data = mask.cpu().numpy()[batch_idx, :, feature_idx]
+                    # 从插补数据中提取当前特征数据
+                    imputed_data = imputed_data_original[batch_idx, :, feature_idx]
 
-    mse_windSpeed3s = mean_squared_error(all_real_windSpeed3s, all_imputed_windSpeed3s)
-    rmse_windSpeed3s = np.sqrt(mse_windSpeed3s)
-    mae_windSpeed3s = mean_absolute_error(all_real_windSpeed3s, all_imputed_windSpeed3s)
+                    # 将插补数据累加到原始数据中，根据掩码更新
+                    combined_data = np.where(mask_data == 1, imputed_data, original_data)
 
-    mse_windSpeed2m = mean_squared_error(all_real_windSpeed2m, all_imputed_windSpeed2m)
-    rmse_windSpeed2m = np.sqrt(mse_windSpeed2m)
-    mae_windSpeed2m = mean_absolute_error(all_real_windSpeed2m, all_imputed_windSpeed2m)
+                    plot_data[feature_name]['original'].append(original_data)
+                    plot_data[feature_name]['imputed'].append(combined_data)
+                    plot_data[feature_name]['mask'].append(mask_data)
 
-    print('--------------test set error statistics------------------------')
-    print(f'[windSpeed3s]mse:{mse_windSpeed3s} | '
-          f'rmse: {rmse_windSpeed3s} | '
-          f'mae: {mae_windSpeed3s}')
-    print(f'[windSpeed2m]mse:{mse_windSpeed2m} | '
-          f'rmse: {rmse_windSpeed2m} | '
-          f'mae: {mae_windSpeed2m}')
+                    # 计算评价指标
+                    true_values.extend(original_data[mask_data == 0])  # 真实值（未缺失的）
+                    imputed_values.extend(imputed_data[mask_data == 1])  # 插补值（缺失的）
+                    mask_values.extend(mask_data[mask_data == 1])  # 掩码值（缺失位置）
 
-    plot_losses(x_data=[], y_data_dict={'imputed-windSpeed3s': all_imputed_windSpeed3s,
-                                        'real-windSpeed3s': all_real_windSpeed3s}, title='windSpeed3s')
+    true_values = np.array(true_values)
+    imputed_values = np.array(imputed_values)
 
-    plot_losses(x_data=[], y_data_dict={'imputed-windSpeed2m': all_imputed_windSpeed2m,
-                                        'real-windSpeed2m': all_real_windSpeed2m}, title='windSpeed2m')
+    # 确保 true_values 和 imputed_values 的长度一致
+    if len(true_values) != len(imputed_values):
+        print(f"Length mismatch: true_values({len(true_values)}) vs imputed_values({len(imputed_values)})")
+
+    if len(true_values) > 0:
+        mse = mean_squared_error(true_values, imputed_values)
+        rmse = np.sqrt(mse)
+        mae = mean_absolute_error(true_values, imputed_values)
+        r2 = r2_score(true_values, imputed_values)
+
+        print(f"Mean Squared Error (MSE): {mse:.4f}")
+        print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
+        print(f"Mean Absolute Error (MAE): {mae:.4f}")
+        print(f"R-squared Score (R2): {r2:.4f}")
+    else:
+        print("No valid data for evaluation.")
+
+    # 绘制每个特征的插补结果
+    for feature_name, data in plot_data.items():
+        original_data = np.array(data['original'])
+        imputed_data = np.array(data['imputed'])
+        mask = np.array(data['mask'])
+
+        plot_imputation_results_single_feature(
+            original_data,
+            imputed_data,
+            mask,
+            xlabel='Time Step',
+            ylabel=feature_name,
+            title=f'Imputation Results for {feature_name}'
+        )
 
 
 if __name__ == '__main__':

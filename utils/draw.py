@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def plot_losses(x_data, y_data_dict, xlabel='Date', ylabel='Loss', title='Training Losses'):
+def plot_show(x_data, y_data_dict, xlabel='Date', ylabel='Loss', title='Training Losses'):
     """
     绘制损失曲线
 
@@ -38,19 +38,72 @@ def plot_losses(x_data, y_data_dict, xlabel='Date', ylabel='Loss', title='Traini
     plt.show()
 
 
+def plot_imputation_results_single_feature(original_data, imputed_data, mask, xlabel='Time', ylabel='Value',
+                                           title='Imputation Results for Single Feature'):
+    """
+    绘制插补结果，仅处理单个特征
+
+    参数:
+    - original_data: 原始数据，形状为 (seq_length, 1)
+    - imputed_data: 插补后的数据，形状为 (seq_length, 1)
+    - mask: 掩码，形状为 (seq_length, 1)，缺失的数据点为 1，其他为 0
+    - xlabel: 横轴标签
+    - ylabel: 纵轴标签
+    - title: 图形标题
+    """
+    plt.figure(figsize=(12, 8))
+
+    # 单个特征的数据
+    original_feature = original_data.flatten()
+    imputed_feature = imputed_data.flatten()
+    mask_feature = mask.flatten()
+
+    # 绘制原始数据（完整数据）
+    plt.plot(original_feature, label='Original Data', color='gray', linestyle='--')
+
+    # 绘制插补数据
+    plt.plot(imputed_feature, label='Imputed Data', color='blue')
+
+    # 标记缺失值和插补值
+    missing_indices = np.where(mask_feature == 1)[0]  # 掩码中为1的地方是缺失数据
+    plt.scatter(missing_indices, original_feature[missing_indices], color='red', marker='x',
+                label='Missing Original Data')
+    plt.scatter(missing_indices, imputed_feature[missing_indices], color='green', marker='o', label='Imputed Points')
+
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.legend()
+    plt.grid()
+    plt.show()
+
+
 if __name__ == '__main__':
-    np.random.seed(0)  # 设置随机种子以获得可重复的结果
-    batch_indices = np.arange(100)  # 横轴数据，0到99的批次索引
-    real_losses = np.random.rand(100) * 1.5  # 模拟真实损失数据
-    fake_losses = np.random.rand(100) * 1.5  # 模拟伪造损失数据
-    total_losses = (real_losses + fake_losses) / 2  # 模拟总损失数据
+    original_data = np.array([
+        [1.0],
+        [2.0],
+        [3.0],
+        [4.0],
+        [5.0]
+    ])
 
-    # 将数据放入字典
-    y_data_dict = {
-        'Average Real Loss': real_losses,
-        'Average Fake Loss': fake_losses,
-        'Average Total Loss': total_losses
-    }
+    # 插补后的数据
+    imputed_data = np.array([
+        [1.0],
+        [2.5],
+        [4.0],
+        [5.0],
+        [4.0]
+    ])
 
-    # 绘图
-    plot_losses(batch_indices, y_data_dict)
+    # 掩码，其中1表示缺失
+    mask = np.array([
+        [0],
+        [1],
+        [0],
+        [0],
+        [1]
+    ])
+
+    # 调用绘图函数
+    plot_imputation_results_single_feature(original_data, imputed_data, mask)

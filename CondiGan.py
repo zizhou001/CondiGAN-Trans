@@ -157,10 +157,15 @@ class Discriminator(nn.Module):
 
         # 将掩码应用于每个输入
         if mask is not None:
-            inputs_hourly = inputs_hourly * mask.expand(-1, -1, inputs_hourly.size(-1))
-            inputs_daily = inputs_daily * mask.expand(-1, -1, inputs_daily.size(-1))
-            inputs_weekly = inputs_weekly * mask.expand(-1, -1, inputs_weekly.size(-1))
-            inputs_wind = inputs_wind * mask.expand(-1, -1, inputs_wind.size(-1))
+            mask_hourly = mask_expand(mask, inputs_hourly.size(-1))
+            mask_daily = mask_expand(mask, inputs_daily.size(-1))
+            mask_weekly = mask_expand(mask, inputs_weekly.size(-1))
+            mask_wind = mask_expand(mask, inputs_wind.size(-1))
+
+            inputs_hourly = inputs_hourly * mask_hourly
+            inputs_daily = inputs_daily * mask_daily
+            inputs_weekly = inputs_weekly * mask_weekly
+            inputs_wind = inputs_wind * mask_wind
 
         # 分别通过每个分支
         output_hourly = self.hourly_branch(inputs_hourly.view(-1, inputs_hourly.size(-1)))
@@ -176,3 +181,25 @@ class Discriminator(nn.Module):
         final_output = final_output.view(x.size(0), x.size(1), -1)
 
         return final_output
+
+
+def mask_expand(mask, target_dim):
+    """
+    扩展掩码到目标维度
+    :param mask: 原始掩码，形状为 (batch_size, seq_length, features_dim)
+    :param target_dim: 目标特征维度
+    :return: 扩展后的掩码，形状为 (batch_size, seq_length, target_dim)
+    """
+    batch_size, seq_length, features_dim = mask.size()
+
+    if target_dim < features_dim:
+        raise ValueError("Target dimension must be greater than or equal to mask dimension.")
+
+    # 确保扩展后的维度等于目标维度
+    mask_expanded = mask.unsqueeze(-1)  # [batch_size, seq_length, features_dim, 1]
+    mask_expanded = mask_expanded.expand(batch_size, seq_length, features_dim, target_dim)  # [batch_size, seq_length, features_dim, target_dim]
+
+    # 取平均值以保证扩展后掩码的值仍然为 0 或 1
+    mask_expanded = mask_expanded.mean(dim=2)  # [batch_size, seq_length, target_dim]
+
+    return mask_expanded
