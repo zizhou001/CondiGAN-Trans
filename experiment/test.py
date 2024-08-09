@@ -4,12 +4,21 @@ from WindSpeedDataset import WindSpeedDataset
 import torch
 import numpy as np
 from utils.draw import plot_losses
+from utils.dataset import simulate_missing_data
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 
 def interpolate(generator, args):
+    # 读取数据
     data = pd.read_csv(args.i_file)
-    dataset = WindSpeedDataset(data)
+
+    # 模拟缺失
+    data_missing, mask = simulate_missing_data(data, column_names=args.column_names,
+                                               max_missing_length=args.max_missing_length,
+                                               missing_rate=args.missing_rate, missing_mode=args.missing_mode)
+
+    # 加载数据
+    dataset = WindSpeedDataset(data_missing)
     data_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
 
     generator.eval()  # 切换到评估模式
@@ -18,6 +27,7 @@ def interpolate(generator, args):
     # 使用与训练时相同的归一化器
     scaler = dataset.scaler  # 获取归一化器
 
+    # bug
     windSpeed3s_idx = 0
     windSpeed2m_idx = 1
 
@@ -30,12 +40,13 @@ def interpolate(generator, args):
         for val_batch_idx, (real_data, condition) in enumerate(data_loader):
             real_data = real_data.to(args.device)
             condition = condition.to(args.device)
+            mask = mask.to(args.device)
 
             # 为每个批次生成随机噪声 z，这用于生成器生成伪造数据。
             z = torch.randn(real_data.size(0), args.noise_dim).to(args.device)
 
             # 调用生成器，输入随机噪声和条件数据，生成插补后的数据
-            imputed_data = generator(z, condition)
+            imputed_data = generator(z, condition, mask)
 
             # 反归一化
             imputed_data_numpy = imputed_data.cpu().numpy()

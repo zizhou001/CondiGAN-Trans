@@ -42,7 +42,7 @@ class Generator(nn.Module):
         # 输出层
         self.linear = nn.Linear(self.d_model, self.features_dim)  # 根据输入维度调整线性层
 
-    def forward(self, z, condition):
+    def forward(self, z, condition, mask=None):
         """
         :param z: 随机噪声，形状为 (batch_size, noise_dim)
         :param condition: 条件向量 (batch_size, cond_dim)
@@ -50,6 +50,7 @@ class Generator(nn.Module):
             daily_condition: 日尺度条件向量，形状为 (batch_size, 7)
             weekly_condition: 周尺度条件向量，形状为 (batch_size, 52)
             wind_condition: 风向条件向量，形状为 (batch_size, 8)
+        :param mask: 掩码矩阵 (batch_size, seq_length, input_dim) 选择性传入
         :return: 生成的风速数据，形状为 (batch_size, seq_length, input_dim)
         """
 
@@ -98,6 +99,10 @@ class Generator(nn.Module):
         # 输出处理
         x_output = self.linear(x_transformed)  # (batch_size, seq_length, features_dim)
 
+        # 如果有掩码，应用掩码到输出
+        if mask is not None:
+            x_output = x_output * mask
+
         return x_output
 
 
@@ -134,7 +139,14 @@ class Discriminator(nn.Module):
             nn.LeakyReLU(0.2, inplace=True)
         )
 
-    def forward(self, x, condition):
+    def forward(self, x, condition, mask=None):
+        """
+        :param x: 输入数据，形状为 (batch_size, seq_length, features_dim)
+        :param condition: 条件向量，形状为 (batch_size, cond_dim)
+        :param mask: 掩码矩阵，形状为 (batch_size, seq_length, features_dim) 选择性传入
+        :return: 判别结果，形状为 (batch_size, seq_length, 1)
+        """
+
         hourly_condition, daily_condition, weekly_condition, wind_condition = multiscale_divider(condition)
 
         # 准备每个分支的输入
@@ -142,6 +154,13 @@ class Discriminator(nn.Module):
         inputs_daily = torch.cat([x, daily_condition.unsqueeze(1).expand(-1, x.size(1), -1)], dim=-1)
         inputs_weekly = torch.cat([x, weekly_condition.unsqueeze(1).expand(-1, x.size(1), -1)], dim=-1)
         inputs_wind = torch.cat([x, wind_condition.unsqueeze(1).expand(-1, x.size(1), -1)], dim=-1)
+
+        # 将掩码应用于每个输入
+        if mask is not None:
+            inputs_hourly = inputs_hourly * mask.expand(-1, -1, inputs_hourly.size(-1))
+            inputs_daily = inputs_daily * mask.expand(-1, -1, inputs_daily.size(-1))
+            inputs_weekly = inputs_weekly * mask.expand(-1, -1, inputs_weekly.size(-1))
+            inputs_wind = inputs_wind * mask.expand(-1, -1, inputs_wind.size(-1))
 
         # 分别通过每个分支
         output_hourly = self.hourly_branch(inputs_hourly.view(-1, inputs_hourly.size(-1)))

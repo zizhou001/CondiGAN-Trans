@@ -1,13 +1,14 @@
 import torch
 
 
-def validate(generator, discriminator, val_data_loader, criterion, args):
+def validate(generator, discriminator, val_data_loader, criterion, args, val_mask=None):
     generator.eval()
     discriminator.eval()
     total_real_loss = 0.0
     total_fake_loss = 0.0
     total_loss = 0.0
     total_batches = len(val_data_loader)
+    mask = torch.tensor(val_mask).to(args.device)
 
     # 遍历所有的验证数据批次，每批次获取真实数据和条件数据。
     with torch.no_grad():
@@ -20,11 +21,11 @@ def validate(generator, discriminator, val_data_loader, criterion, args):
             z = torch.randn(val_real_data.size(0), args.noise_dim).to(args.device)
 
             # 调用生成器，输入随机噪声和条件数据，生成伪造数据
-            val_fake_data = generator(z, val_condition)
+            val_fake_data = generator(z, val_condition, mask)
 
             # 将真实数据和生成的数据传入判别器，得到判别器对真实数据和伪造数据的输出
-            val_real_output = discriminator(val_real_data, val_condition)
-            val_fake_output = discriminator(val_fake_data, val_condition)
+            val_real_output = discriminator(val_real_data, val_condition, mask)
+            val_fake_output = discriminator(val_fake_data, val_condition, mask)
 
             # 计算真实数据的损失
             real_loss = criterion(val_real_output, torch.ones_like(val_real_output))

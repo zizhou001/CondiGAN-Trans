@@ -6,26 +6,33 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 class WindSpeedDataset(Dataset):
-    def __init__(self, data, transform=None, seq_length=64, batch_size=32):
-        # self.data = pd.read_csv(data, parse_dates=['date'])  # 解析日期列
+    def __init__(self, data, mask, columns, transform=None, seq_length=64, batch_size=32):
+        """
+        初始化数据集
+        :param data: 原始数据，包含日期和风速信息
+        :param mask: 掩码矩阵，形状为 (num_samples, seq_length, features_dim)
+        :param columns: 需要掩码的列名列表
+        :param transform: 数据转换函数
+        :param seq_length: 每个样本的序列长度
+        """
+
         if 'date' in data.columns:
             data['date'] = pd.to_datetime(data['date'])
         self.data = data.copy()  # 使用传入的数据
         self.transform = transform
         self.seq_length = seq_length
         self.batch_size = batch_size
+        self.mask = mask.clone().detach()  # 确保掩码是 tensor
+        self.columns = columns
 
         # 创建归一化器
         self.scaler = MinMaxScaler()
 
         # 对需要归一化的列进行归一化处理
-        self.data[['windSpeed3s', 'windSpeed2m']] = \
-            self.scaler.fit_transform(self.data[['windSpeed3s', 'windSpeed2m']])
-        # 列的索引
-        self.windSpeed3s_column_index = self.data.columns.get_loc('windSpeed3s')
-        self.windSpeed2m_column_index = self.data.columns.get_loc('windSpeed2m')
+        self.data[self.columns] = self.scaler.fit_transform(self.data[self.columns])
 
-
+        # 列的索引 bug
+        self.column_indices = {col: self.data.columns.get_loc(col) for col in self.columns}
 
     def __len__(self):
         return len(self.data) - self.seq_length  # 确保可以提取完整序列
@@ -37,9 +44,16 @@ class WindSpeedDataset(Dataset):
         # 获取长度为 seq_length 的序列
         sample = self.data.iloc[idx:idx + self.seq_length]  # 提取 seq_length 长度的序列
 
-        # 取风速数据
-        time_series = sample[['windSpeed3s', 'windSpeed2m']].values.astype(
-            np.float32)  # shape should be (seq_length, 2)
+        # 取需要掩码的列数据
+        time_series = sample[self.columns].values.astype(
+            np.float32)  # shape should be (seq_length, features_dim)
+        time_series_tensor = torch.from_numpy(time_series)  # 转换为 tensor
+
+        # 提取掩码
+        mask_item = self.mask[idx:idx + self.seq_length]
+
+        # 应用掩码
+        masked_time_series_tensor = time_series_tensor * mask_item
 
         # 提取小时信息
         hour = sample['date'].dt.hour.iloc[0]  # 提取第一个样本的小时信息
@@ -74,14 +88,13 @@ class WindSpeedDataset(Dataset):
         condition_vector = np.concatenate(
             (time_condition_hourly, time_condition_daily, time_condition_weekly, wind_dir_conditions))
 
-        # 确保样本形状为 (seq_length, 2)
-        sample_tensor = torch.from_numpy(time_series).float()
+        # 确保样本形状为 (seq_length, features_dim)
+        sample_tensor = masked_time_series_tensor
 
         # condition_tensor 确保是 (cond_dim,)  24+7+52+8=91
         condition_tensor = torch.from_numpy(condition_vector).float()
 
-
-        return sample_tensor, condition_tensor  #
+        return sample_tensor, condition_tensor, mask_item
 
 
 # 风向转换函数
