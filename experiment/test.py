@@ -1,12 +1,10 @@
-import numpy as np
 import pandas as pd
 import torch
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from torch.utils.data import DataLoader
 
 from WindSpeedDataset import WindSpeedDataset
 from utils.dataset import simulate_masked_data
-from utils.draw import plot_interpolation_comparison
+from utils.draw import *
 
 
 def interpolate(generator, args):

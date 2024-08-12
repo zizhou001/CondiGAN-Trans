@@ -1,5 +1,5 @@
 import torch
-from torch import nn
+from utils.losses import *
 
 
 def validate(generator, discriminator, val_data_loader, criterion, args):
@@ -33,15 +33,17 @@ def validate(generator, discriminator, val_data_loader, criterion, args):
             total_real_loss += real_loss.item()
 
             # 计算伪造数据的损失
-            fake_loss = criterion(val_fake_output, torch.zeros_like(val_fake_output))
+            fake_loss = criterion(val_fake_output, torch.ones_like(val_fake_output))
             total_fake_loss += fake_loss.item()
 
             # 计算重建损失
-            reconstruction_loss = nn.L1Loss(reduction='none')(val_reconstructed_data, val_full_data)
-            reconstruction_loss = (reconstruction_loss * mask).sum() / mask.sum()
+            recon_loss = reconstruction_loss(val_reconstructed_data, val_full_data, mask)
 
-            # 累加总损失
-            total_loss += (real_loss + fake_loss + reconstruction_loss).item()
+            # 计算插补损失
+            interp_loss = interpolation_loss(val_fake_data, val_full_data, mask)
+
+            # 总损失
+            total_loss += (real_loss + fake_loss + recon_loss + interp_loss).item()
 
     # 计算验证损失的平均值
     avg_real_loss = total_real_loss / total_batches

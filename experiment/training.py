@@ -1,27 +1,18 @@
 import os
 
 import numpy as np
-import torch
 import torch.optim as optim
-from torch import nn
 from torch.utils.data import DataLoader
 
 from CondiGan import Generator, Discriminator
 from WindSpeedDataset import WindSpeedDataset
 from experiment.validate import validate
 from utils.dataset import partition, simulate_masked_data
-from utils.draw import plot_show
+from utils.losses import *
 
 
-# 定义 Wasserstein 损失
-def wasserstein_loss(predictions, targets):
-    return torch.mean(predictions * targets)
-
-
-# 定义权重剪切
-def weight_clip(model, clip_value):
-    for param in model.parameters():
-        param.data.clamp_(-clip_value, clip_value)
+def clip_gradients(model, max_norm=1.0):
+    torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm)
 
 
 def train(args, generator_saved_name, discriminator_saved_name):
@@ -38,8 +29,8 @@ def train(args, generator_saved_name, discriminator_saved_name):
                                   hidden_size=args.hidden_size).to(args.device)
 
     # 定义优化器
-    optimizer_G = optim.RMSprop(generator.parameters(), lr=args.g_lr)
-    optimizer_D = optim.RMSprop(discriminator.parameters(), lr=args.d_lr)
+    optimizer_G = optim.Adam(generator.parameters(), lr=args.g_lr, betas=(0.5, 0.999))
+    optimizer_D = optim.Adam(discriminator.parameters(), lr=args.d_lr, betas=(0.5, 0.999))
 
     # 划分数据集
     train_data, val_data = partition(file_path=args.t_file, train_size=args.train_size)
@@ -97,26 +88,18 @@ def train(args, generator_saved_name, discriminator_saved_name):
             fake_data, reconstructed_data = generator(z, condition, masked_data, mask=mask)
             real_output = discriminator(full_data, condition, mask=mask)
             fake_output = discriminator(fake_data.detach(), condition, mask=mask)
-            d_loss = wasserstein_loss(torch.ones_like(real_output), real_output) + \
-                     wasserstein_loss(-torch.ones_like(fake_output), fake_output)
+            d_loss = discriminator_loss(real_output, fake_output)
             d_loss.backward()
+            clip_gradients(discriminator, max_norm=1.0)  # 添加梯度裁剪
             optimizer_D.step()
-
-            # 权重剪切
-            weight_clip(discriminator, clip_value)
 
             # -----------------------------------训练生成器
             optimizer_G.zero_grad()
             fake_data, reconstructed_data = generator(z, condition, masked_data, mask=mask)
             fake_output = discriminator(fake_data, condition, mask=mask)
-            g_loss = wasserstein_loss(torch.ones_like(fake_output), fake_output)
-
-            # 计算重建损失
-            reconstruction_loss = nn.L1Loss(reduction='none')(reconstructed_data, full_data)
-            reconstruction_loss = (reconstruction_loss * mask).sum() / mask.sum()
-            g_total_loss = g_loss + reconstruction_loss
-
-            g_total_loss.backward()
+            g_loss = generator_loss(fake_output, reconstructed_data, fake_data, full_data, mask)
+            g_loss.backward()
+            clip_gradients(generator, max_norm=1.0)  # 添加梯度裁剪
             optimizer_G.step()
 
             # 打印损失信息
@@ -124,8 +107,7 @@ def train(args, generator_saved_name, discriminator_saved_name):
                 print(f"Epoch [{epoch}/{args.epochs}], "
                       f"Batch [{batch_idx}/{len(train_data_loader)}], "
                       f"d_loss: {d_loss.item()}, "
-                      f"g_loss: {g_loss.item()}, "
-                      f"reconstruction_loss: {reconstruction_loss.item()}")
+                      f"g_loss: {g_loss.item()}")
 
         # 验证阶段
         avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
