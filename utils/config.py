@@ -81,20 +81,20 @@ def configuration_override(args):
 
     # !!! 不建议修改，如修改需要充分考虑模型的变化
     args.cond_dim = 91  # 条件向量维度
-    args.features_dim = 2  # 特征维度
-    args.input_dim = args.cond_dim + args.features_dim  # 总输入维度 = cond_dim + features_dim
+    args.features_dim = len(args.column_names)  # 特征维度
+    args.input_dim = args.cond_dim + args.features_dim  # 总输入维度 = cond_dim + features_dim = 91 + 2 = 93
     args.noise_dim = 4  # 随机噪声的维度
     args.cond_emb_wind_dim = 16
     args.cond_emb_hourly_dim = 36
     args.cond_emb_daily_dim = 16
     args.cond_emb_weekly_dim = 64
     args.cond_emb_dim = args.cond_emb_wind_dim + args.cond_emb_hourly_dim + \
-                        args.cond_emb_daily_dim + args.cond_emb_weekly_dim      # 132
+                        args.cond_emb_daily_dim + args.cond_emb_weekly_dim      # 16+36+16+64=132
 
-    args.noise_emb_dim = 15  # 随机噪声嵌入维度
+    args.noise_emb_dim = 17  # 随机噪声嵌入维度
     # 每个输入和输出序列元素的特征维度，确保被num_heads整除,
     # 确保 args.input_dim + condition_emb_dim + z_emb_dim = d_model
-    args.d_model = args.input_dim + args.cond_emb_dim + args.noise_emb_dim   # 148
+    args.d_model = args.input_dim + args.cond_emb_dim + args.noise_emb_dim + args.features_dim   # 93+132+17+2=244
 
 
 if __name__ == '__main__':

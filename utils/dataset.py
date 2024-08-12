@@ -24,7 +24,7 @@ def multiscale_divider(condition):
     return hourly_condition, daily_condition, weekly_condition, wind_condition
 
 
-def simulate_missing_data(df, column_names, missing_rate=0.1, max_missing_length=24, missing_mode='continuous'):
+def simulate_masked_data(df, column_names, missing_rate=0.1, max_missing_length=24, missing_mode='continuous'):
     """
     模拟缺失数据的掩码，并返回掩码矩阵。
 
@@ -34,6 +34,8 @@ def simulate_missing_data(df, column_names, missing_rate=0.1, max_missing_length
     :param max_missing_length: 最大缺失长度（用于连续缺失模式）
     :param missing_mode: 缺失模式，'random' 表示离散随机缺失，'continuous' 表示连续长序列缺失
     :return: 掩码矩阵
+        0 代表缺失数据的位置，即数据在这些位置是缺失的。
+        1 代表数据存在的位置，即这些位置的数据是有效的。
     """
 
     df_copy = df.copy()

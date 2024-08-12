@@ -42,7 +42,7 @@ class Generator(nn.Module):
         # 输出层
         self.linear = nn.Linear(self.d_model, self.features_dim)  # 根据输入维度调整线性层
 
-    def forward(self, z, condition, mask=None):
+    def forward(self, z, condition, original_data, mask=None):
         """
         :param z: 随机噪声，形状为 (batch_size, noise_dim)
         :param condition: 条件向量 (batch_size, cond_dim)
@@ -50,6 +50,7 @@ class Generator(nn.Module):
             daily_condition: 日尺度条件向量，形状为 (batch_size, 7)
             weekly_condition: 周尺度条件向量，形状为 (batch_size, 52)
             wind_condition: 风向条件向量，形状为 (batch_size, 8)
+        :param original_data: 原始数据
         :param mask: 掩码矩阵 (batch_size, seq_length, input_dim) 选择性传入
         :return: 生成的风速数据，形状为 (batch_size, seq_length, input_dim)
         """
@@ -83,7 +84,8 @@ class Generator(nn.Module):
 
         # 合并 (batch_size, seq_length, input_dim + 4 * 条件向量嵌入 + noise_emb_dim)
         x_with_condition_z = torch.cat(
-            (initial_input, condition_emb_hourly, condition_emb_daily, condition_emb_weekly, condition_emb_wind, z_emb),
+            (initial_input, condition_emb_hourly, condition_emb_daily, condition_emb_weekly, condition_emb_wind, z_emb,
+             original_data),
             dim=-1)
 
         # 转换为 Transformer 输入格式，调整张量的维度顺序
@@ -99,11 +101,12 @@ class Generator(nn.Module):
         # 输出处理
         x_output = self.linear(x_transformed)  # (batch_size, seq_length, features_dim)
 
+        masked_output = None
         # 如果有掩码，应用掩码到输出
         if mask is not None:
-            x_output = x_output * mask
+            masked_output = x_output * mask
 
-        return x_output
+        return x_output, masked_output
 
 
 # 多尺度判别器
@@ -197,7 +200,8 @@ def mask_expand(mask, target_dim):
 
     # 确保扩展后的维度等于目标维度
     mask_expanded = mask.unsqueeze(-1)  # [batch_size, seq_length, features_dim, 1]
-    mask_expanded = mask_expanded.expand(batch_size, seq_length, features_dim, target_dim)  # [batch_size, seq_length, features_dim, target_dim]
+    mask_expanded = mask_expanded.expand(batch_size, seq_length, features_dim,
+                                         target_dim)  # [batch_size, seq_length, features_dim, target_dim]
 
     # 取平均值以保证扩展后掩码的值仍然为 0 或 1
     mask_expanded = mask_expanded.mean(dim=2)  # [batch_size, seq_length, target_dim]

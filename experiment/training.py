@@ -3,18 +3,19 @@ import os
 import numpy as np
 import torch
 import torch.optim as optim
+from torch import nn
 from torch.utils.data import DataLoader
 
 from CondiGan import Generator, Discriminator
 from WindSpeedDataset import WindSpeedDataset
 from experiment.validate import validate
-from utils.dataset import partition, simulate_missing_data
+from utils.dataset import partition, simulate_masked_data
 from utils.draw import plot_show
 
 
 # 定义 Wasserstein 损失
-def wasserstein_loss(y_true, y_pred):
-    return torch.mean(y_true * y_pred)
+def wasserstein_loss(predictions, targets):
+    return torch.mean(predictions * targets)
 
 
 # 定义权重剪切
@@ -44,14 +45,14 @@ def train(args, generator_saved_name, discriminator_saved_name):
     train_data, val_data = partition(file_path=args.t_file, train_size=args.train_size)
 
     # 模拟缺失数据，获取掩码矩阵
-    train_mask = simulate_missing_data(df=train_data, column_names=args.column_names,
-                                       missing_rate=args.missing_rate,
-                                       max_missing_length=args.max_missing_length,
-                                       missing_mode=args.missing_mode)
-    val_mask = simulate_missing_data(df=val_data, column_names=args.column_names,
-                                     missing_rate=args.missing_rate,
-                                     max_missing_length=args.max_missing_length,
-                                     missing_mode=args.missing_mode)
+    train_mask = simulate_masked_data(df=train_data, column_names=args.column_names,
+                                      missing_rate=args.missing_rate,
+                                      max_missing_length=args.max_missing_length,
+                                      missing_mode=args.missing_mode)
+    val_mask = simulate_masked_data(df=val_data, column_names=args.column_names,
+                                    missing_rate=args.missing_rate,
+                                    max_missing_length=args.max_missing_length,
+                                    missing_mode=args.missing_mode)
 
     # 使用自定义数据集类加载数据
     train_dataset = WindSpeedDataset(data=train_data, columns=args.column_names, mask=train_mask)
@@ -84,16 +85,17 @@ def train(args, generator_saved_name, discriminator_saved_name):
 
     for epoch in range(args.epochs):
 
-        for batch_idx, (real_data, condition, mask) in enumerate(train_data_loader):
-            real_data = real_data.to(args.device)
+        for batch_idx, (full_data, masked_data, condition, mask) in enumerate(train_data_loader):
+            full_data = full_data.to(args.device)
             condition = condition.to(args.device)
+            masked_data = masked_data.to(args.device)
             mask = mask.to(args.device)
-            z = torch.randn(real_data.size(0), args.noise_dim).to(args.device)
+            z = torch.randn(full_data.size(0), args.noise_dim).to(args.device)
 
-            # 训练判别器
+            # -----------------------------------训练判别器
             optimizer_D.zero_grad()
-            fake_data = generator(z, condition, mask=mask)
-            real_output = discriminator(real_data, condition, mask=mask)
+            fake_data, reconstructed_data = generator(z, condition, masked_data, mask=mask)
+            real_output = discriminator(full_data, condition, mask=mask)
             fake_output = discriminator(fake_data.detach(), condition, mask=mask)
             d_loss = wasserstein_loss(torch.ones_like(real_output), real_output) + \
                      wasserstein_loss(-torch.ones_like(fake_output), fake_output)
@@ -103,11 +105,18 @@ def train(args, generator_saved_name, discriminator_saved_name):
             # 权重剪切
             weight_clip(discriminator, clip_value)
 
-            # 训练生成器
+            # -----------------------------------训练生成器
             optimizer_G.zero_grad()
+            fake_data, reconstructed_data = generator(z, condition, masked_data, mask=mask)
             fake_output = discriminator(fake_data, condition, mask=mask)
             g_loss = wasserstein_loss(torch.ones_like(fake_output), fake_output)
-            g_loss.backward()
+
+            # 计算重建损失
+            reconstruction_loss = nn.L1Loss(reduction='none')(reconstructed_data, full_data)
+            reconstruction_loss = (reconstruction_loss * mask).sum() / mask.sum()
+            g_total_loss = g_loss + reconstruction_loss
+
+            g_total_loss.backward()
             optimizer_G.step()
 
             # 打印损失信息
@@ -115,7 +124,8 @@ def train(args, generator_saved_name, discriminator_saved_name):
                 print(f"Epoch [{epoch}/{args.epochs}], "
                       f"Batch [{batch_idx}/{len(train_data_loader)}], "
                       f"d_loss: {d_loss.item()}, "
-                      f"g_loss: {g_loss.item()}")
+                      f"g_loss: {g_loss.item()}, "
+                      f"reconstruction_loss: {reconstruction_loss.item()}")
 
         # 验证阶段
         avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
@@ -144,10 +154,5 @@ def train(args, generator_saved_name, discriminator_saved_name):
             if patience_counter >= patience:
                 print("Early stopping triggered.")
                 break
-
-    # 训练结束后绘制损失曲线
-    plot_show(epochs, {
-        'Average Fake Loss': fake_losses,
-        'Average Total Loss': total_losses}, 'epoch', 'avg_loss')
 
     return generator, discriminator

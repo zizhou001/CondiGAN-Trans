@@ -38,72 +38,45 @@ def plot_show(x_data, y_data_dict, xlabel='Date', ylabel='Loss', title='Training
     plt.show()
 
 
-def plot_imputation_results_single_feature(original_data, imputed_data, mask, xlabel='Time', ylabel='Value',
-                                           title='Imputation Results for Single Feature'):
-    """
-    绘制插补结果，仅处理单个特征
+def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step, feature_index):
 
-    参数:
-    - original_data: 原始数据，形状为 (seq_length, 1)
-    - imputed_data: 插补后的数据，形状为 (seq_length, 1)
-    - mask: 掩码，形状为 (seq_length, 1)，缺失的数据点为 1，其他为 0
-    - xlabel: 横轴标签
-    - ylabel: 纵轴标签
-    - title: 图形标题
-    """
-    plt.figure(figsize=(12, 8))
+    # 获取指定特征的所有数据
+    true_data = full_data_all[:, time_step, feature_index]  # 假设特征在最后一维
+    generated_data = generated_data_all[:, time_step, feature_index]
+    mask = mask_all[:, time_step, feature_index]
 
-    # 单个特征的数据
-    original_feature = original_data.flatten()
-    imputed_feature = imputed_data.flatten()
-    mask_feature = mask.flatten()
+    print(mask, len(mask))
 
-    # 绘制原始数据（完整数据）
-    plt.plot(original_feature, label='Original Data', color='gray', linestyle='--')
 
-    # 绘制插补数据
-    plt.plot(imputed_feature, label='Imputed Data', color='blue')
+    # 创建掩码
+    missing_mask = mask == 0  # 标记缺失数据的位置
+    valid_mask = mask == 1    # 标记有效数据的位置
 
-    # 标记缺失值和插补值
-    missing_indices = np.where(mask_feature == 1)[0]  # 掩码中为1的地方是缺失数据
-    plt.scatter(missing_indices, original_feature[missing_indices], color='red', marker='x',
-                label='Missing Original Data')
-    plt.scatter(missing_indices, imputed_feature[missing_indices], color='green', marker='o', label='Imputed Points')
+    # 绘图
+    plt.figure(figsize=(14, 7))
 
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.title(title)
+    # 绘制真实数据（有效数据）
+    plt.plot(true_data, label='Real Data (Valid)', color='blue', alpha=0.6)
+
+    # 绘制生成数据（有效数据）
+    plt.plot(generated_data, label='Generated Data (Valid)', color='orange', alpha=0.6)
+
+    # 绘制真实数据（缺失数据）
+    plt.scatter(np.where(missing_mask)[0], true_data[missing_mask], color='magenta', label='Real Data (Missing)', s=50,
+                marker='x', zorder=5)
+
+    # 绘制生成数据（缺失数据）
+    plt.scatter(np.where(missing_mask)[0], generated_data[missing_mask], color='cyan', label='Generated Data (Missing)',
+                s=50, marker='o', zorder=4)
+
+    # 添加图例和标签
     plt.legend()
-    plt.grid()
+    plt.title(f'Comparison of Interpolation for Feature {feature_index}')
+    plt.xlabel('Data Points')
+    plt.ylabel('Value')
+    plt.grid(True)
     plt.show()
 
 
 if __name__ == '__main__':
-    original_data = np.array([
-        [1.0],
-        [2.0],
-        [3.0],
-        [4.0],
-        [5.0]
-    ])
-
-    # 插补后的数据
-    imputed_data = np.array([
-        [1.0],
-        [2.5],
-        [4.0],
-        [5.0],
-        [4.0]
-    ])
-
-    # 掩码，其中1表示缺失
-    mask = np.array([
-        [0],
-        [1],
-        [0],
-        [0],
-        [1]
-    ])
-
-    # 调用绘图函数
-    plot_imputation_results_single_feature(original_data, imputed_data, mask)
+    pass
