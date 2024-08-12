@@ -54,26 +54,28 @@ def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, t
     plt.figure(figsize=(14, 7))
 
     # 绘制真实数据（有效数据）
-    plt.plot(true_data, label='Real Data (Valid)', color='blue', alpha=0.6)
+    plt.plot(np.where(valid_mask)[0], true_data[valid_mask], color='blue', linestyle='-', alpha=0.6,
+             label='Real Data (Valid)')
 
     # 绘制生成数据（有效数据）
-    plt.plot(generated_data, label='Generated Data (Valid)', color='orange', alpha=0.6)
+    plt.plot(np.where(valid_mask)[0], generated_data[valid_mask], color='orange', linestyle='-', alpha=0.6,
+             label='Generated Data (Valid)')
 
-    # # 绘制真实数据（缺失数据）
-    # plt.scatter(np.where(missing_mask)[0], true_data[missing_mask], color='magenta', label='Real Data (Missing)', s=50,
-    #             marker='x', zorder=5)
-    #
-    # # 绘制生成数据（缺失数据）
-    # plt.scatter(np.where(missing_mask)[0], generated_data[missing_mask], color='cyan', label='Generated Data (Missing)',
-    #             s=50, marker='o', zorder=4)
-
-    # 绘制真实数据（缺失数据）
-    plt.plot(np.where(missing_mask)[0], true_data[missing_mask], color='magenta', linestyle='--',
-             label='Real Data (Missing)', alpha=0.8)
+    plt.scatter(np.where(missing_mask)[0], true_data[missing_mask], color='red', label='Real Data (Missing)',
+                s=50, marker='o', zorder=4)
 
     # 绘制生成数据（缺失数据）
-    plt.plot(np.where(missing_mask)[0], generated_data[missing_mask], color='cyan', linestyle='--',
-             label='Generated Data (Missing)', alpha=0.8)
+    plt.scatter(np.where(missing_mask)[0], generated_data[missing_mask], color='green',
+                label='Generated Data (Missing)',
+                s=50, marker='x', zorder=5)
+
+    # # 绘制真实数据（缺失数据）
+    # plt.plot(np.where(missing_mask)[0], true_data[missing_mask], color='red', linestyle='--',
+    #          label='Real Data (Missing)', alpha=0.8)
+    #
+    # # 绘制生成数据（缺失数据）
+    # plt.plot(np.where(missing_mask)[0], generated_data[missing_mask], color='green', linestyle='--',
+    #          label='Generated Data (Missing)', alpha=0.8)
 
     # 添加图例和标签
     plt.legend()

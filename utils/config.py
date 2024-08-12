@@ -61,14 +61,14 @@ def configuration_override(args):
     args.epochs = 100
 
     # 训练相关参数
-    args.patience = 5
+    args.patience = 10
     args.t_file = './dataset/1h/wind_0001_1h_10k.csv'
     args.i_file = './dataset/1h/wind_0001_1h_test_600.csv'
     args.train_size = 0.8
     args.column_names = ['windSpeed2m', 'windSpeed10m']
     args.missing_mode = 'continuous'
-    args.missing_rate = 0.2
-    args.max_missing_length = 48
+    args.missing_rate = 0.25
+    args.max_missing_length = 36
 
     # 其他参数，训练时可以适当修改，与模型无关
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

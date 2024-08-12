@@ -92,7 +92,7 @@ def interpolate(generator, args):
     print(f'Average MSE: {avg_mse}')
     print(f'Average RMSE: {avg_rmse}')
 
-    feature_index = 0  # 可以根据需要选择其他特征索引
+    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 0)
     plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 1)
 
 
