@@ -46,6 +46,10 @@ def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, t
     generated_data = generated_data_all[:, time_step, feature_index]
     mask = mask_all[:, time_step, feature_index]
 
+    # 特征名称映射
+    feature_names = {0: 'windSpeed2m', 1: 'windSpeed10m'}
+    feature_name = feature_names.get(feature_index, 'Unknown Feature')
+
     # 创建掩码
     missing_mask = mask == 0  # 标记缺失数据的位置
     valid_mask = mask == 1  # 标记有效数据的位置
@@ -69,19 +73,11 @@ def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, t
                 label='Generated Data (Missing)',
                 s=50, marker='x', zorder=5)
 
-    # # 绘制真实数据（缺失数据）
-    # plt.plot(np.where(missing_mask)[0], true_data[missing_mask], color='red', linestyle='--',
-    #          label='Real Data (Missing)', alpha=0.8)
-    #
-    # # 绘制生成数据（缺失数据）
-    # plt.plot(np.where(missing_mask)[0], generated_data[missing_mask], color='green', linestyle='--',
-    #          label='Generated Data (Missing)', alpha=0.8)
-
     # 添加图例和标签
     plt.legend()
-    plt.title(f'Comparison of Interpolation for Feature {feature_index}')
-    plt.xlabel('Data Points')
-    plt.ylabel('Value')
+    plt.title(f'Comparison of Interpolation for Feature {feature_name}')
+    plt.xlabel('Time Steps (Hours)')
+    plt.ylabel('Wind Speed (m/s)')
     plt.grid(True)
     plt.show()
 
