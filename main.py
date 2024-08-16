@@ -20,7 +20,7 @@ def main():
     generator, discriminator = train(args, generator_saved_name, discriminator_saved_name)
 
     # 测试或验证
-    interpolate(generator, args)
+    interpolate(generator, args, remark=tmp_str)
 
 
 if __name__ == "__main__":

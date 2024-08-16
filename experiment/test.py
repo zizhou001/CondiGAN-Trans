@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import pandas as pd
 import torch
 from torch.utils.data import DataLoader
@@ -7,7 +9,7 @@ from utils.dataset import simulate_masked_data
 from utils.draw import *
 
 
-def interpolate(generator, args):
+def interpolate(generator, args, remark):
     # 读取数据
     data = pd.read_csv(args.i_file)
 
@@ -80,17 +82,31 @@ def interpolate(generator, args):
     # 计算全局平均 MSE 和 RMSE
     missing_mask_all = mask_all == 0
     if np.sum(missing_mask_all) > 0:
-        # 对缺失数据位置计算 MSE 和 RMSE
+        # 对缺失数据位置计算 MSE、RMSE 和 MAE
         mse = np.mean((generated_data_all[missing_mask_all] - full_data_all[missing_mask_all]) ** 2)
         rmse = np.sqrt(mse)
+        mae = np.mean(np.abs(generated_data_all[missing_mask_all] - full_data_all[missing_mask_all]))
         avg_mse = mse
         avg_rmse = rmse
+        avg_mae = mae
     else:
         avg_mse = 0
         avg_rmse = 0
+        avg_mae = 0
 
     print(f'Average MSE: {avg_mse}')
     print(f'Average RMSE: {avg_rmse}')
+    print(f'Average MAE: {avg_mae}')
+
+    # 获取当前日期和时间
+    current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # 将结果写入文件
+    with open('metrics.txt', 'a') as file:
+        file.write(f"{current_datetime:<{23}} {remark:<{40}} "
+                   f"MAE={avg_mae:.3f<{12}}, "
+                   f"MSE={avg_mse:.3f<{12}}, "
+                   f"RMSE={avg_rmse:.3f<{12}}\n")
 
     plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 0)
     plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 1)
