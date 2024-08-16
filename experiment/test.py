@@ -103,10 +103,10 @@ def interpolate(generator, args, remark):
 
     # 将结果写入文件
     with open('metrics.txt', 'a') as file:
-        file.write(f"{current_datetime:<{23}} {remark:<{40}} "
-                   f"MAE={avg_mae:.3f<{12}}, "
-                   f"MSE={avg_mse:.3f<{12}}, "
-                   f"RMSE={avg_rmse:.3f<{12}}\n")
+        file.write(f"{current_datetime}    {remark}    "
+                   f"MAE={avg_mae:.3f}    "
+                   f"MSE={avg_mse:.3f}    "
+                   f"RMSE={avg_rmse:.3f}\n")
 
     plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 0)
     plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 1)
