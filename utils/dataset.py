@@ -53,6 +53,8 @@ def simulate_masked_data(df, column_names, missing_rate=0.1, max_missing_length=
     elif missing_mode == 'continuous':
         # 连续长序列缺失
         num_missing = int(num_rows * missing_rate)
+        if max_missing_length > num_missing:
+            max_missing_length = num_missing
         for column_index in range(columns.shape[1]):
             num_segments = int(num_missing / max_missing_length)  # 分段数量
             for _ in range(num_segments):
@@ -63,7 +65,6 @@ def simulate_masked_data(df, column_names, missing_rate=0.1, max_missing_length=
                 if np.sum(mask[:, column_index] == 0) >= num_missing:
                     break
     else:
-
         raise ValueError("Invalid missing_mode. Choose between 'random' and 'continuous'")
 
     # 转换掩码矩阵为 tensor

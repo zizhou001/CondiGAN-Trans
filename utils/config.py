@@ -55,7 +55,7 @@ def get_configuration():
 def configuration_override(args):
     # 与模型名称相关的参数
     args.seed = 1826
-    args.batch_size = 64
+    args.batch_size = 32
     args.g_lr = 0.0002
     args.d_lr = 0.0004
     args.epochs = 100
@@ -67,8 +67,9 @@ def configuration_override(args):
     args.train_size = 0.8
     args.column_names = ['windSpeed2m', 'windSpeed10m']
     args.missing_mode = 'continuous'
-    args.missing_rate = 0.25
-    args.max_missing_length = 36
+    args.missing_rate = 0.9
+    max_missing_rate = 1
+    args.max_missing_length = 600 * max_missing_rate
 
     # 其他参数，训练时可以适当修改，与模型无关
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

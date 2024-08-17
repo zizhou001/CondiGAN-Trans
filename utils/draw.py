@@ -40,7 +40,7 @@ def plot_show(x_data, y_data_dict, xlabel='Date', ylabel='Loss', title='Training
     plt.show()
 
 
-def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step, feature_index):
+def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step, feature_index, max_missing_len):
     # 获取指定特征的所有数据
     true_data = full_data_all[:, time_step, feature_index]  # 假设特征在最后一维
     generated_data = generated_data_all[:, time_step, feature_index]
@@ -54,24 +54,37 @@ def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, t
     missing_mask = mask == 0  # 标记缺失数据的位置
     valid_mask = mask == 1  # 标记有效数据的位置
 
-    # 绘图
+    # 获取有效数据的时间步和对应数据
+    time_steps_valid = np.where(valid_mask)[0]
+    true_data_valid = true_data[valid_mask]
+    generated_data_valid = generated_data[valid_mask]
+
+    # 获取缺失数据的时间步和对应数据
+    time_steps_missing = np.where(missing_mask)[0]
+    true_data_missing = true_data[missing_mask]
+    generated_data_missing = generated_data[missing_mask]
+
+    # 创建绘图
     plt.figure(figsize=(14, 7))
 
     # 绘制真实数据（有效数据）
-    plt.plot(np.where(valid_mask)[0], true_data[valid_mask], color='blue', linestyle='-', alpha=0.6,
-             label='Real Data (Valid)')
-
-    # 绘制生成数据（有效数据）
-    plt.plot(np.where(valid_mask)[0], generated_data[valid_mask], color='orange', linestyle='-', alpha=0.6,
+    plt.plot(time_steps_valid, true_data_valid, color='blue', linestyle='-', alpha=0.6, label='Real Data (Valid)')
+    plt.plot(time_steps_valid, generated_data_valid, color='orange', linestyle='-', alpha=0.6,
              label='Generated Data (Valid)')
 
-    plt.scatter(np.where(missing_mask)[0], true_data[missing_mask], color='red', label='Real Data (Missing)',
-                s=50, marker='o', zorder=4)
-
     # 绘制生成数据（缺失数据）
-    plt.scatter(np.where(missing_mask)[0], generated_data[missing_mask], color='green',
-                label='Generated Data (Missing)',
-                s=50, marker='x', zorder=5)
+    if max_missing_len > 100:
+        # 使用线条绘制生成数据（缺失数据）
+        plt.plot(time_steps_missing, true_data_missing, color='red', linestyle='-', alpha=0.6,
+                 label='Real Data (Missing)')
+        plt.plot(time_steps_missing, generated_data_missing, color='green', linestyle='-', alpha=0.6,
+                 label='Generated Data (Missing)')
+    else:
+        # 使用离散点绘制生成数据（缺失数据）
+        plt.scatter(time_steps_missing, true_data_missing, color='red', label='Real Data (Missing)', s=50, marker='o',
+                    zorder=4)
+        plt.scatter(time_steps_missing, generated_data_missing, color='green', label='Generated Data (Missing)', s=50,
+                    marker='x', zorder=5)
 
     # 添加图例和标签
     plt.legend()

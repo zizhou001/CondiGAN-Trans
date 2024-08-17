@@ -18,6 +18,8 @@ def interpolate(generator, args, remark):
                                 max_missing_length=args.max_missing_length,
                                 missing_rate=args.missing_rate, missing_mode=args.missing_mode)
 
+    test_mask_counts(mask)
+
     # 加载数据
     dataset = WindSpeedDataset(data=data, mask=mask, columns=args.column_names)
     data_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
@@ -79,17 +81,32 @@ def interpolate(generator, args, remark):
     generated_data_all = np.concatenate(all_generated_data, axis=0)
     mask_all = np.concatenate(all_mask, axis=0)
 
-    # 计算全局平均 MSE 和 RMSE
+    num_features = full_data_all.shape[2]  # 特征数量
+
+    # 计算每个特征的 MSE、RMSE 和 MAE
+    mse_per_feature = np.zeros(num_features)
+    rmse_per_feature = np.zeros(num_features)
+    mae_per_feature = np.zeros(num_features)
+
     missing_mask_all = mask_all == 0
     if np.sum(missing_mask_all) > 0:
-        # 对缺失数据位置计算 MSE、RMSE 和 MAE
-        mse = np.mean((generated_data_all[missing_mask_all] - full_data_all[missing_mask_all]) ** 2)
-        rmse = np.sqrt(mse)
-        mae = np.mean(np.abs(generated_data_all[missing_mask_all] - full_data_all[missing_mask_all]))
-        avg_mse = mse
-        avg_rmse = rmse
-        avg_mae = mae
+        for feature_idx in range(num_features):
+            feature_mask = missing_mask_all[:, :, feature_idx].flatten()
+            if np.sum(feature_mask) > 0:
+                mse_per_feature[feature_idx] = np.mean((generated_data_all[:, :, feature_idx].flatten()[feature_mask] -
+                                                        full_data_all[:, :, feature_idx].flatten()[feature_mask]) ** 2)
+                rmse_per_feature[feature_idx] = np.sqrt(mse_per_feature[feature_idx])
+                mae_per_feature[feature_idx] = np.mean(np.abs(
+                    generated_data_all[:, :, feature_idx].flatten()[feature_mask] -
+                    full_data_all[:, :, feature_idx].flatten()[feature_mask]))
+
+        avg_mse = np.mean(mse_per_feature)
+        avg_rmse = np.mean(rmse_per_feature)
+        avg_mae = np.mean(mae_per_feature)
     else:
+        mse_per_feature.fill(0)
+        rmse_per_feature.fill(0)
+        mae_per_feature.fill(0)
         avg_mse = 0
         avg_rmse = 0
         avg_mae = 0
@@ -98,18 +115,59 @@ def interpolate(generator, args, remark):
     print(f'Average RMSE: {avg_rmse}')
     print(f'Average MAE: {avg_mae}')
 
+    # 打印每个特征的误差
+    for i in range(num_features):
+        print(
+            f'Feature {i} - MSE: {mse_per_feature[i]:.3f}, RMSE: {rmse_per_feature[i]:.3f}, MAE: {mae_per_feature[i]:.3f}')
+
     # 获取当前日期和时间
     current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # 将结果写入文件
-    with open('metrics.txt', 'a') as file:
+    with open('metrics.txt', 'a', encoding='utf-8') as file:
         file.write(f"{current_datetime}    {remark}    "
                    f"MAE={avg_mae:.3f}    "
                    f"MSE={avg_mse:.3f}    "
                    f"RMSE={avg_rmse:.3f}\n")
 
-    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 0)
-    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 1)
+        # 打印每个特征的误差
+        for i in range(num_features):
+            file.write(
+                f"\tFeature {i}: MSE={mse_per_feature[i]:.3f}     RMSE={rmse_per_feature[i]:.3f}     MAE={mae_per_feature[i]:.3f}\n"
+            )
+
+    # plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 0)
+    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 1, args.max_missing_length)
+
+
+def test_mask_counts(mask):
+    """
+    测试 mask 数据中的 0 和 1 的个数，支持 NumPy 数组和 PyTorch 张量。
+
+    参数:
+    mask (np.ndarray or torch.Tensor): 需要测试的掩码数据
+
+    输出:
+    None
+    """
+    # 处理 NumPy 数组
+    if isinstance(mask, np.ndarray):
+        num_zeros = np.sum(mask == 0)
+        num_ones = np.sum(mask == 1)
+
+    # 处理 PyTorch 张量
+    elif isinstance(mask, torch.Tensor):
+        mask_numpy = mask.cpu().numpy()  # 将张量转换为 NumPy 数组
+        num_zeros = np.sum(mask_numpy == 0)
+        num_ones = np.sum(mask_numpy == 1)
+
+    # 不支持其他数据类型
+    else:
+        raise TypeError("mask 应该是一个 NumPy 数组或 PyTorch 张量")
+
+    # 打印结果
+    print(f"Mask 数据中 0 的个数: {num_zeros}")
+    print(f"Mask 数据中 1 的个数: {num_ones}")
 
 
 if __name__ == '__main__':
