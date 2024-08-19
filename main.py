@@ -11,10 +11,14 @@ def main():
     configuration_override(args)
 
     # 设置模型文件的文件名
-    tmp_str = 's{}_b{}_l{}_e{}_p{}_{}_mr{}'.format(args.seed, args.batch_size, args.lr, args.epochs, args.patience,
-                                                     args.missing_mode, args.missing_rate)
-    generator_saved_name = "G_" + tmp_str
-    discriminator_saved_name = "D_" + tmp_str
+    tmp_str = 's{}_bs{}_hs{}_e{}_nl{}_sl{}_p{}_{}_mr{}'.format(args.seed, args.batch_size, args.hidden_size,
+                                                               args.epochs, args.num_layers,
+                                                               args.seq_length, args.patience,
+                                                               args.missing_mode, args.missing_rate)
+    g_l_str = 'l{}_'.format(args.g_lr)
+    d_l_str = 'l{}_'.format(args.d_lr)
+    generator_saved_name = "G_" + g_l_str + tmp_str
+    discriminator_saved_name = "D_" + d_l_str + tmp_str
 
     # 训练模型
     generator, discriminator = train(args, generator_saved_name, discriminator_saved_name)

@@ -46,8 +46,10 @@ def train(args, generator_saved_name, discriminator_saved_name):
                                     missing_mode=args.missing_mode)
 
     # 使用自定义数据集类加载数据
-    train_dataset = WindSpeedDataset(data=train_data, columns=args.column_names, mask=train_mask)
-    validate_dataset = WindSpeedDataset(data=val_data, columns=args.column_names, mask=val_mask)
+    train_dataset = WindSpeedDataset(data=train_data, columns=args.column_names, seq_length=args.seq_length,
+                                     mask=train_mask)
+    validate_dataset = WindSpeedDataset(data=val_data, columns=args.column_names, seq_length=args.seq_length,
+                                        mask=val_mask)
     train_data_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     validate_data_loader = DataLoader(validate_dataset, batch_size=args.batch_size, shuffle=False)
 

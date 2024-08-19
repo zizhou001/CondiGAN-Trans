@@ -18,8 +18,6 @@ def interpolate(generator, args, remark):
                                 max_missing_length=args.max_missing_length,
                                 missing_rate=args.missing_rate, missing_mode=args.missing_mode)
 
-    test_mask_counts(mask)
-
     # 加载数据
     dataset = WindSpeedDataset(data=data, mask=mask, columns=args.column_names)
     data_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)

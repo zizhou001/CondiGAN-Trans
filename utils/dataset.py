@@ -56,10 +56,11 @@ def simulate_masked_data(df, column_names, missing_rate=0.1, max_missing_length=
         if max_missing_length > num_missing:
             max_missing_length = num_missing
         for column_index in range(columns.shape[1]):
-            num_segments = int(num_missing / max_missing_length)  # 分段数量
+            num_segments = max(int(num_missing / max_missing_length), 1)
             for _ in range(num_segments):
                 start_index = np.random.randint(0, num_rows - max_missing_length + 1)
                 end_index = min(start_index + max_missing_length, num_rows)
+                end_index = int(end_index)  # 确保 end_index 是整数
                 mask[start_index:end_index, column_index] = 0
                 # 确保掩码长度达到期望比例
                 if np.sum(mask[:, column_index] == 0) >= num_missing:

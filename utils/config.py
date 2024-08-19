@@ -53,34 +53,35 @@ def get_configuration():
 
 
 def configuration_override(args):
-    # 与模型名称相关的参数
-    args.seed = 1826
-    args.batch_size = 32
-    args.g_lr = 0.0002
-    args.d_lr = 0.0004
-    args.epochs = 100
 
     # 训练相关参数
-    args.patience = 10
+    args.seed = 1826
+    args.batch_size = 64
+    args.g_lr = 0.0001
+    args.d_lr = 0.0002
+    args.epochs = 100
+    args.patience = 5
     args.t_file = './dataset/1h/wind_0001_1h_10k.csv'
     args.i_file = './dataset/1h/wind_0001_1h_test_600.csv'
     args.train_size = 0.8
     args.column_names = ['windSpeed2m', 'windSpeed10m']
     args.missing_mode = 'continuous'
     args.missing_rate = 0.9
-    max_missing_rate = 1
-    args.max_missing_length = 600 * max_missing_rate
-
-    # 其他参数，训练时可以适当修改，与模型无关
+    max_missing_rate = 0.8
+    args.max_missing_length = 600 * args.missing_rate * max_missing_rate
+    args.num_layers = 6  # Transformer层数
+    args.seq_length = 256  # 序列长度     设置为256内存不足
+    args.hidden_size = 128  # 隐藏层大小   设置为128内存不足
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    args.hidden_size = 64  # 隐藏层大小
-    args.num_layers = 4  # Transformer层数
-    args.num_heads = 4  # Transformer头数
+
+    # 其他参数
     args.latent_dim = 32  # 潜在空间维度
     args.output_dim = 1  # 输出维度
-    args.seq_length = 64  # 序列长度
+
+
 
     # !!! 不建议修改，如修改需要充分考虑模型的变化
+    args.num_heads = 4  # Transformer头数
     args.cond_dim = 91  # 条件向量维度
     args.features_dim = len(args.column_names)  # 特征维度
     args.input_dim = args.cond_dim + args.features_dim  # 总输入维度 = cond_dim + features_dim = 91 + 2 = 93

@@ -12,3 +12,15 @@
 2024-08-17 16:58:37    s1826_b32_l0.0002_e100_p10_continuous_mr0.9    MAE=1.016    MSE=1.677    RMSE=1.295
 	Feature 0: MSE=1.672     RMSE=1.293     MAE=1.013
 	Feature 1: MSE=1.681     RMSE=1.296     MAE=1.020
+2024-08-19 08:36:33    s1826_b32_l0.0002_e100_p10_continuous_mr0.9    MAE=1.023    MSE=1.721    RMSE=1.312
+	Feature 0: MSE=1.737     RMSE=1.318     MAE=1.025
+	Feature 1: MSE=1.706     RMSE=1.306     MAE=1.020
+2024-08-19 09:03:00    s1826_b64_l0.0002_e100_p10_continuous_mr0.9    MAE=1.046    MSE=1.816    RMSE=1.348
+	Feature 0: MSE=1.856     RMSE=1.363     MAE=1.054
+	Feature 1: MSE=1.776     RMSE=1.333     MAE=1.037
+2024-08-19 09:44:46    s1826_b64_l0.0002_e100_p10_continuous_mr0.9    MAE=0.960    MSE=1.617    RMSE=1.271
+	Feature 0: MSE=1.650     RMSE=1.284     MAE=0.964
+	Feature 1: MSE=1.584     RMSE=1.258     MAE=0.956
+2024-08-19 10:29:35    s1826_b64_l0.0002_e100_p10_continuous_mr0.9    MAE=1.004    MSE=1.743    RMSE=1.319
+	Feature 0: MSE=1.859     RMSE=1.364     MAE=1.050
+	Feature 1: MSE=1.626     RMSE=1.275     MAE=0.958
