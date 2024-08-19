@@ -8,13 +8,14 @@ def main():
     args = get_configuration()
 
     # 根据需要重写部分参数
-    configuration_override(args)
+    # configuration_override(args)
 
     # 设置模型文件的文件名
-    tmp_str = 's{}_bs{}_hs{}_e{}_nl{}_sl{}_p{}_{}_mr{}'.format(args.seed, args.batch_size, args.hidden_size,
-                                                               args.epochs, args.num_layers,
-                                                               args.seq_length, args.patience,
-                                                               args.missing_mode, args.missing_rate)
+    tmp_str = 's{}_bs{}_hs{}_e{}_nla{}_sle{}_p{}_{}_mr{}_mmr{}'.format(args.seed, args.batch_size, args.hidden_size,
+                                                                       args.epochs, args.num_layers,
+                                                                       args.seq_length, args.patience,
+                                                                       args.missing_mode, args.missing_rate,
+                                                                       args.max_missing_rate)
     g_l_str = 'l{}_'.format(args.g_lr)
     d_l_str = 'l{}_'.format(args.d_lr)
     generator_saved_name = "G_" + g_l_str + tmp_str

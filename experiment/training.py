@@ -54,8 +54,8 @@ def train(args, generator_saved_name, discriminator_saved_name):
     validate_data_loader = DataLoader(validate_dataset, batch_size=args.batch_size, shuffle=False)
 
     # 检查是否存在已有模型
-    generator_path = './checkpoints/' + generator_saved_name + '.checkpoint.pth'
-    discriminator_path = './checkpoints/' + discriminator_saved_name + '.checkpoint.pth'
+    generator_path = './checkpoints/' + generator_saved_name + '_checkpoint.pth'
+    discriminator_path = './checkpoints/' + discriminator_saved_name + '_checkpoint.pth'
 
     if os.path.exists(generator_path) and os.path.exists(discriminator_path):
         generator.load_state_dict(torch.load(generator_path))

@@ -19,7 +19,7 @@ def interpolate(generator, args, remark):
                                 missing_rate=args.missing_rate, missing_mode=args.missing_mode)
 
     # 加载数据
-    dataset = WindSpeedDataset(data=data, mask=mask, columns=args.column_names)
+    dataset = WindSpeedDataset(data=data, mask=mask, columns=args.column_names, seq_length=args.seq_length)
     data_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
 
     generator.eval()  # 切换到评估模式
@@ -135,7 +135,7 @@ def interpolate(generator, args, remark):
             )
 
     # plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 0)
-    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 1, args.max_missing_length)
+    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 1, args.max_missing_length, save_file_name=remark)
 
 
 def test_mask_counts(mask):

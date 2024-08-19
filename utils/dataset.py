@@ -57,12 +57,35 @@ def simulate_masked_data(df, column_names, missing_rate=0.1, max_missing_length=
             max_missing_length = num_missing
         for column_index in range(columns.shape[1]):
             num_segments = max(int(num_missing / max_missing_length), 1)
+            centering = (num_segments == 1)
             for _ in range(num_segments):
-                start_index = np.random.randint(0, num_rows - max_missing_length + 1)
-                end_index = min(start_index + max_missing_length, num_rows)
-                end_index = int(end_index)  # 确保 end_index 是整数
+                if centering:
+                    # Center the segment
+                    middle_index = num_rows // 2
+                    start_index = max(0, middle_index - max_missing_length // 2)
+                    end_index = min(start_index + max_missing_length, num_rows)
+
+                    # Adjust start index to fit within bounds
+                    if end_index - start_index < max_missing_length:
+                        start_index = max(0, end_index - max_missing_length)
+
+                else:
+                    # Randomly select start index
+                    start_index = np.random.randint(0, num_rows - max_missing_length + 1)
+                    end_index = start_index + max_missing_length
+
+                # Ensure indices are integers
+                start_index = int(start_index)
+                end_index = int(end_index)
+
+                # Ensure indices are within bounds and do not exceed the number of rows
+                start_index = max(0, start_index)
+                end_index = min(num_rows, end_index)
+
+                # Apply the mask
                 mask[start_index:end_index, column_index] = 0
-                # 确保掩码长度达到期望比例
+
+                # Ensure mask length reaches expected proportion
                 if np.sum(mask[:, column_index] == 0) >= num_missing:
                     break
     else:

@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 from matplotlib.patches import PathPatch
 from matplotlib.path import Path
 
@@ -40,7 +41,7 @@ def plot_show(x_data, y_data_dict, xlabel='Date', ylabel='Loss', title='Training
     plt.show()
 
 
-def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step, feature_index, max_missing_len):
+def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step, feature_index, max_missing_len, save_file_name=None):
     # 获取指定特征的所有数据
     true_data = full_data_all[:, time_step, feature_index]  # 假设特征在最后一维
     generated_data = generated_data_all[:, time_step, feature_index]
@@ -92,7 +93,17 @@ def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, t
     plt.xlabel('Time Steps (Hours)')
     plt.ylabel('Wind Speed (m/s)')
     plt.grid(True)
-    plt.show()
+
+    if save_file_name:
+        # 确保结果目录存在
+        output_dir = './results-imgs/'
+        os.makedirs(output_dir, exist_ok=True)
+        # 构造保存路径
+        file_path = os.path.join(output_dir, save_file_name)
+        plt.savefig(file_path)
+        print(f"Plot saved to {file_path}")
+    else:
+        plt.show()
 
 
 if __name__ == '__main__':
