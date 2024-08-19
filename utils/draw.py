@@ -96,6 +96,7 @@ def plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, t
 
     if save_file_name:
         # 确保结果目录存在
+        save_file_name = save_file_name + '.jpg'
         output_dir = './results-imgs/'
         os.makedirs(output_dir, exist_ok=True)
         # 构造保存路径
