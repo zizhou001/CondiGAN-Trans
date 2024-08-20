@@ -26,8 +26,8 @@ class Generator(nn.Module):
 
         # 条件向量嵌入层
         self.condition_embedding_wind = nn.Linear(8, self.cond_emb_wind_dim)
-        self.condition_embedding_hourly = nn.Linear(24, self.cond_emb_wind_dim)
-        self.condition_embedding_daily = nn.Linear(7, self.cond_emb_hourly_dim)
+        self.condition_embedding_hourly = nn.Linear(24, self.cond_emb_hourly_dim)
+        self.condition_embedding_daily = nn.Linear(7, self.cond_emb_daily_dim)
         self.condition_embedding_weekly = nn.Linear(52, self.cond_emb_weekly_dim)
 
         # 随机噪声嵌入

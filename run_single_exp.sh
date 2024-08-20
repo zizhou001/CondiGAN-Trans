@@ -10,6 +10,6 @@ python main.py \
     --num-layers=6 \
     --seq-length=256 \
     --patience=5 \
-    --missing-rate=0.9 \
-    --max-missing-rate=0.7 \
+    --missing-rate=0.8 \
+    --max-missing-rate=0.6 \
 

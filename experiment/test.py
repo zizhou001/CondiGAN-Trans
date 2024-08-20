@@ -134,8 +134,11 @@ def interpolate(generator, args, remark):
                 f"\tFeature {i}: MSE={mse_per_feature[i]:.3f}     RMSE={rmse_per_feature[i]:.3f}     MAE={mae_per_feature[i]:.3f}\n"
             )
 
-    # plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 0)
-    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, 0, 1, args.max_missing_length, save_file_name=remark)
+    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step=int(args.seq_length // 2),
+                                  feature_index=0,
+                                  max_missing_len=args.max_missing_length, save_file_name=remark)
+    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step=int(args.seq_length // 2), feature_index=1,
+                                  max_missing_len=args.max_missing_length, save_file_name=remark)
 
 
 def test_mask_counts(mask):

@@ -2,27 +2,32 @@
 
 # 定义常量
 BATCH_SIZE=64
-HIDDEN_SIZE=64
+HIDDEN_SIZE=128
 NUM_LAYERS=6
 PATIENCE=10
 
 cd /root/autodl-tmp/project/
 
 # 遍历 missing-rate 和 max-missing-rate 的所有组合
-for MISSING_RATE in 0.3 0.5 0.7 0.9; do
-    for MAX_MISSING_RATE in 0.2 0.4 0.6 0.8; do
+for MISSING_RATE in 0.2 0.4 0.6 0.8; do
+    for MAX_MISSING_RATE in 0.3 0.4 0.5 0.6; do
         echo "Running with missing-rate=$MISSING_RATE and max-missing-rate=$MAX_MISSING_RATE"
 
         # 计算 SEQ_LENGTH
-        PRODUCT=$(echo "$MISSING_RATE * $MAX_MISSING_RATE * 600" | awk '{print $1}')
-        # 使用 awk 替代 bc
+        PRODUCT=$(echo "scale=2; $MISSING_RATE * $MAX_MISSING_RATE * 600" | bc)
 
-        if (( $(echo "$PRODUCT > 200" | awk '{print ($1 > 200)}') )); then
-            SEQ_LENGTH=256
-        elif (( $(echo "$PRODUCT > 100" | awk '{print ($1 > 100)}') )); then
-            SEQ_LENGTH=128
-        else
+        if (( $(echo "$PRODUCT <= 64" | awk '{print ($1 <= 64)}') )); then
             SEQ_LENGTH=64
+            HIDDEN_SIZE=64
+        elif (( $(echo "$PRODUCT <= 128" | awk '{print ($1 <= 128)}') )); then
+            SEQ_LENGTH=128
+            HIDDEN_SIZE=128
+        elif (( $(echo "$PRODUCT <= 256" | awk '{print ($1 <= 256)}') )); then
+            SEQ_LENGTH=256
+            HIDDEN_SIZE=256
+        else
+            SEQ_LENGTH=256
+            HIDDEN_SIZE=256
         fi
 
         echo "Using SEQ_LENGTH=$SEQ_LENGTH"
