@@ -3,15 +3,32 @@ import numpy as np
 import torch
 
 
-def partition(file_path, train_size=0.8):
+# def partition(file_path, train_size=0.8):
+#     data = pd.read_csv(file_path)
+#     train_length = int(len(data) * train_size)
+#
+#     # 划分数据
+#     train_data = data[:train_length]
+#     val_data = data[train_length:]
+#
+#     return train_data, val_data
+
+
+def partition(file_path, train_ratio=0.7, val_ratio=0.2, test_ratio=0.1):
+    # 读取数据
     data = pd.read_csv(file_path)
-    train_length = int(len(data) * train_size)
+
+    # 计算各部分的长度
+    total_length = len(data)
+    train_length = int(total_length * train_ratio)
+    val_length = int(total_length * val_ratio)
 
     # 划分数据
     train_data = data[:train_length]
-    val_data = data[train_length:]
+    val_data = data[train_length:train_length + val_length]
+    test_data = data[train_length + val_length:]
 
-    return train_data, val_data
+    return train_data, val_data, test_data
 
 
 def multiscale_divider(condition):

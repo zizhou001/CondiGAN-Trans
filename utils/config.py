@@ -7,14 +7,15 @@ def get_configuration():
 
     # 训练参数
     parser.add_argument('--batch-size', dest='batch_size', type=int, default=64, help='Specify batch size.')
-    parser.add_argument('--hidden-size', dest='hidden_size', type=int, default=64, help='Specify hidden_size.')
-    parser.add_argument('--num-layers', dest='num_layers', type=int, default=4,
+    parser.add_argument('--num-layers', dest='num_layers', type=int, default=6,
                         help='Specify the number of Transfomer layers.')
-    parser.add_argument('--seq-length', dest='seq_length', type=int, default=64, help='Specified sequence length.')
-    parser.add_argument('--patience', dest='patience', type=int, default=5,
+    parser.add_argument('--patience', dest='patience', type=int, default=10,
                         help='Set the patience parameter for early stop.')
-    parser.add_argument('--missing-rate', dest='missing_rate', type=float, default=0.25, help='Set missing_rate.')
-    parser.add_argument('--max-missing-rate', dest='max_missing_rate', type=float, default=0.25,
+
+    parser.add_argument('--hidden-size', dest='hidden_size', type=int, default=64, help='Specify hidden_size.')
+    parser.add_argument('--seq-length', dest='seq_length', type=int, default=64, help='Specified sequence length.')
+    parser.add_argument('--missing-rate', dest='missing_rate', type=float, default=0.2, help='Set missing_rate.')
+    parser.add_argument('--max-missing-rate', dest='max_missing_rate', type=float, default=0.3,
                         help='Set max_missing_rate.')
 
     args = parser.parse_args()
@@ -31,8 +32,7 @@ def configuration_override(args):
     args.d_lr = 0.0002
     args.epochs = 100
     args.patience = 5
-    args.t_file = './dataset/1h/wind_0001_1h_10k.csv'
-    args.i_file = './dataset/1h/wind_0001_1h_test_600.csv'
+    args.file_path = './dataset/1h/wind_0001_1h_12k.csv'
     args.train_size = 0.8
     args.column_names = ['windSpeed2m', 'windSpeed10m']
     args.missing_mode = 'continuous'
@@ -73,8 +73,7 @@ def more_settings(args, model_size="default"):
     args.g_lr = 0.0001
     args.d_lr = 0.0002
     args.epochs = 100
-    args.t_file = './dataset/1h/wind_0001_1h_10k.csv'
-    args.i_file = './dataset/1h/wind_0001_1h_test_600.csv'
+    args.file_path = './dataset/1h/wind_0001_1h_12k.csv'
     args.train_size = 0.8
     args.column_names = ['windSpeed2m', 'windSpeed10m']
     args.missing_mode = 'continuous'

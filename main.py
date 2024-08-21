@@ -1,6 +1,7 @@
 from experiment.training import train
 from experiment.test import interpolate
 from utils.config import get_configuration, configuration_override
+from utils.dataset import partition
 
 
 def main():
@@ -21,11 +22,16 @@ def main():
     generator_saved_name = "G_" + g_l_str + tmp_str
     discriminator_saved_name = "D_" + d_l_str + tmp_str
 
+    # 划分数据集
+    train_data, val_data, test_data = partition(file_path=args.file_path, train_ratio=0.70, val_ratio=0.20,
+                                                test_ratio=0.10)
+
     # 训练模型
-    generator, discriminator = train(args, generator_saved_name, discriminator_saved_name)
+    generator, discriminator = train(args, generator_saved_name, discriminator_saved_name, train_data=train_data,
+                                     val_data=val_data)
 
     # 测试或验证
-    interpolate(generator, args, remark=tmp_str)
+    interpolate(generator, args, remark=tmp_str, test_data=test_data)
 
 
 if __name__ == "__main__":

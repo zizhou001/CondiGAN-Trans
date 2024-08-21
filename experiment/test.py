@@ -9,17 +9,15 @@ from utils.dataset import simulate_masked_data
 from utils.draw import *
 
 
-def interpolate(generator, args, remark):
-    # 读取数据
-    data = pd.read_csv(args.i_file)
+def interpolate(generator, args, remark, test_data):
 
     # 模拟缺失
-    mask = simulate_masked_data(data, column_names=args.column_names,
+    mask = simulate_masked_data(test_data, column_names=args.column_names,
                                 max_missing_length=args.max_missing_length,
                                 missing_rate=args.missing_rate, missing_mode=args.missing_mode)
 
     # 加载数据
-    dataset = WindSpeedDataset(data=data, mask=mask, columns=args.column_names, seq_length=args.seq_length)
+    dataset = WindSpeedDataset(data=test_data, mask=mask, columns=args.column_names, seq_length=args.seq_length, batch_size=args.batch_size)
     data_loader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
 
     generator.eval()  # 切换到评估模式
@@ -34,6 +32,7 @@ def interpolate(generator, args, remark):
     all_full_data = []
     all_generated_data = []
     all_mask = []
+
 
     with torch.no_grad():
         for val_batch_idx, (full_data, masked_data, condition, mask) in enumerate(data_loader):
@@ -109,14 +108,16 @@ def interpolate(generator, args, remark):
         avg_rmse = 0
         avg_mae = 0
 
-    print(f'Average MSE: {avg_mse}')
-    print(f'Average RMSE: {avg_rmse}')
-    print(f'Average MAE: {avg_mae}')
+    # print(f'Average MSE: {avg_mse}')
+    # print(f'Average RMSE: {avg_rmse}')
+    # print(f'Average MAE: {avg_mae}')
 
     # 打印每个特征的误差
-    for i in range(num_features):
-        print(
-            f'Feature {i} - MSE: {mse_per_feature[i]:.3f}, RMSE: {rmse_per_feature[i]:.3f}, MAE: {mae_per_feature[i]:.3f}')
+    # for i in range(num_features):
+    #     print(
+    #         f'Feature {i} - MSE: {mse_per_feature[i]:.3f}, RMSE: {rmse_per_feature[i]:.3f}, MAE: {mae_per_feature[i]:.3f}')
+
+
 
     # 获取当前日期和时间
     current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -137,7 +138,8 @@ def interpolate(generator, args, remark):
     plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step=int(args.seq_length // 2),
                                   feature_index=0,
                                   max_missing_len=args.max_missing_length, save_file_name=remark)
-    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step=int(args.seq_length // 2), feature_index=1,
+    plot_interpolation_comparison(full_data_all, generated_data_all, mask_all, time_step=int(args.seq_length // 2),
+                                  feature_index=1,
                                   max_missing_len=args.max_missing_length, save_file_name=remark)
 
 

@@ -15,7 +15,7 @@ def clip_gradients(model, max_norm=1.0):
     torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm)
 
 
-def train(args, generator_saved_name, discriminator_saved_name):
+def train(args, generator_saved_name, discriminator_saved_name, train_data, val_data):
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
 
@@ -32,8 +32,6 @@ def train(args, generator_saved_name, discriminator_saved_name):
     optimizer_G = optim.Adam(generator.parameters(), lr=args.g_lr, betas=(0.5, 0.999))
     optimizer_D = optim.Adam(discriminator.parameters(), lr=args.d_lr, betas=(0.5, 0.999))
 
-    # 划分数据集
-    train_data, val_data = partition(file_path=args.t_file, train_size=args.train_size)
 
     # 模拟缺失数据，获取掩码矩阵
     train_mask = simulate_masked_data(df=train_data, column_names=args.column_names,
@@ -105,11 +103,11 @@ def train(args, generator_saved_name, discriminator_saved_name):
             optimizer_G.step()
 
             # 打印损失信息
-            if batch_idx % 10 == 0:
-                print(f"Epoch [{epoch}/{args.epochs}], "
-                      f"Batch [{batch_idx}/{len(train_data_loader)}], "
-                      f"d_loss: {d_loss.item()}, "
-                      f"g_loss: {g_loss.item()}")
+            # if batch_idx % 10 == 0:
+            #     print(f"Epoch [{epoch}/{args.epochs}], "
+            #           f"Batch [{batch_idx}/{len(train_data_loader)}], "
+            #           f"d_loss: {d_loss.item()}, "
+            #           f"g_loss: {g_loss.item()}")
 
         # 验证阶段
         avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
