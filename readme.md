@@ -1,3 +1,109 @@
+# 使用说明
+
+## 训练环境
+
+本环境基于pytorch搭建，可使用下面的配置文件创建相应的虚拟环境
+
+```yaml
+name: msc-gan
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/Paddle/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/fastai/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+dependencies:
+  - blas=1.0=mkl
+  - bottleneck=1.3.7=py39h9128911_0
+  - brotli=1.0.9=h2bbff1b_8
+  - brotli-bin=1.0.9=h2bbff1b_8
+  - ca-certificates=2024.7.2=haa95532_0
+  - contourpy=1.2.0=py39h59b6b97_0
+  - cycler=0.11.0=pyhd3eb1b0_0
+  - fonttools=4.51.0=py39h2bbff1b_0
+  - freetype=2.12.1=ha860e81_0
+  - icc_rt=2022.1.0=h6049295_2
+  - icu=73.1=h6c2663c_0
+  - importlib_resources=6.4.0=py39haa95532_0
+  - intel-openmp=2023.1.0=h59b6b97_46320
+  - joblib=1.4.2=py39haa95532_0
+  - jpeg=9e=h827c3e9_3
+  - kiwisolver=1.4.4=py39hd77b12b_0
+  - krb5=1.20.1=h5b6d351_0
+  - lcms2=2.12=h83e58a3_0
+  - lerc=3.0=hd77b12b_0
+  - libbrotlicommon=1.0.9=h2bbff1b_8
+  - libbrotlidec=1.0.9=h2bbff1b_8
+  - libbrotlienc=1.0.9=h2bbff1b_8
+  - libclang=14.0.6=default_hb5a9fac_1
+  - libclang13=14.0.6=default_h8e68704_1
+  - libdeflate=1.17=h2bbff1b_1
+  - libpng=1.6.39=h8cc25b3_0
+  - libpq=12.17=h906ac69_0
+  - libtiff=4.5.1=hd77b12b_0
+  - libwebp-base=1.3.2=h2bbff1b_0
+  - lz4-c=1.9.4=h2bbff1b_1
+  - matplotlib=3.8.4=py39haa95532_0
+  - matplotlib-base=3.8.4=py39h4ed8f06_0
+  - mkl=2023.1.0=h6b88ed4_46358
+  - mkl-service=2.4.0=py39h2bbff1b_1
+  - mkl_fft=1.3.8=py39h2bbff1b_0
+  - mkl_random=1.2.4=py39h59b6b97_0
+  - numexpr=2.8.7=py39h2cd9be0_0
+  - numpy-base=1.26.4=py39h65a83cf_0
+  - openjpeg=2.5.2=hae555c5_0
+  - openssl=3.0.14=h827c3e9_0
+  - packaging=24.1=py39haa95532_0
+  - pandas=2.2.2=py39h5da7b33_0
+  - pillow=10.4.0=py39h827c3e9_0
+  - pip=24.2=py39haa95532_0
+  - ply=3.11=py39haa95532_0
+  - pybind11-abi=5=hd3eb1b0_0
+  - pyparsing=3.0.9=py39haa95532_0
+  - pyqt=5.15.10=py39hd77b12b_0
+  - pyqt5-sip=12.13.0=py39h2bbff1b_0
+  - python=3.9.19=h1aa4202_1
+  - python-dateutil=2.9.0post0=py39haa95532_2
+  - python-tzdata=2023.3=pyhd3eb1b0_0
+  - pytz=2024.1=py39haa95532_0
+  - qt-main=5.15.2=h19c9488_10
+  - scikit-learn=1.5.1=py39hc64d2fc_0
+  - scipy=1.13.1=py39h8640f81_0
+  - setuptools=72.1.0=py39haa95532_0
+  - sip=6.7.12=py39hd77b12b_0
+  - six=1.16.0=pyhd3eb1b0_1
+  - sqlite=3.45.3=h2bbff1b_0
+  - tbb=2021.8.0=h59b6b97_0
+  - threadpoolctl=3.5.0=py39h9909e9c_0
+  - tomli=2.0.1=py39haa95532_0
+  - tornado=6.4.1=py39h827c3e9_0
+  - tzdata=2024a=h04d1e81_0
+  - unicodedata2=15.1.0=py39h2bbff1b_0
+  - vc=14.40=h2eaa2aa_0
+  - vs2015_runtime=14.40.33807=h98bb1dd_0
+  - wheel=0.43.0=py39haa95532_0
+  - xz=5.4.6=h8cc25b3_1
+  - zipp=3.17.0=py39haa95532_0
+  - zlib=1.2.13=h8cc25b3_1
+  - zstd=1.5.5=hd43e919_2
+  - pip:
+    - certifi==2024.7.4
+    - charset-normalizer==3.3.2
+    - idna==3.7
+    - numpy==2.0.1
+    - requests==2.32.3
+    - torch==1.13.1+cu116
+    - torchaudio==0.13.1+cu116
+    - torchvision==0.14.1+cu116
+    - typing-extensions==4.12.2
+    - urllib3==2.2.2
+prefix: F:\anaconda\envs\msc-gan
+```
+
+
 # 版本更迭
 
 ## v1.0
@@ -51,88 +157,12 @@
 
 1. 实现插补的功能，测试通过
 
-# 代码优化
-## Stop too Early
+## v2.3
 
-### 问题描述
+### 版本特性
 
-模型在训练的早期就触发了早停，这可能是因为以下几个原因：
-
-1. **学习率过高**：过高的学习率可能导致损失震荡，而无法有效下降。尝试降低学习率。
-
-2. **模型容量**：模型可能过于复杂或过于简单，导致学习不稳定。你可以考虑调整模型的层数或节点数。
-
-3. **早停耐心值**：可以考虑将耐心值增加到15-20个epoch，以允许模型有更多时间进行学习。
-
-4. **数据预处理**：确保数据预处理（如归一化、标准化）是合理的，这可能影响模型的收敛速度。
-
-5. **批量大小**：调整批量大小（batch size），较小的批量可以提供更多的更新频率，但会导致更大的噪声。
-
-### 优化建议：
-- **降低学习率**：尝试将学习率减少一半，观察验证损失是否稳定下降。
-- **增加耐心值**：调整耐心值，给予模型更多学习机会。
-- **检查数据预处理**：确保输入数据已适当处理。
-- **实验不同的模型结构**：考虑简化或复杂化模型，查看对训练和验证损失的影响。
-
-## d_loss与g_loss不收敛
-
-### 1. **模型架构不平衡**
-
-- **问题**：判别器和生成器的网络架构可能不平衡。例如，判别器可能过于复杂，而生成器可能过于简单。
-- **表现**：判别器可能过强，能够轻易区分生成样本和真实样本，导致生成器难以改进，或者生成器过弱，生成的样本质量差，无法有效欺骗判别器。
-- **解决方案**：
-  - 尝试调整网络的深度和宽度，确保判别器和生成器在容量上的平衡。
-  - 可以考虑增加生成器的复杂度或减少判别器的复杂度，或者反之。
-
-### 2. **训练策略不当**
-
-- **问题**：判别器和生成器的训练频率可能不匹配，或者训练步骤设置不合理。
-- **表现**：`d_loss` 和 `g_loss` 都可能停滞在某个值，表明网络可能无法互相推动进步。
-- **解决方案**：
-  - 尝试调整训练频率，例如增加或减少判别器和生成器的训练步数。
-  - 可以尝试让生成器和判别器交替训练更多步，或者在每个训练周期中使用不同的训练频率。
-
-### 3. **学习率问题**
-
-- **问题**：学习率可能设置不合适，导致训练过程不稳定。
-- **表现**：损失值保持在一个固定范围内，表明网络可能无法有效学习。
-- **解决方案**：
-  - 尝试不同的学习率（比如减小学习率），观察损失的变化。
-  - 使用学习率调度器动态调整学习率。
-
-### 4. **模式崩溃（Mode Collapse）**
-
-- **问题**：生成器可能陷入模式崩溃，即生成的样本非常相似，从而使得判别器难以有效训练。
-- **表现**：判别器的损失不变化，而生成器的损失保持稳定，生成的样本缺乏多样性。
-- **解决方案**：
-  - 尝试使用不同的正则化技术，如梯度惩罚（Gradient Penalty）或谱归一化（Spectral Normalization）。
-  - 重新设计生成器网络，增加多样性生成策略。
-
-### 5. **损失函数选择和实现问题**
-
-- **问题**：损失函数可能不适合当前任务或实现存在问题。
-- **表现**：损失值无法正常变化，表明损失函数可能没有有效地反映生成器和判别器的训练进度。
-- **解决方案**：
-  - 确保损失函数的实现是正确的。
-  - 尝试不同的损失函数，如 Wasserstein 损失（WGAN）或带有梯度惩罚的损失（WGAN-GP）。
-
-### 6. **数据问题**
-
-- **问题**：数据预处理或数据本身可能存在问题。
-- **表现**：模型无法有效从数据中学习，导致损失值不收敛。
-- **解决方案**：
-  - 确保数据的预处理过程是正确的，例如数据归一化或标准化。
-  - 检查数据集的质量和多样性，确保它足够代表真实场景。
-
-### 总结
-
-要解决 `d_loss` 和 `g_loss` 不收敛的问题，你可以从以下几个方面入手：
-
-1. **调整模型架构**：确保判别器和生成器的网络结构合理，能够互相推动进步。
-2. **优化训练策略**：平衡判别器和生成器的训练频率，调整训练步骤。
-3. **调整学习率**：尝试不同的学习率，使用学习率调度器。
-4. **解决模式崩溃**：使用正则化技术增加样本多样性。
-5. **检查损失函数**：确保损失函数正确实现，考虑使用不同的损失函数。
-6. **数据预处理**：确保数据处理和质量符合要求。
-
-通过这些调整和检查，你可以帮助模型更好地收敛，达到更好的生成效果。
+1. 优化了绘图函数
+2. 增加了数据集
+3. 修改生成器bug
+4. 优化训练策略 
+5. 编写了相应的脚本，用于训练模型
