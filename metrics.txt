@@ -164,3 +164,66 @@
 2024-08-21 14:49:17    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.6    MAE=0.545    MSE=0.532    RMSE=0.726
 	Feature 0: MSE=0.638     RMSE=0.798     MAE=0.639
 	Feature 1: MSE=0.427     RMSE=0.654     MAE=0.451
+2024-08-21 14:51:35    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.6    MAE=0.545    MSE=0.532    RMSE=0.726
+	Feature 0: MSE=0.638     RMSE=0.798     MAE=0.639
+	Feature 1: MSE=0.427     RMSE=0.654     MAE=0.451
+2024-08-21 14:53:35    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.6    MAE=0.545    MSE=0.532    RMSE=0.726
+	Feature 0: MSE=0.638     RMSE=0.798     MAE=0.639
+	Feature 1: MSE=0.427     RMSE=0.654     MAE=0.451
+2024-08-21 15:03:09    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.6    MAE=0.545    MSE=0.532    RMSE=0.726
+	Feature 0: MSE=0.638     RMSE=0.798     MAE=0.639
+	Feature 1: MSE=0.427     RMSE=0.654     MAE=0.451
+2024-08-21 15:04:38    s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.3    MAE=0.536    MSE=0.802    RMSE=0.895
+	Feature 0: MSE=0.769     RMSE=0.877     MAE=0.521
+	Feature 1: MSE=0.834     RMSE=0.913     MAE=0.550
+-----------------------------------------------------------------Round 4，final 1
+2024-08-21 15:52:14    s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.1    MAE=0.590    MSE=0.887    RMSE=0.938
+	Feature 0: MSE=0.728     RMSE=0.853     MAE=0.546
+	Feature 1: MSE=1.046     RMSE=1.023     MAE=0.634
+2024-08-21 16:19:24    s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.15    MAE=0.547    MSE=0.612    RMSE=0.782
+	Feature 0: MSE=0.623     RMSE=0.789     MAE=0.555
+	Feature 1: MSE=0.601     RMSE=0.775     MAE=0.539
+2024-08-21 17:04:31    s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.2    MAE=0.549    MSE=0.640    RMSE=0.800
+	Feature 0: MSE=0.622     RMSE=0.789     MAE=0.555
+	Feature 1: MSE=0.657     RMSE=0.810     MAE=0.544
+2024-08-21 18:07:36    s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.2_mmr0.25    MAE=0.597    MSE=0.818    RMSE=0.904
+	Feature 0: MSE=0.802     RMSE=0.895     MAE=0.587
+	Feature 1: MSE=0.834     RMSE=0.913     MAE=0.607
+2024-08-21 18:45:47    s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.4_mmr0.1    MAE=0.616    MSE=0.915    RMSE=0.956
+	Feature 0: MSE=0.872     RMSE=0.934     MAE=0.574
+	Feature 1: MSE=0.958     RMSE=0.979     MAE=0.659
+2024-08-21 19:52:34    s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.4_mmr0.15    MAE=0.720    MSE=0.973    RMSE=0.982
+	Feature 0: MSE=1.159     RMSE=1.076     MAE=0.833
+	Feature 1: MSE=0.788     RMSE=0.888     MAE=0.606
+2024-08-21 21:50:10    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.2    MAE=0.746    MSE=0.970    RMSE=0.985
+	Feature 0: MSE=0.957     RMSE=0.978     MAE=0.771
+	Feature 1: MSE=0.983     RMSE=0.992     MAE=0.721
+2024-08-22 00:37:49    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.25    MAE=0.661    MSE=0.769    RMSE=0.877
+	Feature 0: MSE=0.772     RMSE=0.879     MAE=0.690
+	Feature 1: MSE=0.765     RMSE=0.875     MAE=0.632
+2024-08-22 02:29:40    s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.6_mmr0.1    MAE=0.627    MSE=0.797    RMSE=0.893
+	Feature 0: MSE=0.756     RMSE=0.870     MAE=0.631
+	Feature 1: MSE=0.839     RMSE=0.916     MAE=0.622
+2024-08-22 03:59:17    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.15    MAE=0.666    MSE=0.836    RMSE=0.913
+	Feature 0: MSE=0.927     RMSE=0.963     MAE=0.727
+	Feature 1: MSE=0.745     RMSE=0.863     MAE=0.605
+2024-08-22 05:46:33    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.2    MAE=0.759    MSE=0.960    RMSE=0.980
+	Feature 0: MSE=0.994     RMSE=0.997     MAE=0.803
+	Feature 1: MSE=0.926     RMSE=0.962     MAE=0.715
+2024-08-22 07:43:58    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.25    MAE=0.688    MSE=0.851    RMSE=0.923
+	Feature 0: MSE=0.861     RMSE=0.928     MAE=0.707
+	Feature 1: MSE=0.842     RMSE=0.917     MAE=0.669
+2024-08-22 09:46:22    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.8_mmr0.1    MAE=0.615    MSE=0.781    RMSE=0.883
+	Feature 0: MSE=0.740     RMSE=0.860     MAE=0.607
+	Feature 1: MSE=0.822     RMSE=0.906     MAE=0.624
+2024-08-22 11:45:04    s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.8_mmr0.15    MAE=0.676    MSE=0.869    RMSE=0.931
+	Feature 0: MSE=0.956     RMSE=0.978     MAE=0.739
+	Feature 1: MSE=0.782     RMSE=0.884     MAE=0.612
+2024-08-22 15:23:19    s1826_bs64_hs360_e100_nla6_sle360_p10_continuous_mr0.8_mmr0.2    MAE=0.702    MSE=0.825    RMSE=0.908
+	Feature 0: MSE=0.863     RMSE=0.929     MAE=0.736
+	Feature 1: MSE=0.787     RMSE=0.887     MAE=0.667
+2024-08-22 22:07:58    s1826_bs64_hs360_e100_nla6_sle360_p10_continuous_mr0.8_mmr0.25    MAE=0.732    MSE=0.927    RMSE=0.963
+	Feature 0: MSE=0.949     RMSE=0.974     MAE=0.743
+	Feature 1: MSE=0.906     RMSE=0.952     MAE=0.720
+-----------------------------------------------------------------Round 4，final 2
+

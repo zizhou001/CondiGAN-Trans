@@ -1,0 +1,902 @@
+nohup: ignoring input
+Running with missing-rate=0.2 and max-missing-rate=0.10
+Calculated PRODUCT=24.00
+Using SEQ_LENGTH=64
+Validation Loss after epoch 0 | avg_total_loss: 0.3704349495269157, avg_real_loss: 0.07621887527607582, avg_fake_loss: 0.07713815328237172
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.202123649216987, avg_real_loss: 0.030009866465587873, avg_fake_loss: 0.029757277184241527
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.15588578521399885, avg_real_loss: 0.01964853484989018, avg_fake_loss: 0.01903916457416238
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.1058619588210776, avg_real_loss: 0.013842705385507765, avg_fake_loss: 0.013445508062235406
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.10185794834349607, avg_real_loss: 0.011275556064336686, avg_fake_loss: 0.011247639393282903
+Models saved.
+Validation Loss after epoch 5 | avg_total_loss: 0.08082529570202569, avg_real_loss: 0.009380122546005893, avg_fake_loss: 0.009126689410894303
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.07955529550845558, avg_real_loss: 0.007731601960856367, avg_fake_loss: 0.007505640614073019
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.06620291862133387, avg_real_loss: 0.006554126097644503, avg_fake_loss: 0.006654810688986971
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.06758280350147067, avg_real_loss: 0.0057973082907296514, avg_fake_loss: 0.005680776962607696
+Validation Loss after epoch 9 | avg_total_loss: 0.06766737413567465, avg_real_loss: 0.005278360130063988, avg_fake_loss: 0.0053669515292386755
+Validation Loss after epoch 10 | avg_total_loss: 0.06253681029822375, avg_real_loss: 0.004672586534021271, avg_fake_loss: 0.004562058196579282
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.06674375948873726, avg_real_loss: 0.004208294592948782, avg_fake_loss: 0.004321034752285561
+Validation Loss after epoch 12 | avg_total_loss: 0.0632661218578751, avg_real_loss: 0.0040292577453058314, avg_fake_loss: 0.00406802717495609
+Validation Loss after epoch 13 | avg_total_loss: 0.07960127334336976, avg_real_loss: 0.0037274992886326603, avg_fake_loss: 0.003536837313928314
+Validation Loss after epoch 14 | avg_total_loss: 0.056242081512873236, avg_real_loss: 0.0033235238311258523, avg_fake_loss: 0.003253322226826001
+Models saved.
+Validation Loss after epoch 15 | avg_total_loss: 0.06266807825178713, avg_real_loss: 0.002995121704943075, avg_fake_loss: 0.002888112237702149
+Validation Loss after epoch 16 | avg_total_loss: 0.07042919950106659, avg_real_loss: 0.0028484573153577542, avg_fake_loss: 0.0027175986466023163
+Validation Loss after epoch 17 | avg_total_loss: 0.04482356292774548, avg_real_loss: 0.0027843222298936264, avg_fake_loss: 0.0028040850648304097
+Models saved.
+Validation Loss after epoch 18 | avg_total_loss: 0.053324168799696745, avg_real_loss: 0.002536618691944593, avg_fake_loss: 0.002471889620898543
+Validation Loss after epoch 19 | avg_total_loss: 0.05226201654688732, avg_real_loss: 0.002293551088990392, avg_fake_loss: 0.0023477654306318712
+Validation Loss after epoch 20 | avg_total_loss: 0.04336344576566606, avg_real_loss: 0.002167660283629556, avg_fake_loss: 0.0021828132008227543
+Models saved.
+Validation Loss after epoch 21 | avg_total_loss: 0.04562790722057626, avg_real_loss: 0.0020051299330048466, avg_fake_loss: 0.0019640167073875264
+Validation Loss after epoch 22 | avg_total_loss: 0.04552722047712352, avg_real_loss: 0.0019358161402664878, avg_fake_loss: 0.0019680916180683148
+Validation Loss after epoch 23 | avg_total_loss: 0.05298315195014348, avg_real_loss: 0.0018977458066483203, avg_fake_loss: 0.0018373371661967925
+Validation Loss after epoch 24 | avg_total_loss: 0.046397525112371184, avg_real_loss: 0.0017358895290542293, avg_fake_loss: 0.0016911210794303868
+Validation Loss after epoch 25 | avg_total_loss: 0.04438536966571937, avg_real_loss: 0.0016960948548355216, avg_fake_loss: 0.0016993225514385347
+Validation Loss after epoch 26 | avg_total_loss: 0.03989456035196781, avg_real_loss: 0.0015428822355445576, avg_fake_loss: 0.001542457936306459
+Models saved.
+Validation Loss after epoch 27 | avg_total_loss: 0.061777305864804496, avg_real_loss: 0.0014983522406829572, avg_fake_loss: 0.001424965275627737
+Validation Loss after epoch 28 | avg_total_loss: 0.03917666658054333, avg_real_loss: 0.0014619918105922439, avg_fake_loss: 0.0014756438479683286
+Models saved.
+Validation Loss after epoch 29 | avg_total_loss: 0.03736781615864586, avg_real_loss: 0.0013471418500852746, avg_fake_loss: 0.0013417118839365808
+Models saved.
+Validation Loss after epoch 30 | avg_total_loss: 0.038847291011463954, avg_real_loss: 0.0013731099976654593, avg_fake_loss: 0.0013794066522874542
+Validation Loss after epoch 31 | avg_total_loss: 0.03946367782112714, avg_real_loss: 0.0012384392446964175, avg_fake_loss: 0.0012234821302086315
+Validation Loss after epoch 32 | avg_total_loss: 0.05178555649881427, avg_real_loss: 0.0010500752250663936, avg_fake_loss: 0.0010115862745363768
+Validation Loss after epoch 33 | avg_total_loss: 0.03920511619464771, avg_real_loss: 0.0010008858044858317, avg_fake_loss: 0.0009948533025217821
+Validation Loss after epoch 34 | avg_total_loss: 0.04651875929856623, avg_real_loss: 0.0009923968039377516, avg_fake_loss: 0.0009886098040796413
+Validation Loss after epoch 35 | avg_total_loss: 0.0378320666936201, avg_real_loss: 0.0009471011580899358, avg_fake_loss: 0.00095594408324089
+Validation Loss after epoch 36 | avg_total_loss: 0.042170793673879395, avg_real_loss: 0.0008582476624035956, avg_fake_loss: 0.0008706765806277257
+Validation Loss after epoch 37 | avg_total_loss: 0.04243668561448922, avg_real_loss: 0.0009164432208431331, avg_fake_loss: 0.000897383617828726
+Validation Loss after epoch 38 | avg_total_loss: 0.041083938769392064, avg_real_loss: 0.0008887503299283216, avg_fake_loss: 0.0008737028834435183
+Validation Loss after epoch 39 | avg_total_loss: 0.04916357359773404, avg_real_loss: 0.0008448808063828462, avg_fake_loss: 0.000819373969460611
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.1_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.1_windSpeed10m.jpg
+Running with missing-rate=0.2 and max-missing-rate=0.15
+Calculated PRODUCT=36.00
+Using SEQ_LENGTH=64
+Validation Loss after epoch 0 | avg_total_loss: 0.40321110551421707, avg_real_loss: 0.07748287513449385, avg_fake_loss: 0.07473716321023735
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.17849083848901698, avg_real_loss: 0.030880323636370735, avg_fake_loss: 0.030075086331045307
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.14778655525800344, avg_real_loss: 0.019597469199750875, avg_fake_loss: 0.019420331721571652
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.12731346689366005, avg_real_loss: 0.015386463822545233, avg_fake_loss: 0.014562813791672926
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.13817053690955444, avg_real_loss: 0.012516444423110099, avg_fake_loss: 0.01146286348434719
+Validation Loss after epoch 5 | avg_total_loss: 0.08589327466246244, avg_real_loss: 0.010772508946624963, avg_fake_loss: 0.011011344431018507
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.07883724066856745, avg_real_loss: 0.009018726495874894, avg_fake_loss: 0.009233358492319649
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.07472249805121808, avg_real_loss: 0.0074438437492259455, avg_fake_loss: 0.007129529906386459
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.103423934631251, avg_real_loss: 0.006639010877021261, avg_fake_loss: 0.006114055742383809
+Validation Loss after epoch 9 | avg_total_loss: 0.060788546865050856, avg_real_loss: 0.005690193458183392, avg_fake_loss: 0.005647070743646976
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.09912222805055412, avg_real_loss: 0.00547566420927241, avg_fake_loss: 0.005031146637692645
+Validation Loss after epoch 11 | avg_total_loss: 0.06059076883704276, avg_real_loss: 0.004863462310183693, avg_fake_loss: 0.004921094325647966
+Models saved.
+Validation Loss after epoch 12 | avg_total_loss: 0.07298581523669732, avg_real_loss: 0.004235770534472288, avg_fake_loss: 0.0044230279084798456
+Validation Loss after epoch 13 | avg_total_loss: 0.05153934853906567, avg_real_loss: 0.0038502126290286716, avg_fake_loss: 0.003880160011200083
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.06635317699732007, avg_real_loss: 0.003575731679243413, avg_fake_loss: 0.0033922374840020327
+Validation Loss after epoch 15 | avg_total_loss: 0.06969765704628583, avg_real_loss: 0.003623344866256859, avg_fake_loss: 0.0034610179781511025
+Validation Loss after epoch 16 | avg_total_loss: 0.06167673329646523, avg_real_loss: 0.003207964350695948, avg_fake_loss: 0.0030567745955006496
+Validation Loss after epoch 17 | avg_total_loss: 0.044996864137214584, avg_real_loss: 0.003133760972854656, avg_fake_loss: 0.003144265989445754
+Models saved.
+Validation Loss after epoch 18 | avg_total_loss: 0.050860869018612684, avg_real_loss: 0.0029264992902156067, avg_fake_loss: 0.002883772425529723
+Validation Loss after epoch 19 | avg_total_loss: 0.05172272288316005, avg_real_loss: 0.002688483092808039, avg_fake_loss: 0.002666831431860054
+Validation Loss after epoch 20 | avg_total_loss: 0.08270934777888092, avg_real_loss: 0.0024385775401684884, avg_fake_loss: 0.0022452124457403616
+Validation Loss after epoch 21 | avg_total_loss: 0.06370484587308523, avg_real_loss: 0.0027415058009225774, avg_fake_loss: 0.0027441842122808906
+Validation Loss after epoch 22 | avg_total_loss: 0.05281000815936037, avg_real_loss: 0.002540445125133202, avg_fake_loss: 0.0024445471920173717
+Validation Loss after epoch 23 | avg_total_loss: 0.06384258002445505, avg_real_loss: 0.0023743786244980387, avg_fake_loss: 0.0023521703315546386
+Validation Loss after epoch 24 | avg_total_loss: 0.05565971704955037, avg_real_loss: 0.0022775665542261827, avg_fake_loss: 0.002166119888676582
+Validation Loss after epoch 25 | avg_total_loss: 0.06991986663558998, avg_real_loss: 0.0024032949350421898, avg_fake_loss: 0.0022374185091639694
+Validation Loss after epoch 26 | avg_total_loss: 0.053174748311977126, avg_real_loss: 0.002260776123384366, avg_fake_loss: 0.002199914174255084
+Validation Loss after epoch 27 | avg_total_loss: 0.052241894038947856, avg_real_loss: 0.0020627775827322054, avg_fake_loss: 0.0021046569470215487
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.15_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.15_windSpeed10m.jpg
+Running with missing-rate=0.2 and max-missing-rate=0.20
+Calculated PRODUCT=48.00
+Using SEQ_LENGTH=64
+Validation Loss after epoch 0 | avg_total_loss: 0.2782199572067003, avg_real_loss: 0.07368431220183501, avg_fake_loss: 0.07210804723404549
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.2434446050508602, avg_real_loss: 0.029976056032889598, avg_fake_loss: 0.02775054002130354
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.17261634686508695, avg_real_loss: 0.020440893096698297, avg_fake_loss: 0.019228291924338083
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.12793102216076208, avg_real_loss: 0.015823092940892722, avg_fake_loss: 0.015507813996157131
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.10276535989062206, avg_real_loss: 0.014176055562455912, avg_fake_loss: 0.014091297103142416
+Models saved.
+Validation Loss after epoch 5 | avg_total_loss: 0.10789854280851982, avg_real_loss: 0.011602054173881942, avg_fake_loss: 0.011203194980987825
+Validation Loss after epoch 6 | avg_total_loss: 0.1078166178352124, avg_real_loss: 0.009662236854736064, avg_fake_loss: 0.008932666148285608
+Validation Loss after epoch 7 | avg_total_loss: 0.078695922687247, avg_real_loss: 0.009029799317185944, avg_fake_loss: 0.008578102859492237
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.09976182958564243, avg_real_loss: 0.007544813010640241, avg_fake_loss: 0.006897895282285439
+Validation Loss after epoch 9 | avg_total_loss: 0.06480522504126704, avg_real_loss: 0.007502129137818073, avg_fake_loss: 0.007557677319021644
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.07895298906274743, avg_real_loss: 0.0063200693048939514, avg_fake_loss: 0.005887756080089792
+Validation Loss after epoch 11 | avg_total_loss: 0.05662904614330949, avg_real_loss: 0.005144058349164757, avg_fake_loss: 0.005184384320887762
+Models saved.
+Validation Loss after epoch 12 | avg_total_loss: 0.06285000834110621, avg_real_loss: 0.0048174888550027, avg_fake_loss: 0.004582676558277091
+Validation Loss after epoch 13 | avg_total_loss: 0.06286487829040836, avg_real_loss: 0.004314876369175476, avg_fake_loss: 0.004283746440164946
+Validation Loss after epoch 14 | avg_total_loss: 0.051984830784636574, avg_real_loss: 0.003981258801964892, avg_fake_loss: 0.003984157895870708
+Models saved.
+Validation Loss after epoch 15 | avg_total_loss: 0.06958651854782491, avg_real_loss: 0.003617976257275488, avg_fake_loss: 0.0034894516968445198
+Validation Loss after epoch 16 | avg_total_loss: 0.044007353283263544, avg_real_loss: 0.003226256130162526, avg_fake_loss: 0.0032025900656810482
+Models saved.
+Validation Loss after epoch 17 | avg_total_loss: 0.06382404318129695, avg_real_loss: 0.003131097154314252, avg_fake_loss: 0.0029362045807411544
+Validation Loss after epoch 18 | avg_total_loss: 0.06691020304286802, avg_real_loss: 0.0033981566241866835, avg_fake_loss: 0.0035664204923385704
+Validation Loss after epoch 19 | avg_total_loss: 0.053481549427316, avg_real_loss: 0.002998931852572069, avg_fake_loss: 0.0028882339609333793
+Validation Loss after epoch 20 | avg_total_loss: 0.07422747714696704, avg_real_loss: 0.002857833361328655, avg_fake_loss: 0.002611046320305684
+Validation Loss after epoch 21 | avg_total_loss: 0.07743212892799764, avg_real_loss: 0.002917640672593906, avg_fake_loss: 0.0026534831157658955
+Validation Loss after epoch 22 | avg_total_loss: 0.04237423771740617, avg_real_loss: 0.0026801595420299753, avg_fake_loss: 0.002689791129071366
+Models saved.
+Validation Loss after epoch 23 | avg_total_loss: 0.06774144388131194, avg_real_loss: 0.002924605496101887, avg_fake_loss: 0.002695568632712034
+Validation Loss after epoch 24 | avg_total_loss: 0.050666660422811635, avg_real_loss: 0.0027841184307141483, avg_fake_loss: 0.0026601476475244037
+Validation Loss after epoch 25 | avg_total_loss: 0.051435614256439985, avg_real_loss: 0.0024196001688471516, avg_fake_loss: 0.002301343166067995
+Validation Loss after epoch 26 | avg_total_loss: 0.04232174319189948, avg_real_loss: 0.0023192104291976305, avg_fake_loss: 0.0023000523215159774
+Models saved.
+Validation Loss after epoch 27 | avg_total_loss: 0.050172555788948726, avg_real_loss: 0.002094236759443742, avg_fake_loss: 0.0020090801628759583
+Validation Loss after epoch 28 | avg_total_loss: 0.045519882611729005, avg_real_loss: 0.0019571580546530517, avg_fake_loss: 0.0018786589986317464
+Validation Loss after epoch 29 | avg_total_loss: 0.06687230385235839, avg_real_loss: 0.0018910445175385354, avg_fake_loss: 0.0017278963020323096
+Validation Loss after epoch 30 | avg_total_loss: 0.04163677255446847, avg_real_loss: 0.001748184283339494, avg_fake_loss: 0.0017290425021201372
+Models saved.
+Validation Loss after epoch 31 | avg_total_loss: 0.05400375734913994, avg_real_loss: 0.0015376655564240708, avg_fake_loss: 0.0015990064082969282
+Validation Loss after epoch 32 | avg_total_loss: 0.060604395093144595, avg_real_loss: 0.0015145951844248418, avg_fake_loss: 0.0014448613195831108
+Validation Loss after epoch 33 | avg_total_loss: 0.047116313633081074, avg_real_loss: 0.0015251312146869463, avg_fake_loss: 0.0014481292581311554
+Validation Loss after epoch 34 | avg_total_loss: 0.047368508184681066, avg_real_loss: 0.0014637158192517992, avg_fake_loss: 0.001394464569858502
+Validation Loss after epoch 35 | avg_total_loss: 0.0468092670513166, avg_real_loss: 0.0012958253060492712, avg_fake_loss: 0.0012656997628132435
+Validation Loss after epoch 36 | avg_total_loss: 0.04091776761452894, avg_real_loss: 0.001325846479802921, avg_fake_loss: 0.0013244549045339227
+Models saved.
+Validation Loss after epoch 37 | avg_total_loss: 0.05045946843519404, avg_real_loss: 0.0011043736547533725, avg_fake_loss: 0.0011451396527951835
+Validation Loss after epoch 38 | avg_total_loss: 0.04097276483033154, avg_real_loss: 0.00099698465940467, avg_fake_loss: 0.0009948126279522439
+Validation Loss after epoch 39 | avg_total_loss: 0.044835018950539665, avg_real_loss: 0.0009194636667096937, avg_fake_loss: 0.0008778955427162047
+Validation Loss after epoch 40 | avg_total_loss: 0.04222576486299167, avg_real_loss: 0.000881700189721242, avg_fake_loss: 0.0008479299730105275
+Validation Loss after epoch 41 | avg_total_loss: 0.04410535676052441, avg_real_loss: 0.000829582941888303, avg_fake_loss: 0.000789821267480383
+Validation Loss after epoch 42 | avg_total_loss: 0.05145690811646951, avg_real_loss: 0.0007917878565667952, avg_fake_loss: 0.0008012497604107233
+Validation Loss after epoch 43 | avg_total_loss: 0.045009214078655116, avg_real_loss: 0.000739494217496768, avg_fake_loss: 0.0007101584845725951
+Validation Loss after epoch 44 | avg_total_loss: 0.04512094676091864, avg_real_loss: 0.0006109141238109285, avg_fake_loss: 0.0005998158539532105
+Validation Loss after epoch 45 | avg_total_loss: 0.056172911983889504, avg_real_loss: 0.0006901552394107992, avg_fake_loss: 0.0006380885905535841
+Validation Loss after epoch 46 | avg_total_loss: 0.044043097091284955, avg_real_loss: 0.000666131530542279, avg_fake_loss: 0.000639499314569843
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.2_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.2_mmr0.2_windSpeed10m.jpg
+Running with missing-rate=0.2 and max-missing-rate=0.25
+Calculated PRODUCT=60.00
+Using SEQ_LENGTH=128
+Validation Loss after epoch 0 | avg_total_loss: 0.3070310403903325, avg_real_loss: 0.038531704236649804, avg_fake_loss: 0.03807218962659439
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.17948996275663376, avg_real_loss: 0.02134693509692119, avg_fake_loss: 0.02121854583836264
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.16480475871099365, avg_real_loss: 0.01425806355352203, avg_fake_loss: 0.014339150343504217
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.16551962515546215, avg_real_loss: 0.011151847067392535, avg_fake_loss: 0.012278413917455409
+Validation Loss after epoch 4 | avg_total_loss: 0.1279731828512417, avg_real_loss: 0.008799479989748862, avg_fake_loss: 0.009351507799389461
+Models saved.
+Validation Loss after epoch 5 | avg_total_loss: 0.1082246687470211, avg_real_loss: 0.008587914855322905, avg_fake_loss: 0.008048425596724782
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.137409841020902, avg_real_loss: 0.0077276142805607784, avg_fake_loss: 0.0071209810493100024
+Validation Loss after epoch 7 | avg_total_loss: 0.11353252300371726, avg_real_loss: 0.008966999413031671, avg_fake_loss: 0.008338791861509284
+Validation Loss after epoch 8 | avg_total_loss: 0.11198158096522093, avg_real_loss: 0.008534804685041308, avg_fake_loss: 0.00896420179762774
+Validation Loss after epoch 9 | avg_total_loss: 0.08636269935717185, avg_real_loss: 0.005625026636860437, avg_fake_loss: 0.005322039690023909
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.09113611332658264, avg_real_loss: 0.004605463020400041, avg_fake_loss: 0.004259180381066269
+Validation Loss after epoch 11 | avg_total_loss: 0.0818537769632207, avg_real_loss: 0.004616487868285428, avg_fake_loss: 0.004608093780310203
+Models saved.
+Validation Loss after epoch 12 | avg_total_loss: 0.09096001781937149, avg_real_loss: 0.0048936864606932634, avg_fake_loss: 0.004540797588156743
+Validation Loss after epoch 13 | avg_total_loss: 0.08070162947600086, avg_real_loss: 0.003992093131980962, avg_fake_loss: 0.0038581888204336995
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.07422274402860138, avg_real_loss: 0.00375180272385478, avg_fake_loss: 0.003722105834943553
+Models saved.
+Validation Loss after epoch 15 | avg_total_loss: 0.07823413724286689, avg_real_loss: 0.003008677468945583, avg_fake_loss: 0.0029603830900871092
+Validation Loss after epoch 16 | avg_total_loss: 0.07259022346180347, avg_real_loss: 0.002788182732830238, avg_fake_loss: 0.002730108972173184
+Models saved.
+Validation Loss after epoch 17 | avg_total_loss: 0.06874441640037629, avg_real_loss: 0.0027701739131266046, avg_fake_loss: 0.0027202583538989225
+Models saved.
+Validation Loss after epoch 18 | avg_total_loss: 0.07150286249816418, avg_real_loss: 0.00239966905145492, avg_fake_loss: 0.002269898289038489
+Validation Loss after epoch 19 | avg_total_loss: 0.07110347469440764, avg_real_loss: 0.0021028571484041298, avg_fake_loss: 0.001983674071703313
+Validation Loss after epoch 20 | avg_total_loss: 0.07025415957387951, avg_real_loss: 0.001846546541653677, avg_fake_loss: 0.0018853579014022318
+Validation Loss after epoch 21 | avg_total_loss: 0.06389233407874902, avg_real_loss: 0.0015024502192520434, avg_fake_loss: 0.001502793301672985
+Models saved.
+Validation Loss after epoch 22 | avg_total_loss: 0.06617062368119757, avg_real_loss: 0.0013624179377479272, avg_fake_loss: 0.0013215113059333009
+Validation Loss after epoch 23 | avg_total_loss: 0.06139326447414027, avg_real_loss: 0.0012603588580128013, avg_fake_loss: 0.0012546447477588016
+Models saved.
+Validation Loss after epoch 24 | avg_total_loss: 0.06651199577997129, avg_real_loss: 0.0011778718390915957, avg_fake_loss: 0.001134225687969269
+Validation Loss after epoch 25 | avg_total_loss: 0.06994011858478189, avg_real_loss: 0.0013362401077756658, avg_fake_loss: 0.001385576890445211
+Validation Loss after epoch 26 | avg_total_loss: 0.08767862887018257, avg_real_loss: 0.0013342092182332028, avg_fake_loss: 0.0011979149745052888
+Validation Loss after epoch 27 | avg_total_loss: 0.063645600548221, avg_real_loss: 0.0013980275576209857, avg_fake_loss: 0.0013950882971079813
+Validation Loss after epoch 28 | avg_total_loss: 0.0653047853977316, avg_real_loss: 0.0012756103840527227, avg_fake_loss: 0.0012760227594602231
+Validation Loss after epoch 29 | avg_total_loss: 0.07255915573073758, avg_real_loss: 0.0011087441008486268, avg_fake_loss: 0.0010900293952242162
+Validation Loss after epoch 30 | avg_total_loss: 0.06994945840496156, avg_real_loss: 0.0011471827682625088, avg_fake_loss: 0.001179130971043681
+Validation Loss after epoch 31 | avg_total_loss: 0.06737098879077369, avg_real_loss: 0.0010672931158397761, avg_fake_loss: 0.0010292388825392765
+Validation Loss after epoch 32 | avg_total_loss: 0.0776909218273229, avg_real_loss: 0.001419487579065996, avg_fake_loss: 0.0013135488875882907
+Validation Loss after epoch 33 | avg_total_loss: 0.06873379528729452, avg_real_loss: 0.0015922507558975162, avg_fake_loss: 0.001522102320450358
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.2_mmr0.25_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.2_mmr0.25_windSpeed10m.jpg
+Running with missing-rate=0.4 and max-missing-rate=0.10
+Calculated PRODUCT=48.00
+Using SEQ_LENGTH=64
+Validation Loss after epoch 0 | avg_total_loss: 0.32274839644496506, avg_real_loss: 0.07342450783864872, avg_fake_loss: 0.07431755939850936
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.21406125498784556, avg_real_loss: 0.02936805024541713, avg_fake_loss: 0.02917288535752812
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.1844554515303792, avg_real_loss: 0.01889138442237635, avg_fake_loss: 0.018188211739667365
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.12766904202667442, avg_real_loss: 0.013763562398585113, avg_fake_loss: 0.013777124670308989
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.13719654385302518, avg_real_loss: 0.011020107257708505, avg_fake_loss: 0.011464943077314544
+Validation Loss after epoch 5 | avg_total_loss: 0.1925496402624491, avg_real_loss: 0.00945711203825635, avg_fake_loss: 0.009307429660111666
+Validation Loss after epoch 6 | avg_total_loss: 0.0988577374735394, avg_real_loss: 0.0080580564492659, avg_fake_loss: 0.007819182101033023
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.09461499972117914, avg_real_loss: 0.007237540570565978, avg_fake_loss: 0.007319911886510011
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.13623381929623113, avg_real_loss: 0.006664532538805459, avg_fake_loss: 0.006883654164502749
+Validation Loss after epoch 9 | avg_total_loss: 0.08814045273371644, avg_real_loss: 0.006032253395312944, avg_fake_loss: 0.005976891371648054
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.08312552452490136, avg_real_loss: 0.005352270852371647, avg_fake_loss: 0.005148124371378406
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.0942886075055277, avg_real_loss: 0.004662739975075866, avg_fake_loss: 0.004578605225007679
+Validation Loss after epoch 12 | avg_total_loss: 0.0747191696553617, avg_real_loss: 0.004212761706848805, avg_fake_loss: 0.004279531978976888
+Models saved.
+Validation Loss after epoch 13 | avg_total_loss: 0.08737507381954708, avg_real_loss: 0.0036709017648890213, avg_fake_loss: 0.0035010421887744923
+Validation Loss after epoch 14 | avg_total_loss: 0.08568492390819497, avg_real_loss: 0.0034102350788039935, avg_fake_loss: 0.0034124100694080464
+Validation Loss after epoch 15 | avg_total_loss: 0.05836785277603446, avg_real_loss: 0.0030720989389747782, avg_fake_loss: 0.003100358053563616
+Models saved.
+Validation Loss after epoch 16 | avg_total_loss: 0.061314337307939656, avg_real_loss: 0.002796107733219459, avg_fake_loss: 0.0027360273462191625
+Validation Loss after epoch 17 | avg_total_loss: 0.07584399458121609, avg_real_loss: 0.0026154792049547307, avg_fake_loss: 0.0025030239768376625
+Validation Loss after epoch 18 | avg_total_loss: 0.07635690946433996, avg_real_loss: 0.002374124338825208, avg_fake_loss: 0.0024634579832137032
+Validation Loss after epoch 19 | avg_total_loss: 0.07136526190348573, avg_real_loss: 0.00217351593341477, avg_fake_loss: 0.002243381179239903
+Validation Loss after epoch 20 | avg_total_loss: 0.05928796207582628, avg_real_loss: 0.0020141056550012247, avg_fake_loss: 0.001988977156076077
+Validation Loss after epoch 21 | avg_total_loss: 0.0510921875467977, avg_real_loss: 0.001907215390757129, avg_fake_loss: 0.0018835971383629618
+Models saved.
+Validation Loss after epoch 22 | avg_total_loss: 0.051723032887722994, avg_real_loss: 0.0018456186281164755, avg_fake_loss: 0.0018462968040005984
+Validation Loss after epoch 23 | avg_total_loss: 0.09486169680147558, avg_real_loss: 0.0017510263463230552, avg_fake_loss: 0.0016986859704342645
+Validation Loss after epoch 24 | avg_total_loss: 0.06979717641464762, avg_real_loss: 0.0017101677005632303, avg_fake_loss: 0.0016317752463667577
+Validation Loss after epoch 25 | avg_total_loss: 0.051819362400754077, avg_real_loss: 0.0015549705681592427, avg_fake_loss: 0.0015251658954405906
+Validation Loss after epoch 26 | avg_total_loss: 0.06010133340149312, avg_real_loss: 0.001451950627253265, avg_fake_loss: 0.001485194592434611
+Validation Loss after epoch 27 | avg_total_loss: 0.047517407886885306, avg_real_loss: 0.001333060468282752, avg_fake_loss: 0.0013455962667845794
+Models saved.
+Validation Loss after epoch 28 | avg_total_loss: 0.059647145404203517, avg_real_loss: 0.0012537715862177916, avg_fake_loss: 0.0012131211492610542
+Validation Loss after epoch 29 | avg_total_loss: 0.04980237701454678, avg_real_loss: 0.0012622052658903034, avg_fake_loss: 0.0012386838395802959
+Validation Loss after epoch 30 | avg_total_loss: 0.054010719916707764, avg_real_loss: 0.0011642334661824075, avg_fake_loss: 0.001137404191320309
+Validation Loss after epoch 31 | avg_total_loss: 0.05322789164209688, avg_real_loss: 0.0011468323048304868, avg_fake_loss: 0.0011262248767338493
+Validation Loss after epoch 32 | avg_total_loss: 0.054425094578717206, avg_real_loss: 0.0011026051581358991, avg_fake_loss: 0.0010778266335585835
+Validation Loss after epoch 33 | avg_total_loss: 0.0502236342007244, avg_real_loss: 0.0009935821604763937, avg_fake_loss: 0.0009940264060640254
+Validation Loss after epoch 34 | avg_total_loss: 0.06457028829970875, avg_real_loss: 0.0009290416460685634, avg_fake_loss: 0.0008984726296762961
+Validation Loss after epoch 35 | avg_total_loss: 0.05004224422815684, avg_real_loss: 0.0008658938459120691, avg_fake_loss: 0.0008792531223514596
+Validation Loss after epoch 36 | avg_total_loss: 0.06135500554700155, avg_real_loss: 0.0008042385232181767, avg_fake_loss: 0.0007751817080330708
+Validation Loss after epoch 37 | avg_total_loss: 0.056834117333228525, avg_real_loss: 0.0007830632439927777, avg_fake_loss: 0.0007600322620615967
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.4_mmr0.1_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs64_e100_nla6_sle64_p10_continuous_mr0.4_mmr0.1_windSpeed10m.jpg
+Running with missing-rate=0.4 and max-missing-rate=0.15
+Calculated PRODUCT=72.00
+Using SEQ_LENGTH=128
+Validation Loss after epoch 0 | avg_total_loss: 0.2662632560564412, avg_real_loss: 0.035858357273456126, avg_fake_loss: 0.03364895646356874
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.1596134276025825, avg_real_loss: 0.013636724505987432, avg_fake_loss: 0.01346504253645738
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.1473501335001654, avg_real_loss: 0.010168785384545723, avg_fake_loss: 0.010104484700908264
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.09673022468470865, avg_real_loss: 0.008680093994674584, avg_fake_loss: 0.00863161562786748
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.1211541849705908, avg_real_loss: 0.007721588338932229, avg_fake_loss: 0.007804095098334882
+Validation Loss after epoch 5 | avg_total_loss: 0.11599242583745056, avg_real_loss: 0.007327565392996702, avg_fake_loss: 0.007640525401155982
+Validation Loss after epoch 6 | avg_total_loss: 0.08256779900855488, avg_real_loss: 0.006365831993106339, avg_fake_loss: 0.0062347483536642455
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.0953931553910176, avg_real_loss: 0.004966633931164526, avg_fake_loss: 0.004749328189063817
+Validation Loss after epoch 8 | avg_total_loss: 0.08923922675765222, avg_real_loss: 0.004451922044002761, avg_fake_loss: 0.0045542371355825
+Validation Loss after epoch 9 | avg_total_loss: 0.11802647552556461, avg_real_loss: 0.004582100703070561, avg_fake_loss: 0.004276120892932845
+Validation Loss after epoch 10 | avg_total_loss: 0.0747835339150495, avg_real_loss: 0.003933606999150167, avg_fake_loss: 0.0038681888707085615
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.0929956945280234, avg_real_loss: 0.0032822414844607315, avg_fake_loss: 0.003318104608398345
+Validation Loss after epoch 12 | avg_total_loss: 0.08017260731301373, avg_real_loss: 0.0026766159248331357, avg_fake_loss: 0.0027838283826390076
+Validation Loss after epoch 13 | avg_total_loss: 0.06018985756155518, avg_real_loss: 0.0025274584186263382, avg_fake_loss: 0.00250401732369533
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.0862306139121453, avg_real_loss: 0.002493038204395109, avg_fake_loss: 0.0025136897359819463
+Validation Loss after epoch 15 | avg_total_loss: 0.07575868846227725, avg_real_loss: 0.0025025090500194994, avg_fake_loss: 0.0023888246667209184
+Validation Loss after epoch 16 | avg_total_loss: 0.07560306290785472, avg_real_loss: 0.002368700994540834, avg_fake_loss: 0.0022649886733334926
+Validation Loss after epoch 17 | avg_total_loss: 0.056450771995716624, avg_real_loss: 0.002149800821724865, avg_fake_loss: 0.002174971162781326
+Models saved.
+Validation Loss after epoch 18 | avg_total_loss: 0.057916868891980916, avg_real_loss: 0.001941331823925591, avg_fake_loss: 0.001903661384454204
+Validation Loss after epoch 19 | avg_total_loss: 0.0664771565546592, avg_real_loss: 0.0017215464257686916, avg_fake_loss: 0.0017158047186159012
+Validation Loss after epoch 20 | avg_total_loss: 0.06789764441135857, avg_real_loss: 0.0015400727570522577, avg_fake_loss: 0.001480863529852488
+Validation Loss after epoch 21 | avg_total_loss: 0.05483159878187709, avg_real_loss: 0.001338439146315472, avg_fake_loss: 0.0013513207571425785
+Models saved.
+Validation Loss after epoch 22 | avg_total_loss: 0.059185747885041766, avg_real_loss: 0.0012252721806160277, avg_fake_loss: 0.0012084299265148325
+Validation Loss after epoch 23 | avg_total_loss: 0.0512029817327857, avg_real_loss: 0.0011362353414167753, avg_fake_loss: 0.0011337675920610006
+Models saved.
+Validation Loss after epoch 24 | avg_total_loss: 0.05353148276400235, avg_real_loss: 0.0010410297868980302, avg_fake_loss: 0.0010308842320227996
+Validation Loss after epoch 25 | avg_total_loss: 0.054381295986887485, avg_real_loss: 0.0009952402130390208, avg_fake_loss: 0.0010058964770804676
+Validation Loss after epoch 26 | avg_total_loss: 0.06119945997165309, avg_real_loss: 0.0009491425023750506, avg_fake_loss: 0.0009748428710736334
+Validation Loss after epoch 27 | avg_total_loss: 0.05404981132596731, avg_real_loss: 0.0009272543668177807, avg_fake_loss: 0.0009252907895845257
+Validation Loss after epoch 28 | avg_total_loss: 0.05443243863474992, avg_real_loss: 0.0009380662797613897, avg_fake_loss: 0.0009244612026830307
+Validation Loss after epoch 29 | avg_total_loss: 0.05243119173165825, avg_real_loss: 0.0008621158000702659, avg_fake_loss: 0.0008625362097518519
+Validation Loss after epoch 30 | avg_total_loss: 0.05477963525077535, avg_real_loss: 0.0008733157123464884, avg_fake_loss: 0.0008864900834547976
+Validation Loss after epoch 31 | avg_total_loss: 0.054414618398166366, avg_real_loss: 0.0008239285994528069, avg_fake_loss: 0.000834078034838765
+Validation Loss after epoch 32 | avg_total_loss: 0.052711356793426804, avg_real_loss: 0.0007783154982866512, avg_fake_loss: 0.000778230540971789
+Validation Loss after epoch 33 | avg_total_loss: 0.06460973692850934, avg_real_loss: 0.0007031163315534488, avg_fake_loss: 0.0007213207621437808
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.4_mmr0.15_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.4_mmr0.15_windSpeed10m.jpg
+Running with missing-rate=0.4 and max-missing-rate=0.20
+Calculated PRODUCT=96.00
+Using SEQ_LENGTH=256
+Validation Loss after epoch 0 | avg_total_loss: 0.19290990996010163, avg_real_loss: 0.01734631278497331, avg_fake_loss: 0.016952180413200575
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.19587373426731894, avg_real_loss: 0.011437915977748, avg_fake_loss: 0.01192148618728799
+Validation Loss after epoch 2 | avg_total_loss: 0.1503859317916281, avg_real_loss: 0.004947418675703161, avg_fake_loss: 0.00519393863813842
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.16151830356787233, avg_real_loss: 0.006405714200809598, avg_fake_loss: 0.006930471644462908
+Validation Loss after epoch 4 | avg_total_loss: 0.10806035995483398, avg_real_loss: 0.0071965744308031656, avg_fake_loss: 0.006880290765205727
+Models saved.
+Validation Loss after epoch 5 | avg_total_loss: 0.11984699964523315, avg_real_loss: 0.00910651490694898, avg_fake_loss: 0.008289635907310773
+Validation Loss after epoch 6 | avg_total_loss: 0.12551405390395837, avg_real_loss: 0.008087262566037038, avg_fake_loss: 0.007073728545733234
+Validation Loss after epoch 7 | avg_total_loss: 0.09576840326189995, avg_real_loss: 0.009013183346456465, avg_fake_loss: 0.008811654235400698
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.08853608490351368, avg_real_loss: 0.004947375855408609, avg_fake_loss: 0.0049639331409707665
+Models saved.
+Validation Loss after epoch 9 | avg_total_loss: 0.10358365734710413, avg_real_loss: 0.0031162860241773374, avg_fake_loss: 0.003086580490857801
+Validation Loss after epoch 10 | avg_total_loss: 0.0883613387670587, avg_real_loss: 0.0021769914447384723, avg_fake_loss: 0.0022444174392148852
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.11437768248074195, avg_real_loss: 0.001587978731977808, avg_fake_loss: 0.0018376374843201654
+Validation Loss after epoch 12 | avg_total_loss: 0.09025749629911255, avg_real_loss: 0.0013587392510517554, avg_fake_loss: 0.0013419751776382327
+Validation Loss after epoch 13 | avg_total_loss: 0.07293051470290213, avg_real_loss: 0.0011700753906659562, avg_fake_loss: 0.0011665111301494215
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.08183191081180292, avg_real_loss: 0.0010963524366482435, avg_fake_loss: 0.001004006347262903
+Validation Loss after epoch 15 | avg_total_loss: 0.07238216489991721, avg_real_loss: 0.0013140525894842164, avg_fake_loss: 0.0013065947877133593
+Models saved.
+Validation Loss after epoch 16 | avg_total_loss: 0.07661383221035495, avg_real_loss: 0.0010979866680880899, avg_fake_loss: 0.0011410798863781726
+Validation Loss after epoch 17 | avg_total_loss: 0.07628631613710347, avg_real_loss: 0.0008862883260007948, avg_fake_loss: 0.0009212241172516609
+Validation Loss after epoch 18 | avg_total_loss: 0.07938714928048499, avg_real_loss: 0.0007050305498791311, avg_fake_loss: 0.0006905472820268615
+Validation Loss after epoch 19 | avg_total_loss: 0.0662703854853616, avg_real_loss: 0.0006719922821503133, avg_fake_loss: 0.0006519625620806918
+Models saved.
+Validation Loss after epoch 20 | avg_total_loss: 0.07410374371444478, avg_real_loss: 0.0006307453055770191, avg_fake_loss: 0.000582711588803624
+Validation Loss after epoch 21 | avg_total_loss: 0.07635324722265496, avg_real_loss: 0.0006689840006669436, avg_fake_loss: 0.0006238820402787122
+Validation Loss after epoch 22 | avg_total_loss: 0.0857834686689517, avg_real_loss: 0.0007556051817065215, avg_fake_loss: 0.0008302105553037323
+Validation Loss after epoch 23 | avg_total_loss: 0.07592708716059432, avg_real_loss: 0.000629757421419901, avg_fake_loss: 0.0006351548235055388
+Validation Loss after epoch 24 | avg_total_loss: 0.08534362605389427, avg_real_loss: 0.0007460611240650691, avg_fake_loss: 0.0008088971799759962
+Validation Loss after epoch 25 | avg_total_loss: 0.08076058295281495, avg_real_loss: 0.0007541769934023785, avg_fake_loss: 0.0007905165788114947
+Validation Loss after epoch 26 | avg_total_loss: 0.095282182097435, avg_real_loss: 0.0006380812222179135, avg_fake_loss: 0.0006231953336870955
+Validation Loss after epoch 27 | avg_total_loss: 0.07442543951465803, avg_real_loss: 0.0006609708207714208, avg_fake_loss: 0.0006314031240489224
+Validation Loss after epoch 28 | avg_total_loss: 0.06740534031654105, avg_real_loss: 0.0006148517431403674, avg_fake_loss: 0.0006026098725509227
+Validation Loss after epoch 29 | avg_total_loss: 0.07196162487654124, avg_real_loss: 0.0005380596977535306, avg_fake_loss: 0.0005197889147572877
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.2_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.2_windSpeed10m.jpg
+Running with missing-rate=0.4 and max-missing-rate=0.25
+Calculated PRODUCT=120.00
+Using SEQ_LENGTH=256
+Validation Loss after epoch 0 | avg_total_loss: 0.2724496446111623, avg_real_loss: 0.01578524136258399, avg_fake_loss: 0.0161935413694557
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.1639855826163993, avg_real_loss: 0.009324933155713713, avg_fake_loss: 0.009183127296102397
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.147602498969611, avg_real_loss: 0.006830084288273664, avg_fake_loss: 0.006737990838968579
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.1579210762591923, avg_real_loss: 0.006438947789480581, avg_fake_loss: 0.006119545781984925
+Validation Loss after epoch 4 | avg_total_loss: 0.1319056975052637, avg_real_loss: 0.007083333973937175, avg_fake_loss: 0.006864310612025506
+Models saved.
+Validation Loss after epoch 5 | avg_total_loss: 0.12114463154883946, avg_real_loss: 0.005599625929094413, avg_fake_loss: 0.005531341768801212
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.11674018839702886, avg_real_loss: 0.004677178406649653, avg_fake_loss: 0.004451089634505265
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.11040863975444261, avg_real_loss: 0.004078529645031428, avg_fake_loss: 0.0038923740743056815
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.09636122021166717, avg_real_loss: 0.0029911869582172263, avg_fake_loss: 0.0029390375403796926
+Models saved.
+Validation Loss after epoch 9 | avg_total_loss: 0.11375604164512719, avg_real_loss: 0.0025196294916574567, avg_fake_loss: 0.0026559683953083176
+Validation Loss after epoch 10 | avg_total_loss: 0.11490194126963615, avg_real_loss: 0.0017444112317581825, avg_fake_loss: 0.0016341410228051245
+Validation Loss after epoch 11 | avg_total_loss: 0.09307705610990524, avg_real_loss: 0.0015121767424074385, avg_fake_loss: 0.001498528413803262
+Models saved.
+Validation Loss after epoch 12 | avg_total_loss: 0.08284232097075266, avg_real_loss: 0.0012796033047112253, avg_fake_loss: 0.001294757441535373
+Models saved.
+Validation Loss after epoch 13 | avg_total_loss: 0.10340684531804394, avg_real_loss: 0.0011615369636702405, avg_fake_loss: 0.0011984082127181703
+Validation Loss after epoch 14 | avg_total_loss: 0.10257950753850095, avg_real_loss: 0.0013793827349539189, avg_fake_loss: 0.0013487524822053006
+Validation Loss after epoch 15 | avg_total_loss: 0.08598280500839739, avg_real_loss: 0.001463451498078511, avg_fake_loss: 0.0014506423373377936
+Validation Loss after epoch 16 | avg_total_loss: 0.08399180038010373, avg_real_loss: 0.00131652202553061, avg_fake_loss: 0.0012689799631891005
+Validation Loss after epoch 17 | avg_total_loss: 0.08490010854952476, avg_real_loss: 0.001181427837924703, avg_fake_loss: 0.0011457659300718019
+Validation Loss after epoch 18 | avg_total_loss: 0.08165759111151975, avg_real_loss: 0.0010072713433627917, avg_fake_loss: 0.0010160132574931007
+Models saved.
+Validation Loss after epoch 19 | avg_total_loss: 0.08048536655876566, avg_real_loss: 0.0009466330315369894, avg_fake_loss: 0.0009585294293869725
+Models saved.
+Validation Loss after epoch 20 | avg_total_loss: 0.08855714342173408, avg_real_loss: 0.000928609784322736, avg_fake_loss: 0.0009170288651469437
+Validation Loss after epoch 21 | avg_total_loss: 0.07719104660346228, avg_real_loss: 0.0009256470315021408, avg_fake_loss: 0.0009324317729538854
+Models saved.
+Validation Loss after epoch 22 | avg_total_loss: 0.08042017195154638, avg_real_loss: 0.0012085081458173912, avg_fake_loss: 0.0012047812222804437
+Validation Loss after epoch 23 | avg_total_loss: 0.08035180761533625, avg_real_loss: 0.0010044558610602776, avg_fake_loss: 0.0009929891521631576
+Validation Loss after epoch 24 | avg_total_loss: 0.08051510987912908, avg_real_loss: 0.0008458894650068353, avg_fake_loss: 0.0008247609914499609
+Validation Loss after epoch 25 | avg_total_loss: 0.08403768746511024, avg_real_loss: 0.0007499405773534603, avg_fake_loss: 0.0007312309231458451
+Validation Loss after epoch 26 | avg_total_loss: 0.07849732589195757, avg_real_loss: 0.0006772252869696411, avg_fake_loss: 0.0006652844903703012
+Validation Loss after epoch 27 | avg_total_loss: 0.0798559736679582, avg_real_loss: 0.0006733217417015968, avg_fake_loss: 0.0006703104171559543
+Validation Loss after epoch 28 | avg_total_loss: 0.07450198031523649, avg_real_loss: 0.0006350998763296314, avg_fake_loss: 0.0006322787513079889
+Models saved.
+Validation Loss after epoch 29 | avg_total_loss: 0.07668426950626514, avg_real_loss: 0.0005649236606105286, avg_fake_loss: 0.0005754592789076816
+Validation Loss after epoch 30 | avg_total_loss: 0.07444083252373863, avg_real_loss: 0.0005007909357492976, avg_fake_loss: 0.0005075887636528077
+Models saved.
+Validation Loss after epoch 31 | avg_total_loss: 0.0792562549605089, avg_real_loss: 0.0005170371835393941, avg_fake_loss: 0.0005041116930763511
+Validation Loss after epoch 32 | avg_total_loss: 0.08190477803787764, avg_real_loss: 0.0005302449760218972, avg_fake_loss: 0.0005158990114817725
+Validation Loss after epoch 33 | avg_total_loss: 0.08134680487872924, avg_real_loss: 0.000548074854818611, avg_fake_loss: 0.0005456210971768836
+Validation Loss after epoch 34 | avg_total_loss: 0.07751335948705673, avg_real_loss: 0.00052884263020721, avg_fake_loss: 0.0005219589545638027
+Validation Loss after epoch 35 | avg_total_loss: 0.07847999611540753, avg_real_loss: 0.0005193409340469824, avg_fake_loss: 0.0005242334976655376
+Validation Loss after epoch 36 | avg_total_loss: 0.07942005345488296, avg_real_loss: 0.00047029041674892037, avg_fake_loss: 0.000475496136727195
+Validation Loss after epoch 37 | avg_total_loss: 0.11487962480853586, avg_real_loss: 0.0005704105954945964, avg_fake_loss: 0.0005461327365243479
+Validation Loss after epoch 38 | avg_total_loss: 0.08822693982545067, avg_real_loss: 0.0009743264338741189, avg_fake_loss: 0.0009908444241291897
+Validation Loss after epoch 39 | avg_total_loss: 0.08625799099750378, avg_real_loss: 0.0008875657804310322, avg_fake_loss: 0.0008612271716736038
+Validation Loss after epoch 40 | avg_total_loss: 0.08475416482371442, avg_real_loss: 0.0007071258176652276, avg_fake_loss: 0.0006959446507286938
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.25_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.4_mmr0.25_windSpeed10m.jpg
+Running with missing-rate=0.6 and max-missing-rate=0.10
+Calculated PRODUCT=72.00
+Using SEQ_LENGTH=128
+Validation Loss after epoch 0 | avg_total_loss: 0.23849586190448868, avg_real_loss: 0.033033314471443496, avg_fake_loss: 0.032171480254166655
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.20593771876560318, avg_real_loss: 0.016123851036859885, avg_fake_loss: 0.015865087845466204
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.14954716795020634, avg_real_loss: 0.011365196590001384, avg_fake_loss: 0.010959268573464619
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.20013900246057245, avg_real_loss: 0.009853589180339541, avg_fake_loss: 0.009086526568151183
+Validation Loss after epoch 4 | avg_total_loss: 0.15020798622734016, avg_real_loss: 0.009492066779380871, avg_fake_loss: 0.008872376108128164
+Validation Loss after epoch 5 | avg_total_loss: 0.1382378132806884, avg_real_loss: 0.008453513650844494, avg_fake_loss: 0.008980998640052147
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.09780128765851259, avg_real_loss: 0.006839707222146292, avg_fake_loss: 0.006638866383582354
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.13336250848240322, avg_real_loss: 0.00614029985283398, avg_fake_loss: 0.006380623245301346
+Validation Loss after epoch 8 | avg_total_loss: 0.08820690949343973, avg_real_loss: 0.004724531402138786, avg_fake_loss: 0.004852301208302379
+Models saved.
+Validation Loss after epoch 9 | avg_total_loss: 0.07591162259793943, avg_real_loss: 0.0037973962349092793, avg_fake_loss: 0.0037272784910682174
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.06903491686615679, avg_real_loss: 0.0031601352254963582, avg_fake_loss: 0.0032166999493104718
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.08692584476537174, avg_real_loss: 0.002901548500328014, avg_fake_loss: 0.002873437718436536
+Validation Loss after epoch 12 | avg_total_loss: 0.06608978529564208, avg_real_loss: 0.002684496899342371, avg_fake_loss: 0.0027047694861216266
+Models saved.
+Validation Loss after epoch 13 | avg_total_loss: 0.06868289845685165, avg_real_loss: 0.002349495066381577, avg_fake_loss: 0.002410699451704406
+Validation Loss after epoch 14 | avg_total_loss: 0.07748524140980509, avg_real_loss: 0.001985926252220654, avg_fake_loss: 0.0019186203426215798
+Validation Loss after epoch 15 | avg_total_loss: 0.06547941888372104, avg_real_loss: 0.0019049608478477846, avg_fake_loss: 0.0019530830678478298
+Models saved.
+Validation Loss after epoch 16 | avg_total_loss: 0.06324422499164939, avg_real_loss: 0.0016394288266181117, avg_fake_loss: 0.0016764325781777087
+Models saved.
+Validation Loss after epoch 17 | avg_total_loss: 0.0819837169514762, avg_real_loss: 0.0014226160710677505, avg_fake_loss: 0.0014384144807182667
+Validation Loss after epoch 18 | avg_total_loss: 0.07313811277142829, avg_real_loss: 0.0012468632388239105, avg_fake_loss: 0.0012966270102576043
+Validation Loss after epoch 19 | avg_total_loss: 0.06493732271095116, avg_real_loss: 0.0011950051945556577, avg_fake_loss: 0.001217977499537584
+Validation Loss after epoch 20 | avg_total_loss: 0.08117593514422576, avg_real_loss: 0.0010590166008720796, avg_fake_loss: 0.0010508947614451042
+Validation Loss after epoch 21 | avg_total_loss: 0.059844305428365864, avg_real_loss: 0.0010598724232598518, avg_fake_loss: 0.0010481532404406203
+Models saved.
+Validation Loss after epoch 22 | avg_total_loss: 0.06659489839027326, avg_real_loss: 0.0009875906754233357, avg_fake_loss: 0.0009858429095604354
+Validation Loss after epoch 23 | avg_total_loss: 0.06944760514630212, avg_real_loss: 0.0009563700473841487, avg_fake_loss: 0.0009437616633173699
+Validation Loss after epoch 24 | avg_total_loss: 0.08094338472518656, avg_real_loss: 0.0008751912456419733, avg_fake_loss: 0.0008896959269703883
+Validation Loss after epoch 25 | avg_total_loss: 0.058147593246152006, avg_real_loss: 0.0008733411410099103, avg_fake_loss: 0.0008838080409784905
+Models saved.
+Validation Loss after epoch 26 | avg_total_loss: 0.05958605252413286, avg_real_loss: 0.0007994052203786042, avg_fake_loss: 0.0008120684683995529
+Validation Loss after epoch 27 | avg_total_loss: 0.06502489461046126, avg_real_loss: 0.0007477268114194481, avg_fake_loss: 0.0007320378944213088
+Validation Loss after epoch 28 | avg_total_loss: 0.05825652683981591, avg_real_loss: 0.0007246404347824864, avg_fake_loss: 0.0007218398807001197
+Validation Loss after epoch 29 | avg_total_loss: 0.06152244771106376, avg_real_loss: 0.0007069494660956681, avg_fake_loss: 0.0007115108318329374
+Validation Loss after epoch 30 | avg_total_loss: 0.09801259140173595, avg_real_loss: 0.000716596768244118, avg_fake_loss: 0.0007202888923024551
+Validation Loss after epoch 31 | avg_total_loss: 0.06422529095369908, avg_real_loss: 0.0007274946320750234, avg_fake_loss: 0.000743703882714423
+Validation Loss after epoch 32 | avg_total_loss: 0.05766725348722604, avg_real_loss: 0.0006962822404198556, avg_fake_loss: 0.0006932609919911354
+Models saved.
+Validation Loss after epoch 33 | avg_total_loss: 0.05801194942452841, avg_real_loss: 0.000651553769582986, avg_fake_loss: 0.0006540755421156064
+Validation Loss after epoch 34 | avg_total_loss: 0.05756354802805516, avg_real_loss: 0.0006283269394771196, avg_fake_loss: 0.000617042560608954
+Models saved.
+Validation Loss after epoch 35 | avg_total_loss: 0.058175510726869106, avg_real_loss: 0.000597745786459806, avg_fake_loss: 0.0005892692497582175
+Validation Loss after epoch 36 | avg_total_loss: 0.05787614474280013, avg_real_loss: 0.000555019710090063, avg_fake_loss: 0.0005480086692841724
+Validation Loss after epoch 37 | avg_total_loss: 0.06380270483593146, avg_real_loss: 0.0004818182610001208, avg_fake_loss: 0.0004831938648648146
+Validation Loss after epoch 38 | avg_total_loss: 0.06708268986807929, avg_real_loss: 0.0004870247406264146, avg_fake_loss: 0.0005025673914739551
+Validation Loss after epoch 39 | avg_total_loss: 0.05892779165878892, avg_real_loss: 0.0004605802823789418, avg_fake_loss: 0.00046609210322559293
+Validation Loss after epoch 40 | avg_total_loss: 0.0626306656955017, avg_real_loss: 0.000467282761949011, avg_fake_loss: 0.0004773970463752954
+Validation Loss after epoch 41 | avg_total_loss: 0.057606060782240495, avg_real_loss: 0.0004591887393164345, avg_fake_loss: 0.00045202973059430305
+Validation Loss after epoch 42 | avg_total_loss: 0.057554400319026575, avg_real_loss: 0.00044858959639289725, avg_fake_loss: 0.0004430763235884822
+Models saved.
+Validation Loss after epoch 43 | avg_total_loss: 0.06327729149618083, avg_real_loss: 0.0004227051977068186, avg_fake_loss: 0.00040938941593695845
+Validation Loss after epoch 44 | avg_total_loss: 0.061640625146942005, avg_real_loss: 0.00038300476686951396, avg_fake_loss: 0.00037699374014563445
+Validation Loss after epoch 45 | avg_total_loss: 0.05937953795202904, avg_real_loss: 0.00037648886629742466, avg_fake_loss: 0.0003694816550705582
+Validation Loss after epoch 46 | avg_total_loss: 0.05727114217976729, avg_real_loss: 0.0003480017601557645, avg_fake_loss: 0.000348460456734756
+Models saved.
+Validation Loss after epoch 47 | avg_total_loss: 0.06462437835418516, avg_real_loss: 0.000343060597919652, avg_fake_loss: 0.0003418361581376909
+Validation Loss after epoch 48 | avg_total_loss: 0.059761139202035136, avg_real_loss: 0.00034228109507239424, avg_fake_loss: 0.0003467022583612965
+Validation Loss after epoch 49 | avg_total_loss: 0.056067391867852874, avg_real_loss: 0.0003318686467537191, avg_fake_loss: 0.0003312231104549331
+Models saved.
+Validation Loss after epoch 50 | avg_total_loss: 0.0691134716487593, avg_real_loss: 0.00031032077135427646, avg_fake_loss: 0.00030777896325970587
+Validation Loss after epoch 51 | avg_total_loss: 0.057004615302301116, avg_real_loss: 0.00033841171049668145, avg_fake_loss: 0.00033696585726122267
+Validation Loss after epoch 52 | avg_total_loss: 0.05892627851830588, avg_real_loss: 0.00032482307991206955, avg_fake_loss: 0.0003288359956867579
+Validation Loss after epoch 53 | avg_total_loss: 0.056503187813278705, avg_real_loss: 0.00030170158586568304, avg_fake_loss: 0.0003023783445112511
+Validation Loss after epoch 54 | avg_total_loss: 0.05753091091497077, avg_real_loss: 0.00027542280844904273, avg_fake_loss: 0.00027812183786105987
+Validation Loss after epoch 55 | avg_total_loss: 0.05777122318330738, avg_real_loss: 0.0002498302350836133, avg_fake_loss: 0.000251425815400176
+Validation Loss after epoch 56 | avg_total_loss: 0.05956363967723317, avg_real_loss: 0.00024934134368474287, avg_fake_loss: 0.0002507790126805452
+Validation Loss after epoch 57 | avg_total_loss: 0.06089435569528076, avg_real_loss: 0.00026179816308690026, avg_fake_loss: 0.0002672269442377405
+Validation Loss after epoch 58 | avg_total_loss: 0.057721522378010884, avg_real_loss: 0.0002476451805301218, avg_fake_loss: 0.00024787838992779143
+Validation Loss after epoch 59 | avg_total_loss: 0.05777203441701002, avg_real_loss: 0.00023156011431840144, avg_fake_loss: 0.00023369573156944371
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.6_mmr0.1_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs128_e100_nla6_sle128_p10_continuous_mr0.6_mmr0.1_windSpeed10m.jpg
+Running with missing-rate=0.6 and max-missing-rate=0.15
+Calculated PRODUCT=108.00
+Using SEQ_LENGTH=256
+Validation Loss after epoch 0 | avg_total_loss: 0.20624849419383443, avg_real_loss: 0.015437280622256152, avg_fake_loss: 0.015250689021366485
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.1937627424212063, avg_real_loss: 0.007876700598417836, avg_fake_loss: 0.007823633975075447
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.14573046411661542, avg_real_loss: 0.005788086803958696, avg_fake_loss: 0.005902485798715669
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.10216681374346509, avg_real_loss: 0.005139648270628908, avg_fake_loss: 0.005123594926451059
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.2584206562708406, avg_real_loss: 0.004854741013225387, avg_fake_loss: 0.005162493668167907
+Validation Loss after epoch 5 | avg_total_loss: 0.09850332064225394, avg_real_loss: 0.005114315118750229, avg_fake_loss: 0.005173431572449558
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.09931395443923333, avg_real_loss: 0.004819243393071434, avg_fake_loss: 0.004737557466689716
+Validation Loss after epoch 7 | avg_total_loss: 0.08559785049189539, avg_real_loss: 0.004847694044549237, avg_fake_loss: 0.004885773544254548
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.08418711428256596, avg_real_loss: 0.003321682657662998, avg_fake_loss: 0.0034078756580129266
+Models saved.
+Validation Loss after epoch 9 | avg_total_loss: 0.07926180871093974, avg_real_loss: 0.002561406564542695, avg_fake_loss: 0.0025186612209140815
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.07344843063722639, avg_real_loss: 0.0019447103841230273, avg_fake_loss: 0.0019714756088112205
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.08731022345669129, avg_real_loss: 0.001384790923432721, avg_fake_loss: 0.0014297398635843659
+Validation Loss after epoch 12 | avg_total_loss: 0.15359889913131208, avg_real_loss: 0.0012678889324888587, avg_fake_loss: 0.0013494100883904407
+Validation Loss after epoch 13 | avg_total_loss: 0.06901484673075817, avg_real_loss: 0.0010800619715797331, avg_fake_loss: 0.0010924266911495257
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.06278756156782894, avg_real_loss: 0.0008717523579595282, avg_fake_loss: 0.0008792198478819474
+Models saved.
+Validation Loss after epoch 15 | avg_total_loss: 0.0635351647677667, avg_real_loss: 0.0008131726131336216, avg_fake_loss: 0.0008064211904317798
+Validation Loss after epoch 16 | avg_total_loss: 0.08209833535639678, avg_real_loss: 0.0007657687854268314, avg_fake_loss: 0.0007382276063949308
+Validation Loss after epoch 17 | avg_total_loss: 0.06329585655647166, avg_real_loss: 0.0006893327569260317, avg_fake_loss: 0.0006838954868726432
+Validation Loss after epoch 18 | avg_total_loss: 0.06914453515235115, avg_real_loss: 0.0006299742843325742, avg_fake_loss: 0.0006339105577139623
+Validation Loss after epoch 19 | avg_total_loss: 0.06441464521648253, avg_real_loss: 0.0006026426058002364, avg_fake_loss: 0.0006022653208620956
+Validation Loss after epoch 20 | avg_total_loss: 0.06374804719406016, avg_real_loss: 0.0005774436653797131, avg_fake_loss: 0.0005698181202580385
+Validation Loss after epoch 21 | avg_total_loss: 0.06579704884001437, avg_real_loss: 0.0005255689894136809, avg_fake_loss: 0.0005359211388756247
+Validation Loss after epoch 22 | avg_total_loss: 0.06605398391976076, avg_real_loss: 0.0004757928605506416, avg_fake_loss: 0.00048566465214689206
+Validation Loss after epoch 23 | avg_total_loss: 0.06435772020588904, avg_real_loss: 0.00042964592370588114, avg_fake_loss: 0.0004378018176580286
+Validation Loss after epoch 24 | avg_total_loss: 0.06563780884094098, avg_real_loss: 0.00039699504679233273, avg_fake_loss: 0.00040521343266043593
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.15_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.15_windSpeed10m.jpg
+Running with missing-rate=0.6 and max-missing-rate=0.20
+Calculated PRODUCT=144.00
+Using SEQ_LENGTH=256
+Validation Loss after epoch 0 | avg_total_loss: 0.2531777865746442, avg_real_loss: 0.016664193011820316, avg_fake_loss: 0.016368058482732845
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.1833607199437478, avg_real_loss: 0.008689463850768173, avg_fake_loss: 0.008863775401978809
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.1337932771181359, avg_real_loss: 0.006529390195603757, avg_fake_loss: 0.006403571474091972
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.12671148141517358, avg_real_loss: 0.005704604281002984, avg_fake_loss: 0.0056841168826555506
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.13126367878387957, avg_real_loss: 0.005425497533424813, avg_fake_loss: 0.005627112668555449
+Validation Loss after epoch 5 | avg_total_loss: 0.12048091476454455, avg_real_loss: 0.004182537250659045, avg_fake_loss: 0.004040224594064057
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.09924313393147553, avg_real_loss: 0.0034982459003324896, avg_fake_loss: 0.00343647225321654
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.08792724920546308, avg_real_loss: 0.002412378541467821, avg_fake_loss: 0.0023798559491029557
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.085265619242016, avg_real_loss: 0.0018577602219439166, avg_fake_loss: 0.0018185856067301596
+Models saved.
+Validation Loss after epoch 9 | avg_total_loss: 0.08847372770747718, avg_real_loss: 0.00166344760424074, avg_fake_loss: 0.001637309159645263
+Validation Loss after epoch 10 | avg_total_loss: 0.08392947430119795, avg_real_loss: 0.0016262998105958104, avg_fake_loss: 0.0016599111943779623
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.08330772192600895, avg_real_loss: 0.0012743451601743478, avg_fake_loss: 0.0013065107495469205
+Models saved.
+Validation Loss after epoch 12 | avg_total_loss: 0.08890846327823751, avg_real_loss: 0.0011304509192568196, avg_fake_loss: 0.0011431507146506406
+Validation Loss after epoch 13 | avg_total_loss: 0.07289766772266697, avg_real_loss: 0.001005070811301908, avg_fake_loss: 0.000994984488523401
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.081412235603613, avg_real_loss: 0.0008650332233895931, avg_fake_loss: 0.0008389088462161668
+Validation Loss after epoch 15 | avg_total_loss: 0.07577987497343737, avg_real_loss: 0.0008141355133642826, avg_fake_loss: 0.0008223383543629418
+Validation Loss after epoch 16 | avg_total_loss: 0.07437301109380581, avg_real_loss: 0.0007883100616334774, avg_fake_loss: 0.0007908045423819738
+Validation Loss after epoch 17 | avg_total_loss: 0.08612324396038756, avg_real_loss: 0.00077320692670422, avg_fake_loss: 0.0007945242002332473
+Validation Loss after epoch 18 | avg_total_loss: 0.07048636466702994, avg_real_loss: 0.0006856275106068043, avg_fake_loss: 0.0006793605194509248
+Models saved.
+Validation Loss after epoch 19 | avg_total_loss: 0.07040466521592702, avg_real_loss: 0.0006234924290123779, avg_fake_loss: 0.0006215330666985692
+Models saved.
+Validation Loss after epoch 20 | avg_total_loss: 0.07720399023417164, avg_real_loss: 0.0005813062624142998, avg_fake_loss: 0.0005713895105359637
+Validation Loss after epoch 21 | avg_total_loss: 0.07073779332944576, avg_real_loss: 0.0005276282857213279, avg_fake_loss: 0.000526234827702865
+Validation Loss after epoch 22 | avg_total_loss: 0.07526084890260416, avg_real_loss: 0.0004925624106202603, avg_fake_loss: 0.000500604567658978
+Validation Loss after epoch 23 | avg_total_loss: 0.07743949377361466, avg_real_loss: 0.00046649727771770866, avg_fake_loss: 0.0004742812623803997
+Validation Loss after epoch 24 | avg_total_loss: 0.07410725249963648, avg_real_loss: 0.00043833195933770826, avg_fake_loss: 0.00044084180605269093
+Validation Loss after epoch 25 | avg_total_loss: 0.07306854602168589, avg_real_loss: 0.0004069797312909299, avg_fake_loss: 0.00040713717017377564
+Validation Loss after epoch 26 | avg_total_loss: 0.07131789011113784, avg_real_loss: 0.0003882102438878706, avg_fake_loss: 0.00039298696912523797
+Validation Loss after epoch 27 | avg_total_loss: 0.100685065940899, avg_real_loss: 0.00036272154401933006, avg_fake_loss: 0.0003538733101723825
+Validation Loss after epoch 28 | avg_total_loss: 0.07085618617780068, avg_real_loss: 0.0003327141363543513, avg_fake_loss: 0.00032917059819309916
+Validation Loss after epoch 29 | avg_total_loss: 0.0722357156302999, avg_real_loss: 0.00030323673383784755, avg_fake_loss: 0.00030692223149611996
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.2_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.2_windSpeed10m.jpg
+Running with missing-rate=0.6 and max-missing-rate=0.25
+Calculated PRODUCT=180.00
+Using SEQ_LENGTH=256
+Validation Loss after epoch 0 | avg_total_loss: 0.1957648532355533, avg_real_loss: 0.016643304268226904, avg_fake_loss: 0.016802958075833672
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.23039378116236015, avg_real_loss: 0.009300719932926929, avg_fake_loss: 0.008693542687551063
+Validation Loss after epoch 2 | avg_total_loss: 0.14058620767558322, avg_real_loss: 0.007332235917120296, avg_fake_loss: 0.007435242166085278
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.1826432697913226, avg_real_loss: 0.00647557496695834, avg_fake_loss: 0.006254209205508232
+Validation Loss after epoch 4 | avg_total_loss: 0.1433964919518022, avg_real_loss: 0.007828354835510254, avg_fake_loss: 0.008156832526711857
+Validation Loss after epoch 5 | avg_total_loss: 0.13193962525795488, avg_real_loss: 0.008810463909278898, avg_fake_loss: 0.00864315074046745
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.11192797014818472, avg_real_loss: 0.007491232005550581, avg_fake_loss: 0.007218018475481693
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.11077331773498479, avg_real_loss: 0.005476595984552713, avg_fake_loss: 0.005150487235582927
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.095545189893421, avg_real_loss: 0.0038069975630873267, avg_fake_loss: 0.0038334245944176525
+Models saved.
+Validation Loss after epoch 9 | avg_total_loss: 0.09144732739557238, avg_real_loss: 0.002870441212401013, avg_fake_loss: 0.002945483134895125
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.08720304400605314, avg_real_loss: 0.0021454752183190603, avg_fake_loss: 0.002115126151372405
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.07949424797997755, avg_real_loss: 0.0017508982084965443, avg_fake_loss: 0.0016998398419031326
+Models saved.
+Validation Loss after epoch 12 | avg_total_loss: 0.07843967527151108, avg_real_loss: 0.001672992849147276, avg_fake_loss: 0.0016407752991653979
+Models saved.
+Validation Loss after epoch 13 | avg_total_loss: 0.07654902086976696, avg_real_loss: 0.0016112018030766835, avg_fake_loss: 0.0015891295727616286
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.09318813582991853, avg_real_loss: 0.0014944448690477979, avg_fake_loss: 0.0015773859614615932
+Validation Loss after epoch 15 | avg_total_loss: 0.07897984844577663, avg_real_loss: 0.0014099628709064907, avg_fake_loss: 0.001454434689709588
+Validation Loss after epoch 16 | avg_total_loss: 0.07905135413303095, avg_real_loss: 0.0011105983644751284, avg_fake_loss: 0.0011080066906288266
+Validation Loss after epoch 17 | avg_total_loss: 0.07650117510381867, avg_real_loss: 0.000999997219289927, avg_fake_loss: 0.0010137243867468309
+Models saved.
+Validation Loss after epoch 18 | avg_total_loss: 0.07690249158836462, avg_real_loss: 0.0009041238398126819, avg_fake_loss: 0.0009426738851128475
+Validation Loss after epoch 19 | avg_total_loss: 0.07345518327372916, avg_real_loss: 0.0007818367996472208, avg_fake_loss: 0.0007862647505723597
+Models saved.
+Validation Loss after epoch 20 | avg_total_loss: 0.06988850871429723, avg_real_loss: 0.0007843152604490409, avg_fake_loss: 0.000778268527082058
+Models saved.
+Validation Loss after epoch 21 | avg_total_loss: 0.09867468958391863, avg_real_loss: 0.0008043241755598608, avg_fake_loss: 0.0008770205553018433
+Validation Loss after epoch 22 | avg_total_loss: 0.08801364142666845, avg_real_loss: 0.0005714188103892785, avg_fake_loss: 0.0006132577537380926
+Validation Loss after epoch 23 | avg_total_loss: 0.0700925780350671, avg_real_loss: 0.0005204463891191956, avg_fake_loss: 0.0005100097563734059
+Validation Loss after epoch 24 | avg_total_loss: 0.06936253738753936, avg_real_loss: 0.00047024131858693986, avg_fake_loss: 0.0004624746083316174
+Models saved.
+Validation Loss after epoch 25 | avg_total_loss: 0.07303176907932057, avg_real_loss: 0.00043483842326917085, avg_fake_loss: 0.00043725015027174614
+Validation Loss after epoch 26 | avg_total_loss: 0.08487437424414299, avg_real_loss: 0.0004119346318903434, avg_fake_loss: 0.0004312682157272802
+Validation Loss after epoch 27 | avg_total_loss: 0.0746664644273765, avg_real_loss: 0.0004114141672342906, avg_fake_loss: 0.0004233295240898288
+Validation Loss after epoch 28 | avg_total_loss: 0.07372254834455602, avg_real_loss: 0.0003609403356676921, avg_fake_loss: 0.0003728497934335952
+Validation Loss after epoch 29 | avg_total_loss: 0.07105408170643975, avg_real_loss: 0.0003632173393270932, avg_fake_loss: 0.0003659808563123293
+Validation Loss after epoch 30 | avg_total_loss: 0.07221725692643839, avg_real_loss: 0.0003631411031272043, avg_fake_loss: 0.0003701428080710363
+Validation Loss after epoch 31 | avg_total_loss: 0.07021142673843048, avg_real_loss: 0.0003724215523962972, avg_fake_loss: 0.00037790834561319034
+Validation Loss after epoch 32 | avg_total_loss: 0.07428470505949329, avg_real_loss: 0.0004116878515239531, avg_fake_loss: 0.0004221075843601926
+Validation Loss after epoch 33 | avg_total_loss: 0.07434191034339807, avg_real_loss: 0.0003781393354395678, avg_fake_loss: 0.00039067836426992845
+Validation Loss after epoch 34 | avg_total_loss: 0.07424523023998036, avg_real_loss: 0.00032335330658551193, avg_fake_loss: 0.00033388398579143756
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.25_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.6_mmr0.25_windSpeed10m.jpg
+Running with missing-rate=0.8 and max-missing-rate=0.10
+Calculated PRODUCT=96.00
+Using SEQ_LENGTH=256
+Validation Loss after epoch 0 | avg_total_loss: 0.1999242985073258, avg_real_loss: 0.015015350462978376, avg_fake_loss: 0.015040279749561758
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.1766250655055046, avg_real_loss: 0.008574426023508696, avg_fake_loss: 0.008558584541520652
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.12494934021550066, avg_real_loss: 0.005158510798697963, avg_fake_loss: 0.005140978048610336
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.1511622507344274, avg_real_loss: 0.0042933363138752826, avg_fake_loss: 0.0043695646146421924
+Validation Loss after epoch 4 | avg_total_loss: 0.11659482910352595, avg_real_loss: 0.0037676597644081887, avg_fake_loss: 0.00374685536713942
+Models saved.
+Validation Loss after epoch 5 | avg_total_loss: 0.12177047001964905, avg_real_loss: 0.0038753940847099703, avg_fake_loss: 0.0038168561946162406
+Validation Loss after epoch 6 | avg_total_loss: 0.12734903241781628, avg_real_loss: 0.003151216366163948, avg_fake_loss: 0.0030777128413319588
+Validation Loss after epoch 7 | avg_total_loss: 0.09145671677063494, avg_real_loss: 0.0029589111766065747, avg_fake_loss: 0.0030009094831150245
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.09386706615195554, avg_real_loss: 0.002587311373859206, avg_fake_loss: 0.0026294022716362685
+Validation Loss after epoch 9 | avg_total_loss: 0.08079048059880733, avg_real_loss: 0.002072616898016456, avg_fake_loss: 0.0020745504846084208
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.09134955758995869, avg_real_loss: 0.001682681664961445, avg_fake_loss: 0.0016452693209216436
+Validation Loss after epoch 11 | avg_total_loss: 0.08290865535245222, avg_real_loss: 0.0013838363092337899, avg_fake_loss: 0.001368874601800652
+Validation Loss after epoch 12 | avg_total_loss: 0.075803622165147, avg_real_loss: 0.0011629156617666868, avg_fake_loss: 0.0011478347707238486
+Models saved.
+Validation Loss after epoch 13 | avg_total_loss: 0.07025663467014537, avg_real_loss: 0.0010559780228718678, avg_fake_loss: 0.001047221407883198
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.07125935845953577, avg_real_loss: 0.0009202633689924636, avg_fake_loss: 0.0009252583481344011
+Validation Loss after epoch 15 | avg_total_loss: 0.0697273519985816, avg_real_loss: 0.0008462502155452967, avg_fake_loss: 0.0008402811157900621
+Models saved.
+Validation Loss after epoch 16 | avg_total_loss: 0.06518655741477714, avg_real_loss: 0.0007436178771861116, avg_fake_loss: 0.0007449730285717284
+Models saved.
+Validation Loss after epoch 17 | avg_total_loss: 0.0819469621295438, avg_real_loss: 0.0006535046910250778, avg_fake_loss: 0.0006405941488029545
+Validation Loss after epoch 18 | avg_total_loss: 0.0908727403730154, avg_real_loss: 0.0006091762137229499, avg_fake_loss: 0.0005957198334405856
+Validation Loss after epoch 19 | avg_total_loss: 0.06872238544747233, avg_real_loss: 0.0005732558493036777, avg_fake_loss: 0.0005797509656986222
+Validation Loss after epoch 20 | avg_total_loss: 0.06866112154196291, avg_real_loss: 0.0005306098575922934, avg_fake_loss: 0.0005366378934601979
+Validation Loss after epoch 21 | avg_total_loss: 0.06808335733983446, avg_real_loss: 0.0004935385274139288, avg_fake_loss: 0.0004951392663368845
+Validation Loss after epoch 22 | avg_total_loss: 0.07456455620772698, avg_real_loss: 0.0004445587461197968, avg_fake_loss: 0.00045025894017753135
+Validation Loss after epoch 23 | avg_total_loss: 0.0677557493943502, avg_real_loss: 0.0004234273861477371, avg_fake_loss: 0.0004261872698621386
+Validation Loss after epoch 24 | avg_total_loss: 0.07569407545687522, avg_real_loss: 0.0004009073634412797, avg_fake_loss: 0.00040832288419444333
+Validation Loss after epoch 25 | avg_total_loss: 0.06617367651094408, avg_real_loss: 0.00038271756099728755, avg_fake_loss: 0.00038005539082565945
+Validation Loss after epoch 26 | avg_total_loss: 0.0642330954399179, avg_real_loss: 0.00035090179453083477, avg_fake_loss: 0.0003522384435842361
+Models saved.
+Validation Loss after epoch 27 | avg_total_loss: 0.06308638381169122, avg_real_loss: 0.0003377896218273022, avg_fake_loss: 0.00033973694628323703
+Models saved.
+Validation Loss after epoch 28 | avg_total_loss: 0.07333457349416088, avg_real_loss: 0.0003052425026373171, avg_fake_loss: 0.00030128183682202636
+Validation Loss after epoch 29 | avg_total_loss: 0.06390560308800024, avg_real_loss: 0.0002980222587425755, avg_fake_loss: 0.0002990109154351932
+Validation Loss after epoch 30 | avg_total_loss: 0.0659140205996878, avg_real_loss: 0.0002809961909352911, avg_fake_loss: 0.00027917194272638024
+Validation Loss after epoch 31 | avg_total_loss: 0.06583773311884965, avg_real_loss: 0.000261697346371982, avg_fake_loss: 0.0002603340715936878
+Validation Loss after epoch 32 | avg_total_loss: 0.07467501785825281, avg_real_loss: 0.00026969470319968155, avg_fake_loss: 0.0002739998761920587
+Validation Loss after epoch 33 | avg_total_loss: 0.0676149469526375, avg_real_loss: 0.0002624236363130074, avg_fake_loss: 0.0002611626507988309
+Validation Loss after epoch 34 | avg_total_loss: 0.06636235052171875, avg_real_loss: 0.00025968223866691594, avg_fake_loss: 0.000259173170728472
+Validation Loss after epoch 35 | avg_total_loss: 0.06486373460468124, avg_real_loss: 0.0002483189429553664, avg_fake_loss: 0.00024809518072288483
+Validation Loss after epoch 36 | avg_total_loss: 0.06586514040827751, avg_real_loss: 0.00023972822579226513, avg_fake_loss: 0.00023826719895142187
+Validation Loss after epoch 37 | avg_total_loss: 0.06632526898208786, avg_real_loss: 0.00022768013663795392, avg_fake_loss: 0.00022652303895858282
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.8_mmr0.1_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.8_mmr0.1_windSpeed10m.jpg
+Running with missing-rate=0.8 and max-missing-rate=0.15
+Calculated PRODUCT=144.00
+Using SEQ_LENGTH=256
+Validation Loss after epoch 0 | avg_total_loss: 0.22030426868621042, avg_real_loss: 0.014617111698231277, avg_fake_loss: 0.014633118092794628
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.17977863418705323, avg_real_loss: 0.007865014677757727, avg_fake_loss: 0.007872627171523431
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.1538082749089774, avg_real_loss: 0.005538625546785838, avg_fake_loss: 0.005521473406320985
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.13669691300567458, avg_real_loss: 0.004248094149207806, avg_fake_loss: 0.004266032798434882
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.13347010380204985, avg_real_loss: 0.0038772771778680824, avg_fake_loss: 0.0038207611890838425
+Models saved.
+Validation Loss after epoch 5 | avg_total_loss: 0.13344976853798418, avg_real_loss: 0.0035883457577951692, avg_fake_loss: 0.0036430639584603556
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.10637660499881296, avg_real_loss: 0.0031607781249262832, avg_fake_loss: 0.0031936386846663323
+Models saved.
+Validation Loss after epoch 7 | avg_total_loss: 0.08864679340930547, avg_real_loss: 0.0028049912652932107, avg_fake_loss: 0.0028045556494308743
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.10844313517651137, avg_real_loss: 0.002259271017357926, avg_fake_loss: 0.0023149996585048295
+Validation Loss after epoch 9 | avg_total_loss: 0.08200459494529401, avg_real_loss: 0.001893871754873544, avg_fake_loss: 0.0018928057192276943
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.07410179998944788, avg_real_loss: 0.0016307075446307222, avg_fake_loss: 0.0016280377578154644
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.07606746015303276, avg_real_loss: 0.0014174858138978701, avg_fake_loss: 0.0014368629165212898
+Validation Loss after epoch 12 | avg_total_loss: 0.0917786057381069, avg_real_loss: 0.0012320199782740982, avg_fake_loss: 0.0012355220764327574
+Validation Loss after epoch 13 | avg_total_loss: 0.09696510204059236, avg_real_loss: 0.0011067194966873264, avg_fake_loss: 0.0011269900081542267
+Validation Loss after epoch 14 | avg_total_loss: 0.06399904383236871, avg_real_loss: 0.0010006262181217179, avg_fake_loss: 0.0010037688942461768
+Models saved.
+Validation Loss after epoch 15 | avg_total_loss: 0.09245708672439351, avg_real_loss: 0.0008724533562438891, avg_fake_loss: 0.000889716633965316
+Validation Loss after epoch 16 | avg_total_loss: 0.06123328603365842, avg_real_loss: 0.0007880027166239041, avg_fake_loss: 0.0007877809574197539
+Models saved.
+Validation Loss after epoch 17 | avg_total_loss: 0.06975828122128458, avg_real_loss: 0.0007134335267919061, avg_fake_loss: 0.0007206034445998204
+Validation Loss after epoch 18 | avg_total_loss: 0.07018374158617328, avg_real_loss: 0.0006577313881066135, avg_fake_loss: 0.0006648247979362221
+Validation Loss after epoch 19 | avg_total_loss: 0.06371760401217376, avg_real_loss: 0.0005975155046839706, avg_fake_loss: 0.0005987746305489803
+Validation Loss after epoch 20 | avg_total_loss: 0.07637172258075546, avg_real_loss: 0.0005564581969177679, avg_fake_loss: 0.0005561495739076397
+Validation Loss after epoch 21 | avg_total_loss: 0.06996738560059491, avg_real_loss: 0.0005309091245769249, avg_fake_loss: 0.0005355993943179355
+Validation Loss after epoch 22 | avg_total_loss: 0.06318685395971817, avg_real_loss: 0.0005021873272626716, avg_fake_loss: 0.0005019206334562862
+Validation Loss after epoch 23 | avg_total_loss: 0.07657254750237745, avg_real_loss: 0.0004759030562127009, avg_fake_loss: 0.0004825206766220029
+Validation Loss after epoch 24 | avg_total_loss: 0.08101228898500695, avg_real_loss: 0.000451957735041266, avg_fake_loss: 0.00044938490078921486
+Validation Loss after epoch 25 | avg_total_loss: 0.07360921394737328, avg_real_loss: 0.00042754282185342163, avg_fake_loss: 0.00043064272133907415
+Validation Loss after epoch 26 | avg_total_loss: 0.06811802439829882, avg_real_loss: 0.00040173871007830123, avg_fake_loss: 0.00040506495604538084
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.8_mmr0.15_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs256_e100_nla6_sle256_p10_continuous_mr0.8_mmr0.15_windSpeed10m.jpg
+Running with missing-rate=0.8 and max-missing-rate=0.20
+Calculated PRODUCT=192.00
+Using SEQ_LENGTH=360
+Validation Loss after epoch 0 | avg_total_loss: 0.25395540054887533, avg_real_loss: 0.011315025854855776, avg_fake_loss: 0.010841362352948636
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.16937115602195263, avg_real_loss: 0.0043009115106542595, avg_fake_loss: 0.004394875642901752
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.1363309328444302, avg_real_loss: 0.0037199484650045633, avg_fake_loss: 0.003704875474795699
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.12519168155267835, avg_real_loss: 0.004112755857931916, avg_fake_loss: 0.004086182583705522
+Models saved.
+Validation Loss after epoch 4 | avg_total_loss: 0.15597540652379394, avg_real_loss: 0.006496258196420968, avg_fake_loss: 0.006703344435663894
+Validation Loss after epoch 5 | avg_total_loss: 0.14244583202525973, avg_real_loss: 0.005793138494482264, avg_fake_loss: 0.005407670731074177
+Validation Loss after epoch 6 | avg_total_loss: 0.12881907727569342, avg_real_loss: 0.0034563840308692306, avg_fake_loss: 0.0036795114574488252
+Validation Loss after epoch 7 | avg_total_loss: 0.10402357473503798, avg_real_loss: 0.002332918615138624, avg_fake_loss: 0.0022318225928756874
+Models saved.
+Validation Loss after epoch 8 | avg_total_loss: 0.09896745020523667, avg_real_loss: 0.0014178523124428466, avg_fake_loss: 0.0013985333389427979
+Models saved.
+Validation Loss after epoch 9 | avg_total_loss: 0.11050512013025582, avg_real_loss: 0.0011623194859566865, avg_fake_loss: 0.0012304369320190744
+Validation Loss after epoch 10 | avg_total_loss: 0.09548042388632894, avg_real_loss: 0.0009553226554999128, avg_fake_loss: 0.0009613060356059577
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.10856966732535511, avg_real_loss: 0.0007407593293464743, avg_fake_loss: 0.0007591475969093153
+Validation Loss after epoch 12 | avg_total_loss: 0.09254639165010303, avg_real_loss: 0.0006801802392146783, avg_fake_loss: 0.0006485917047029943
+Models saved.
+Validation Loss after epoch 13 | avg_total_loss: 0.10364680690690875, avg_real_loss: 0.0006414893914552522, avg_fake_loss: 0.0006042300647095544
+Validation Loss after epoch 14 | avg_total_loss: 0.08662200765684247, avg_real_loss: 0.0005684644302164088, avg_fake_loss: 0.0005852174936080701
+Models saved.
+Validation Loss after epoch 15 | avg_total_loss: 0.1007392747560516, avg_real_loss: 0.0005182796776352916, avg_fake_loss: 0.0005486178206410841
+Validation Loss after epoch 16 | avg_total_loss: 0.0893142381682992, avg_real_loss: 0.00041492275249765953, avg_fake_loss: 0.00043054858815594343
+Validation Loss after epoch 17 | avg_total_loss: 0.09568080585449934, avg_real_loss: 0.00040171300315705594, avg_fake_loss: 0.00042189845771645196
+Validation Loss after epoch 18 | avg_total_loss: 0.08437617728486657, avg_real_loss: 0.0003987223553849617, avg_fake_loss: 0.00040172138324123807
+Models saved.
+Validation Loss after epoch 19 | avg_total_loss: 0.07893317914567888, avg_real_loss: 0.00038725690592400497, avg_fake_loss: 0.0003942323492083233
+Models saved.
+Validation Loss after epoch 20 | avg_total_loss: 0.0715743190376088, avg_real_loss: 0.000328841879763786, avg_fake_loss: 0.00032750468562880997
+Models saved.
+Validation Loss after epoch 21 | avg_total_loss: 0.0744657195173204, avg_real_loss: 0.0003042143262064201, avg_fake_loss: 0.00029992594727445976
+Validation Loss after epoch 22 | avg_total_loss: 0.07837753358762711, avg_real_loss: 0.00028806525779145886, avg_fake_loss: 0.0002897309423133265
+Validation Loss after epoch 23 | avg_total_loss: 0.07478853804059327, avg_real_loss: 0.0002829222121363273, avg_fake_loss: 0.00028024925541103585
+Validation Loss after epoch 24 | avg_total_loss: 0.07753859763033688, avg_real_loss: 0.00026570330055619706, avg_fake_loss: 0.0002663538261913345
+Validation Loss after epoch 25 | avg_total_loss: 0.07841724588070065, avg_real_loss: 0.00024748088344495045, avg_fake_loss: 0.0002522465715628641
+Validation Loss after epoch 26 | avg_total_loss: 0.07904920924920589, avg_real_loss: 0.00024328397694262094, avg_fake_loss: 0.00024766515343799256
+Validation Loss after epoch 27 | avg_total_loss: 0.07794164022197947, avg_real_loss: 0.00022531882314069662, avg_fake_loss: 0.00022863158483232837
+Validation Loss after epoch 28 | avg_total_loss: 0.07614665071014315, avg_real_loss: 0.00021519789061130723, avg_fake_loss: 0.00021100432059029117
+Validation Loss after epoch 29 | avg_total_loss: 0.07754367974121124, avg_real_loss: 0.0002088400610773533, avg_fake_loss: 0.00021303394578353618
+Validation Loss after epoch 30 | avg_total_loss: 0.0788072309223935, avg_real_loss: 0.00019385148561923415, avg_fake_loss: 0.00019768609627135447
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs360_e100_nla6_sle360_p10_continuous_mr0.8_mmr0.2_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs360_e100_nla6_sle360_p10_continuous_mr0.8_mmr0.2_windSpeed10m.jpg
+Running with missing-rate=0.8 and max-missing-rate=0.25
+Calculated PRODUCT=240.00
+Using SEQ_LENGTH=360
+Validation Loss after epoch 0 | avg_total_loss: 0.2154476447030902, avg_real_loss: 0.00978866322839167, avg_fake_loss: 0.009580479410942644
+Models saved.
+Validation Loss after epoch 1 | avg_total_loss: 0.18580055935308337, avg_real_loss: 0.005371573723095935, avg_fake_loss: 0.005418229688075371
+Models saved.
+Validation Loss after epoch 2 | avg_total_loss: 0.15104255359619856, avg_real_loss: 0.0038105010680737905, avg_fake_loss: 0.003883185505401343
+Models saved.
+Validation Loss after epoch 3 | avg_total_loss: 0.16507520689629018, avg_real_loss: 0.00318937318661483, avg_fake_loss: 0.003190067051036749
+Validation Loss after epoch 4 | avg_total_loss: 0.21169260516762733, avg_real_loss: 0.003931685845600441, avg_fake_loss: 0.0038389504479710013
+Validation Loss after epoch 5 | avg_total_loss: 0.10260812565684319, avg_real_loss: 0.0030474995146505535, avg_fake_loss: 0.0030812808327027597
+Models saved.
+Validation Loss after epoch 6 | avg_total_loss: 0.10583219886757433, avg_real_loss: 0.002613113902043551, avg_fake_loss: 0.002601843465527054
+Validation Loss after epoch 7 | avg_total_loss: 0.10775538766756654, avg_real_loss: 0.0019565799193514977, avg_fake_loss: 0.001908408165036235
+Validation Loss after epoch 8 | avg_total_loss: 0.09946640115231276, avg_real_loss: 0.0015857252656132914, avg_fake_loss: 0.0015813641803106293
+Models saved.
+Validation Loss after epoch 9 | avg_total_loss: 0.09905324317514896, avg_real_loss: 0.001255475663128891, avg_fake_loss: 0.0012328445391176501
+Models saved.
+Validation Loss after epoch 10 | avg_total_loss: 0.09821529849432409, avg_real_loss: 0.0009392893698532134, avg_fake_loss: 0.0009507504964858526
+Models saved.
+Validation Loss after epoch 11 | avg_total_loss: 0.08633563981857151, avg_real_loss: 0.0008328386611538008, avg_fake_loss: 0.0008468598880426725
+Models saved.
+Validation Loss after epoch 12 | avg_total_loss: 0.08527798193972558, avg_real_loss: 0.0007484586421924178, avg_fake_loss: 0.0007610513457620982
+Models saved.
+Validation Loss after epoch 13 | avg_total_loss: 0.08205457136500627, avg_real_loss: 0.0006188775532791624, avg_fake_loss: 0.0006145440038380912
+Models saved.
+Validation Loss after epoch 14 | avg_total_loss: 0.07973762310575694, avg_real_loss: 0.0005434665617940482, avg_fake_loss: 0.0005385645681599271
+Models saved.
+Validation Loss after epoch 15 | avg_total_loss: 0.07497800455894321, avg_real_loss: 0.0004697149133789935, avg_fake_loss: 0.00047149121564871166
+Models saved.
+Validation Loss after epoch 16 | avg_total_loss: 0.08240063954144716, avg_real_loss: 0.0004077698995388346, avg_fake_loss: 0.00040866520794224925
+Validation Loss after epoch 17 | avg_total_loss: 0.08069421350955963, avg_real_loss: 0.00038221840350161074, avg_fake_loss: 0.0003874436597470776
+Validation Loss after epoch 18 | avg_total_loss: 0.07596686377655715, avg_real_loss: 0.0003558221287676133, avg_fake_loss: 0.00035397025203565136
+Validation Loss after epoch 19 | avg_total_loss: 0.07559437677264214, avg_real_loss: 0.0003283148780610645, avg_fake_loss: 0.0003268528666922066
+Validation Loss after epoch 20 | avg_total_loss: 0.0772331525804475, avg_real_loss: 0.000315340857468982, avg_fake_loss: 0.0003174518442392582
+Validation Loss after epoch 21 | avg_total_loss: 0.07346830144524574, avg_real_loss: 0.0002991580367961433, avg_fake_loss: 0.00030092527140368475
+Models saved.
+Validation Loss after epoch 22 | avg_total_loss: 0.07931416691280901, avg_real_loss: 0.00028634150339712505, avg_fake_loss: 0.0002903573272305948
+Validation Loss after epoch 23 | avg_total_loss: 0.08003573247697204, avg_real_loss: 0.0002703167415347707, avg_fake_loss: 0.00027369515964892344
+Validation Loss after epoch 24 | avg_total_loss: 0.07873265817761421, avg_real_loss: 0.00025166948444166337, avg_fake_loss: 0.00025488139181106817
+Validation Loss after epoch 25 | avg_total_loss: 0.07562824175693095, avg_real_loss: 0.00023301378587348154, avg_fake_loss: 0.0002347920453757979
+Validation Loss after epoch 26 | avg_total_loss: 0.07215047243516892, avg_real_loss: 0.00022676437447444187, avg_fake_loss: 0.00022740193617210025
+Models saved.
+Validation Loss after epoch 27 | avg_total_loss: 0.07050473522394896, avg_real_loss: 0.0002186213946515636, avg_fake_loss: 0.00021933006473773276
+Models saved.
+Validation Loss after epoch 28 | avg_total_loss: 0.07205032056663185, avg_real_loss: 0.00021141735260243877, avg_fake_loss: 0.00021248216944513842
+Validation Loss after epoch 29 | avg_total_loss: 0.07195780344773084, avg_real_loss: 0.0002025388944275619, avg_fake_loss: 0.00020173342772977776
+Validation Loss after epoch 30 | avg_total_loss: 0.07574435218703002, avg_real_loss: 0.00018648268041943084, avg_fake_loss: 0.00018586200712888967
+Validation Loss after epoch 31 | avg_total_loss: 0.07543622585944831, avg_real_loss: 0.00017227582065970637, avg_fake_loss: 0.00017346732238365803
+Validation Loss after epoch 32 | avg_total_loss: 0.07230404438450933, avg_real_loss: 0.00016601485185674392, avg_fake_loss: 0.00016658508479849843
+Validation Loss after epoch 33 | avg_total_loss: 0.07484154496341944, avg_real_loss: 0.00016657807827868965, avg_fake_loss: 0.00016498308445989096
+Validation Loss after epoch 34 | avg_total_loss: 0.08808232098817825, avg_real_loss: 0.00016540983142476762, avg_fake_loss: 0.00016890267374947143
+Validation Loss after epoch 35 | avg_total_loss: 0.07568464905489236, avg_real_loss: 0.0001610709578017122, avg_fake_loss: 0.00016293791600219265
+Validation Loss after epoch 36 | avg_total_loss: 0.06761657516472042, avg_real_loss: 0.00016089351015580178, avg_fake_loss: 0.00016097893126243434
+Models saved.
+Validation Loss after epoch 37 | avg_total_loss: 0.06715893233194947, avg_real_loss: 0.0001488599261847412, avg_fake_loss: 0.00014859081602480728
+Models saved.
+Validation Loss after epoch 38 | avg_total_loss: 0.06771807046607137, avg_real_loss: 0.00014526683094118198, avg_fake_loss: 0.00014505014678434236
+Validation Loss after epoch 39 | avg_total_loss: 0.07070820371154696, avg_real_loss: 0.00014293213394012128, avg_fake_loss: 0.0001436238887890795
+Validation Loss after epoch 40 | avg_total_loss: 0.07929357525426894, avg_real_loss: 0.00014762488217456848, avg_fake_loss: 0.00014628842859565339
+Validation Loss after epoch 41 | avg_total_loss: 0.08275246946141124, avg_real_loss: 0.00014990067870712664, avg_fake_loss: 0.0001502020982115937
+Validation Loss after epoch 42 | avg_total_loss: 0.06854033074341714, avg_real_loss: 0.00014173735576150648, avg_fake_loss: 0.00014160602972879133
+Validation Loss after epoch 43 | avg_total_loss: 0.0687636056682095, avg_real_loss: 0.00013746087324761902, avg_fake_loss: 0.00013716619901060767
+Validation Loss after epoch 44 | avg_total_loss: 0.06904536322690547, avg_real_loss: 0.0001321020695286279, avg_fake_loss: 0.00013279189079185016
+Validation Loss after epoch 45 | avg_total_loss: 0.07024069922044873, avg_real_loss: 0.00013090354764244694, avg_fake_loss: 0.0001312055605922069
+Validation Loss after epoch 46 | avg_total_loss: 0.06611781450919807, avg_real_loss: 0.00012537214229269011, avg_fake_loss: 0.00012544570199679583
+Models saved.
+Validation Loss after epoch 47 | avg_total_loss: 0.07066655810922384, avg_real_loss: 0.00011145487155772571, avg_fake_loss: 0.00011042136361538724
+Validation Loss after epoch 48 | avg_total_loss: 0.07085691881366074, avg_real_loss: 0.0001008871420253854, avg_fake_loss: 9.999326834986277e-05
+Validation Loss after epoch 49 | avg_total_loss: 0.06868755607865751, avg_real_loss: 9.659772570103087e-05, avg_fake_loss: 9.633134027353663e-05
+Validation Loss after epoch 50 | avg_total_loss: 0.07616272941231728, avg_real_loss: 9.607565084479575e-05, avg_fake_loss: 9.702341935735603e-05
+Validation Loss after epoch 51 | avg_total_loss: 0.0697387233376503, avg_real_loss: 8.929904163323954e-05, avg_fake_loss: 8.994867687306396e-05
+Validation Loss after epoch 52 | avg_total_loss: 0.07671903970185667, avg_real_loss: 8.680978976371989e-05, avg_fake_loss: 8.704306935669592e-05
+Validation Loss after epoch 53 | avg_total_loss: 0.07078783365432173, avg_real_loss: 8.207710425267578e-05, avg_fake_loss: 8.200477202535694e-05
+Validation Loss after epoch 54 | avg_total_loss: 0.06932248780503869, avg_real_loss: 8.24418956426598e-05, avg_fake_loss: 8.231371293732082e-05
+Validation Loss after epoch 55 | avg_total_loss: 0.081914420472458, avg_real_loss: 8.734360937978636e-05, avg_fake_loss: 8.869229259289568e-05
+Validation Loss after epoch 56 | avg_total_loss: 0.0718435914022848, avg_real_loss: 8.133721439662622e-05, avg_fake_loss: 8.191463882667449e-05
+Early stopping triggered.
+Plot saved to ./results-imgs/s1826_bs64_hs360_e100_nla6_sle360_p10_continuous_mr0.8_mmr0.25_windSpeed2m.jpg
+Plot saved to ./results-imgs/s1826_bs64_hs360_e100_nla6_sle360_p10_continuous_mr0.8_mmr0.25_windSpeed10m.jpg
