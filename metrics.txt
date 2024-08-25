@@ -227,3 +227,21 @@
 	Feature 1: MSE=0.906     RMSE=0.952     MAE=0.720
 -----------------------------------------------------------------Round 4，final 2, test part
 
+2024-08-24 11:20:18    s1826_bs32_hs64_e100_nla4_sle256_p10_continuous_mr0.6_mmr0.5    MAE=0.996    MSE=1.813    RMSE=1.345
+	Feature 0: MSE=1.944     RMSE=1.394     MAE=1.043
+	Feature 1: MSE=1.681     RMSE=1.297     MAE=0.948
+2024-08-24 12:45:54    s1826_bs32_hs64_e100_nla4_sle256_p10_continuous_mr0.6_mmr0.6    MAE=0.547    MSE=0.556    RMSE=0.746
+	Feature 0: MSE=0.543     RMSE=0.737     MAE=0.535
+	Feature 1: MSE=0.569     RMSE=0.754     MAE=0.559
+2024-08-24 14:05:32    s1826_bs32_hs64_e100_nla4_sle256_p10_continuous_mr0.8_mmr0.5    MAE=1.006    MSE=1.673    RMSE=1.292
+	Feature 0: MSE=1.810     RMSE=1.345     MAE=1.076
+	Feature 1: MSE=1.537     RMSE=1.240     MAE=0.936
+2024-08-24 15:19:25    s1826_bs32_hs64_e100_nla4_sle256_p10_continuous_mr0.8_mmr0.6    MAE=0.818    MSE=1.303    RMSE=1.140
+	Feature 0: MSE=1.434     RMSE=1.197     MAE=0.868
+	Feature 1: MSE=1.173     RMSE=1.083     MAE=0.769
+2024-08-25 02:12:16    s1826_bs64_hs128_e100_nla6_sle512_p10_continuous_mr0.6_mmr0.5    MAE=1.072    MSE=2.058    RMSE=1.434
+	Feature 0: MSE=2.138     RMSE=1.462     MAE=1.093
+	Feature 1: MSE=1.977     RMSE=1.406     MAE=1.051
+
+-----------------------------------------------------------------test part: add min-gap-len among missing segments
+

@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # 定义常量
-BATCH_SIZE=32
-HIDDEN_SIZE=64
-SEQ_LENGTH=256
+BATCH_SIZE=64
+HIDDEN_SIZE=128
+SEQ_LENGTH=128
 NUM_LAYERS=4
 PATIENCE=10
 
 cd /root/autodl-tmp/project/
 
 for MISSING_RATE in 0.6 0.8; do
-    for MAX_MISSING_RATE in 0.5 0.6; do
+    for MAX_MISSING_RATE in 0.2 0.25; do
         echo "Running with missing-rate=$MISSING_RATE and max-missing-rate=$MAX_MISSING_RATE"
 
         # 计算 SEQ_LENGTH
