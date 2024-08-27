@@ -225,7 +225,7 @@
 2024-08-22 22:07:58    s1826_bs64_hs360_e100_nla6_sle360_p10_continuous_mr0.8_mmr0.25    MAE=0.732    MSE=0.927    RMSE=0.963
 	Feature 0: MSE=0.949     RMSE=0.974     MAE=0.743
 	Feature 1: MSE=0.906     RMSE=0.952     MAE=0.720
------------------------------------------------------------------Round 4，final 2, test part
+-----------------------------------------------------------------test part
 
 2024-08-24 11:20:18    s1826_bs32_hs64_e100_nla4_sle256_p10_continuous_mr0.6_mmr0.5    MAE=0.996    MSE=1.813    RMSE=1.345
 	Feature 0: MSE=1.944     RMSE=1.394     MAE=1.043
@@ -245,3 +245,56 @@
 
 -----------------------------------------------------------------test part: add min-gap-len among missing segments
 
+2024-08-25 09:24:14    s1826_bs64_hs128_e100_nla4_sle128_p10_continuous_mr0.6_mmr0.2    MAE=0.533    MSE=0.495    RMSE=0.697
+	Feature 0: MSE=0.627     RMSE=0.792     MAE=0.604
+	Feature 1: MSE=0.363     RMSE=0.603     MAE=0.463
+2024-08-25 09:55:08    s1826_bs64_hs128_e100_nla4_sle128_p10_continuous_mr0.6_mmr0.25    MAE=0.894    MSE=1.546    RMSE=1.234
+	Feature 0: MSE=1.164     RMSE=1.079     MAE=0.738
+	Feature 1: MSE=1.927     RMSE=1.388     MAE=1.051
+2024-08-25 10:36:54    s1826_bs64_hs128_e100_nla4_sle128_p10_continuous_mr0.8_mmr0.2    MAE=0.798    MSE=0.972    RMSE=0.985
+	Feature 0: MSE=0.893     RMSE=0.945     MAE=0.736
+	Feature 1: MSE=1.051     RMSE=1.025     MAE=0.860
+2024-08-25 11:15:22    s1826_bs64_hs128_e100_nla4_sle128_p10_continuous_mr0.8_mmr0.25    MAE=0.643    MSE=0.734    RMSE=0.851
+	Feature 0: MSE=0.894     RMSE=0.946     MAE=0.681
+	Feature 1: MSE=0.573     RMSE=0.757     MAE=0.605
+-----------------------------------------------------------------test part: long mml
+
+2024-08-25 15:53:45    s1826_bs64_hs128_e100_nla4_sle256_p10_continuous_mr0.8_mmr0.3    MAE=0.578    MSE=0.678    RMSE=0.819
+	Feature 0: MSE=0.817     RMSE=0.904     MAE=0.690
+	Feature 1: MSE=0.540     RMSE=0.735     MAE=0.466
+2024-08-25 17:19:35    s1826_bs64_hs128_e100_nla4_sle256_p10_continuous_mr0.8_mmr0.35    MAE=0.803    MSE=1.059    RMSE=1.020
+	Feature 0: MSE=1.334     RMSE=1.155     MAE=0.897
+	Feature 1: MSE=0.783     RMSE=0.885     MAE=0.710
+2024-08-25 18:25:45    s1826_bs64_hs128_e100_nla4_sle256_p10_continuous_mr0.8_mmr0.4    MAE=0.839    MSE=1.238    RMSE=1.112
+	Feature 0: MSE=1.317     RMSE=1.148     MAE=0.849
+	Feature 1: MSE=1.158     RMSE=1.076     MAE=0.829
+2024-08-25 19:34:49    s1826_bs64_hs128_e100_nla4_sle256_p10_continuous_mr0.8_mmr0.45    MAE=0.776    MSE=0.996    RMSE=0.995
+	Feature 0: MSE=1.137     RMSE=1.067     MAE=0.848
+	Feature 1: MSE=0.854     RMSE=0.924     MAE=0.704
+2024-08-25 21:13:02    s1826_bs64_hs128_e100_nla4_sle256_p10_continuous_mr0.8_mmr0.5    MAE=0.889    MSE=1.392    RMSE=1.175
+	Feature 0: MSE=1.152     RMSE=1.073     MAE=0.822
+	Feature 1: MSE=1.632     RMSE=1.277     MAE=0.956
+
+-----------------------------------------------------------------0.8
+
+2024-08-27 10:07:44    s1826_bs64_hs128_e100_nla4_sle512_p5_continuous_mr0.8_mmr0.1    MAE=1.017    MSE=1.565    RMSE=1.250
+	Feature 0: MSE=1.689     RMSE=1.300     MAE=1.030
+	Feature 1: MSE=1.441     RMSE=1.200     MAE=1.004
+2024-08-27 10:14:43    s1826_bs64_hs128_e100_nla4_sle512_p5_continuous_mr0.8_mmr0.15    MAE=0.641    MSE=0.609    RMSE=0.776
+	Feature 0: MSE=0.733     RMSE=0.856     MAE=0.713
+	Feature 1: MSE=0.485     RMSE=0.697     MAE=0.568
+2024-08-27 10:24:25    s1826_bs64_hs128_e100_nla4_sle512_p5_continuous_mr0.8_mmr0.2    MAE=0.894    MSE=1.094    RMSE=1.045
+	Feature 0: MSE=1.175     RMSE=1.084     MAE=0.902
+	Feature 1: MSE=1.013     RMSE=1.006     MAE=0.886
+2024-08-27 10:31:45    s1826_bs64_hs128_e100_nla4_sle512_p5_continuous_mr0.8_mmr0.25    MAE=0.655    MSE=0.615    RMSE=0.784
+	Feature 0: MSE=0.634     RMSE=0.796     MAE=0.632
+	Feature 1: MSE=0.595     RMSE=0.772     MAE=0.677
+2024-08-27 10:59:11    s1826_bs64_hs128_e100_nla6_sle360_p5_continuous_mr0.8_mmr0.1    MAE=0.582    MSE=0.604    RMSE=0.777
+	Feature 0: MSE=0.566     RMSE=0.752     MAE=0.538
+	Feature 1: MSE=0.641     RMSE=0.801     MAE=0.627
+2024-08-27 11:04:32    s1826_bs64_hs128_e100_nla6_sle360_p5_continuous_mr0.8_mmr0.15    MAE=0.751    MSE=1.181    RMSE=1.086
+	Feature 0: MSE=1.203     RMSE=1.097     MAE=0.757
+	Feature 1: MSE=1.158     RMSE=1.076     MAE=0.745
+2024-08-27 11:04:38    s1826_bs64_hs128_e100_nla6_sle360_p5_continuous_mr0.8_mmr0.2    MAE=1.222    MSE=2.320    RMSE=1.504
+	Feature 0: MSE=3.045     RMSE=1.745     MAE=1.478
+	Feature 1: MSE=1.595     RMSE=1.263     MAE=0.966

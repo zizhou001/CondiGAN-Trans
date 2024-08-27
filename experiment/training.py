@@ -111,7 +111,7 @@ def train(args, generator_saved_name, discriminator_saved_name, train_data, val_
 
         # 验证阶段
         avg_real_loss, avg_fake_loss, avg_total_loss = validate(generator, discriminator, validate_data_loader,
-                                                                wasserstein_loss, args)
+                                                                nn.BCEWithLogitsLoss(), args)
 
         real_losses.append(avg_real_loss)
         fake_losses.append(avg_fake_loss)

@@ -9,13 +9,13 @@ def get_configuration():
     parser.add_argument('--batch-size', dest='batch_size', type=int, default=64, help='Specify batch size.')
     parser.add_argument('--num-layers', dest='num_layers', type=int, default=6,
                         help='Specify the number of Transfomer layers.')
-    parser.add_argument('--patience', dest='patience', type=int, default=10,
+    parser.add_argument('--patience', dest='patience', type=int, default=5,
                         help='Set the patience parameter for early stop.')
 
-    parser.add_argument('--hidden-size', dest='hidden_size', type=int, default=64, help='Specify hidden_size.')
-    parser.add_argument('--seq-length', dest='seq_length', type=int, default=64, help='Specified sequence length.')
-    parser.add_argument('--missing-rate', dest='missing_rate', type=float, default=0.2, help='Set missing_rate.')
-    parser.add_argument('--max-missing-rate', dest='max_missing_rate', type=float, default=0.3,
+    parser.add_argument('--hidden-size', dest='hidden_size', type=int, default=128, help='Specify hidden_size.')
+    parser.add_argument('--seq-length', dest='seq_length', type=int, default=360, help='Specified sequence length.')
+    parser.add_argument('--missing-rate', dest='missing_rate', type=float, default=0.8, help='Set missing_rate.')
+    parser.add_argument('--max-missing-rate', dest='max_missing_rate', type=float, default=0.2,
                         help='Set max_missing_rate.')
 
     args = parser.parse_args()
@@ -82,7 +82,7 @@ def more_settings(args, model_size="default"):
     args.output_dim = 1
 
     if model_size == 'large':
-        args.num_heads = 4  # Transformer头数
+        args.num_heads = 8  # Transformer头数
         args.cond_dim = 91  # 条件向量维度
         args.features_dim = len(args.column_names)  # 特征维度
         args.input_dim = args.cond_dim + args.features_dim  # 总输入维度 = cond_dim + features_dim = 91 + 2 = 93
@@ -97,9 +97,9 @@ def more_settings(args, model_size="default"):
         args.cond_emb_dim = args.cond_emb_wind_dim + args.cond_emb_hourly_dim + \
                             args.cond_emb_daily_dim + args.cond_emb_weekly_dim  # 36 + 105 + 30 + 228 = 399
 
-        args.noise_emb_dim = 16  # 调整后的随机噪声嵌入维度
+        args.noise_emb_dim = 18  # 调整后的随机噪声嵌入维度
 
-        args.d_model = args.input_dim + args.cond_emb_dim + args.noise_emb_dim + args.features_dim  # 93 + 399 + 16 + 2 = 510
+        args.d_model = args.input_dim + args.cond_emb_dim + args.noise_emb_dim + args.features_dim  # 93 + 399 + 18 + 2 = 512
         return args
 
     elif model_size == 'default':

@@ -3,40 +3,18 @@
 # 定义常量
 BATCH_SIZE=64
 HIDDEN_SIZE=128
-SEQ_LENGTH=128
-NUM_LAYERS=4
-PATIENCE=10
+SEQ_LENGTH=360
+NUM_LAYERS=6
+PATIENCE=5
 
-cd /root/autodl-tmp/project/
+cd /root/autodl-tmp/base/
 
-for MISSING_RATE in 0.6 0.8; do
-    for MAX_MISSING_RATE in 0.2 0.25; do
+for MISSING_RATE in 0.80; do
+    for MAX_MISSING_RATE in 0.10 0.15 0.20 0.25; do
         echo "Running with missing-rate=$MISSING_RATE and max-missing-rate=$MAX_MISSING_RATE"
 
-        # 计算 SEQ_LENGTH
-#        PRODUCT=$(echo "scale=2; $MISSING_RATE * $MAX_MISSING_RATE * 1160" | bc)
-
-        # # 输出计算的 PRODUCT 值
-        # echo "Calculated PRODUCT=$PRODUCT"
-
-        # if (( $(echo "$PRODUCT <= 50" | awk '{print ($1 <= 50)}') )); then
-        #     SEQ_LENGTH=64
-        #     HIDDEN_SIZE=64
-        # elif (( $(echo "$PRODUCT <= 85" | awk '{print ($1 <= 85)}') )); then
-        #     SEQ_LENGTH=128
-        #     HIDDEN_SIZE=128
-        # elif (( $(echo "$PRODUCT <= 180" | awk '{print ($1 <= 180)}') )); then
-        #     SEQ_LENGTH=256
-        #     HIDDEN_SIZE=256
-        # else
-        #     SEQ_LENGTH=360
-        #     HIDDEN_SIZE=360
-        # fi
-
-#        echo "Using SEQ_LENGTH=$SEQ_LENGTH"
-
         # 执行 Python 程序
-        python /root/autodl-tmp/project/main.py \
+        python /root/autodl-tmp/base/main.py \
             --batch-size $BATCH_SIZE \
             --hidden-size $HIDDEN_SIZE \
             --num-layers $NUM_LAYERS \
@@ -54,4 +32,4 @@ for MISSING_RATE in 0.6 0.8; do
 done
 
 # 关机
-shutdown -h now
+#shutdown -h now
