@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import Dataset
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 
 class WindSpeedDataset(Dataset):
@@ -26,7 +26,8 @@ class WindSpeedDataset(Dataset):
         self.columns = columns
 
         # 创建归一化器
-        self.scaler = MinMaxScaler()
+        # self.scaler = MinMaxScaler()
+        self.scaler = StandardScaler()
 
         # 对需要归一化的列进行归一化处理
         self.data[self.columns] = self.scaler.fit_transform(self.data[self.columns])

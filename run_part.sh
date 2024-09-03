@@ -2,19 +2,19 @@
 
 # 定义常量
 BATCH_SIZE=64
-HIDDEN_SIZE=128
+HIDDEN_SIZE=360
 SEQ_LENGTH=360
-NUM_LAYERS=6
-PATIENCE=5
+NUM_LAYERS=4
+PATIENCE=10
 
-cd /root/autodl-tmp/base/
+cd /root/autodl-tmp/project/
 
 for MISSING_RATE in 0.80; do
     for MAX_MISSING_RATE in 0.10 0.15 0.20 0.25; do
         echo "Running with missing-rate=$MISSING_RATE and max-missing-rate=$MAX_MISSING_RATE"
 
         # 执行 Python 程序
-        python /root/autodl-tmp/base/main.py \
+        python /root/autodl-tmp/project/main.py \
             --batch-size $BATCH_SIZE \
             --hidden-size $HIDDEN_SIZE \
             --num-layers $NUM_LAYERS \
@@ -22,7 +22,6 @@ for MISSING_RATE in 0.80; do
             --patience $PATIENCE \
             --missing-rate $MISSING_RATE \
             --max-missing-rate $MAX_MISSING_RATE
-
         # 检查 Python 脚本的退出状态
         if [ $? -ne 0 ]; then
             echo "Error occurred while running the script with missing-rate=$MISSING_RATE and max-missing-rate=$MAX_MISSING_RATE"

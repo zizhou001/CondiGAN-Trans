@@ -7,13 +7,13 @@ def get_configuration():
 
     # 训练参数
     parser.add_argument('--batch-size', dest='batch_size', type=int, default=64, help='Specify batch size.')
-    parser.add_argument('--num-layers', dest='num_layers', type=int, default=6,
+    parser.add_argument('--num-layers', dest='num_layers', type=int, default=4,
                         help='Specify the number of Transfomer layers.')
     parser.add_argument('--patience', dest='patience', type=int, default=5,
                         help='Set the patience parameter for early stop.')
 
     parser.add_argument('--hidden-size', dest='hidden_size', type=int, default=128, help='Specify hidden_size.')
-    parser.add_argument('--seq-length', dest='seq_length', type=int, default=360, help='Specified sequence length.')
+    parser.add_argument('--seq-length', dest='seq_length', type=int, default=256, help='Specified sequence length.')
     parser.add_argument('--missing-rate', dest='missing_rate', type=float, default=0.8, help='Set missing_rate.')
     parser.add_argument('--max-missing-rate', dest='max_missing_rate', type=float, default=0.2,
                         help='Set max_missing_rate.')

@@ -298,3 +298,39 @@
 2024-08-27 11:04:38    s1826_bs64_hs128_e100_nla6_sle360_p5_continuous_mr0.8_mmr0.2    MAE=1.222    MSE=2.320    RMSE=1.504
 	Feature 0: MSE=3.045     RMSE=1.745     MAE=1.478
 	Feature 1: MSE=1.595     RMSE=1.263     MAE=0.966
+2024-08-27 11:45:26    s1826_bs64_hs128_e100_nla6_sle360_p5_continuous_mr0.8_mmr0.1    MAE=0.805    MSE=1.237    RMSE=1.112
+	Feature 0: MSE=1.167     RMSE=1.080     MAE=0.768
+	Feature 1: MSE=1.307     RMSE=1.143     MAE=0.842
+2024-08-27 11:51:27    s1826_bs64_hs128_e100_nla6_sle360_p5_continuous_mr0.8_mmr0.15    MAE=1.174    MSE=2.409    RMSE=1.548
+	Feature 0: MSE=2.061     RMSE=1.436     MAE=1.095
+	Feature 1: MSE=2.758     RMSE=1.661     MAE=1.252
+2024-08-27 11:51:33    s1826_bs64_hs128_e100_nla6_sle360_p5_continuous_mr0.8_mmr0.2    MAE=1.489    MSE=3.498    RMSE=1.866
+	Feature 0: MSE=3.026     RMSE=1.740     MAE=1.317
+	Feature 1: MSE=3.970     RMSE=1.992     MAE=1.662
+2024-08-27 11:57:31    s1826_bs64_hs128_e100_nla6_sle360_p5_continuous_mr0.8_mmr0.25    MAE=1.030    MSE=1.663    RMSE=1.289
+	Feature 0: MSE=1.631     RMSE=1.277     MAE=1.023
+	Feature 1: MSE=1.694     RMSE=1.302     MAE=1.037
+2024-08-27 12:08:09    s1826_bs64_hs64_e100_nla6_sle256_p5_continuous_mr0.8_mmr0.1    MAE=0.997    MSE=1.508    RMSE=1.228
+	Feature 0: MSE=1.561     RMSE=1.249     MAE=1.067
+	Feature 1: MSE=1.454     RMSE=1.206     MAE=0.927
+2024-08-27 12:12:13    s1826_bs64_hs64_e100_nla6_sle256_p5_continuous_mr0.8_mmr0.15    MAE=0.944    MSE=1.559    RMSE=1.246
+	Feature 0: MSE=1.374     RMSE=1.172     MAE=0.937
+	Feature 1: MSE=1.743     RMSE=1.320     MAE=0.950
+2024-08-27 12:14:02    s1826_bs64_hs64_e100_nla6_sle256_p5_continuous_mr0.8_mmr0.2    MAE=0.806    MSE=1.056    RMSE=1.019
+	Feature 0: MSE=0.789     RMSE=0.888     MAE=0.691
+	Feature 1: MSE=1.323     RMSE=1.150     MAE=0.921
+2024-08-27 12:16:08    s1826_bs64_hs64_e100_nla6_sle256_p5_continuous_mr0.8_mmr0.25    MAE=0.923    MSE=1.362    RMSE=1.167
+	Feature 0: MSE=1.280     RMSE=1.132     MAE=0.938
+	Feature 1: MSE=1.444     RMSE=1.202     MAE=0.908
+
+-----------------------------------------------------------------0.8  StandardScaler
+
+2024-08-28 09:55:19    s1826_bs64_hs360_e100_nla4_sle360_p10_continuous_mr0.8_mmr0.1    MAE=0.687    MSE=0.751    RMSE=0.866
+	Feature 0: MSE=0.717     RMSE=0.847     MAE=0.633
+	Feature 1: MSE=0.785     RMSE=0.886     MAE=0.741
+2024-08-28 10:38:36    s1826_bs64_hs360_e100_nla4_sle360_p10_continuous_mr0.8_mmr0.15    MAE=0.732    MSE=0.885    RMSE=0.941
+	Feature 0: MSE=0.845     RMSE=0.919     MAE=0.678
+	Feature 1: MSE=0.925     RMSE=0.962     MAE=0.787
+2024-08-28 12:16:37    s1826_bs64_hs360_e100_nla4_sle360_p10_continuous_mr0.8_mmr0.2    MAE=0.797    MSE=0.978    RMSE=0.989
+	Feature 0: MSE=0.967     RMSE=0.983     MAE=0.772
+	Feature 1: MSE=0.989     RMSE=0.995     MAE=0.822
