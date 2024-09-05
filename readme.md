@@ -27,10 +27,8 @@ Fig.2 Experimental result
 ![](material/compare.png)
 
 Fig.3 Imputation Results (Left) and Model MAE under Missing Data Patterns (Right)
-<div style="display: flex;">
-  <img src="material/interp.jpg" alt="Image 1" style="flex: 1; width: 45%; object-fit: cover;height: 100%;">
-  <img src="material/mae.jpg" alt="Image 2" style="flex: 1;width: 50%; object-fit: cover;height: 100%;">
-</div>
+![](material/result.png)
+
 
 ## Requirement
 
