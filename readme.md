@@ -17,19 +17,19 @@ Time-series data are crucial for earthen ruins' preservation, especially when as
 
 Fig.1 MSC-GAN Architecture.
 
-![](model.png)
+![](material/model.png)
 
 Our approach customizes a multi-scale conditional generation logic based on the characteristics of the data to extract relevant feature vectors. We then merge the original data with this conditional information and embed it into a higher-dimensional space to uncover long-range dependencies and complex distributions for imputation. A multi-scale branch of the discriminator assesses the reliability of the imputed data, providing feedback to the generator in the form of loss for further refinement. Given the need to capture long-term sequential continuity, we use the Transformer architecture as the basis for the generator. 
 
 ## Main Results
 
 Fig.2 Experimental result
-![](compare.png)
+![](material/compare.png)
 
 Fig.3 Imputation Results (Left) and Model MAE under Missing Data Patterns (Right)
 <div style="display: flex;">
-  <img src="interp.jpg" alt="Image 1" style="flex: 1; width: 45%; object-fit: cover;">
-  <img src="mae.jpg" alt="Image 2" style="flex: 1;width: 50%; object-fit: cover;">
+  <img src="material/interp.jpg" alt="Image 1" style="flex: 1; width: 45%; object-fit: cover;height: 100%;">
+  <img src="material/mae.jpg" alt="Image 2" style="flex: 1;width: 50%; object-fit: cover;height: 100%;">
 </div>
 
 ## Requirement
