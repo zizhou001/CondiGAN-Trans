@@ -29,12 +29,8 @@ Fig.2 Experimental result
 Fig.3 Imputation Results (Left) and Model MAE under Missing Data Patterns (Right)
 ![](material/result.png)
 
-Fig.4 Seasonal decomposition of original and imputed data.The x-axis shows time, and the y-axis represents the seasonal component's magnitude.
-![](material/decomposition_comparison.png)
-
-Fig.5 ACF and PACF comparison of original and imputed data. The x-axis shows lags, and the y-axis displays correlation coefficients.
-
-![](material/acf-marked.png)
+Fig.4 Seasonal decomposition of original and imputed data (Left).ACF and PACF comparison of original and imputed data (Right).
+![](material/evaluation.png)
 
 ## Requirement
 
